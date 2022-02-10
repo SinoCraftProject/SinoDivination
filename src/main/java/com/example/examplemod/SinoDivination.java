@@ -1,5 +1,7 @@
 package com.example.examplemod;
 
+import com.example.examplemod.block.ModBlocks;
+import com.example.examplemod.item.ModItems;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -21,6 +23,7 @@ import java.util.stream.Collectors;
 @Mod("sinodivination")
 public class SinoDivination
 {
+    public static final String MOD_ID = "sinodivination";
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
 
@@ -34,6 +37,9 @@ public class SinoDivination
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+
+        ModBlocks.REGISTRY.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ModItems.REGISTRY.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     private void setup(final FMLCommonSetupEvent event)
