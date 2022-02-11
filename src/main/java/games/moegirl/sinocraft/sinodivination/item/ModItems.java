@@ -16,6 +16,10 @@ public class ModItems {
 
     public static final RegistryObject<Item> ORE_JADE = REGISTRY.register("ore_jade", () -> new BlockItem(ModBlocks.ORE_JADE.get(), defaultBuilder()));
     public static final RegistryObject<Item> JADE = REGISTRY.register("jade", () -> new Item(defaultBuilder()));
+    public static final RegistryObject<Item> ORE_SULPHUR = REGISTRY.register("ore_sulphur", () -> new BlockItem(ModBlocks.ORE_SULPHUR.get(), defaultBuilder()));
+    public static final RegistryObject<Item> SULPHUR = REGISTRY.register("sulphur", () -> new Item(defaultBuilder()));
+    public static final RegistryObject<Item> ORE_NITER = REGISTRY.register("ore_niter", () -> new BlockItem(ModBlocks.ORE_NITER.get(), defaultBuilder()));
+    public static final RegistryObject<Item> NITER = REGISTRY.register("niter", () -> new Item(defaultBuilder()));
 
     public static CreativeModeTab creativeTab = new CreativeModeTab(SinoDivination.MOD_ID) {
         @NonNull
