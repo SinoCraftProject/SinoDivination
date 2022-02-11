@@ -1,6 +1,6 @@
-package com.example.examplemod.datagen;
+package games.moegirl.sinocraft.sinodivination.datagen;
 
-import com.example.examplemod.SinoDivination;
+import games.moegirl.sinocraft.sinodivination.SinoDivination;
 import games.moegirl.sinocraft.sinocore.api.data.gen.DefaultBlockStateProvider;
 import games.moegirl.sinocraft.sinocore.api.data.gen.DefaultItemModelProvider;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

@@ -1,6 +1,6 @@
-package com.example.examplemod.block;
+package games.moegirl.sinocraft.sinodivination.block;
 
-import com.example.examplemod.SinoDivination;
+import games.moegirl.sinocraft.sinodivination.SinoDivination;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;

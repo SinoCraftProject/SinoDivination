@@ -1,7 +1,7 @@
-package com.example.examplemod.item;
+package games.moegirl.sinocraft.sinodivination.item;
 
-import com.example.examplemod.SinoDivination;
-import com.example.examplemod.block.ModBlocks;
+import games.moegirl.sinocraft.sinodivination.SinoDivination;
+import games.moegirl.sinocraft.sinodivination.block.ModBlocks;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;

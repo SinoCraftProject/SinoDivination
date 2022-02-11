@@ -1,7 +1,7 @@
-package com.example.examplemod;
+package games.moegirl.sinocraft.sinodivination;
 
-import com.example.examplemod.block.ModBlocks;
-import com.example.examplemod.item.ModItems;
+import games.moegirl.sinocraft.sinodivination.block.ModBlocks;
+import games.moegirl.sinocraft.sinodivination.item.ModItems;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
