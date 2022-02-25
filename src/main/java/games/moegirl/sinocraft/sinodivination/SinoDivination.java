@@ -1,6 +1,7 @@
 package games.moegirl.sinocraft.sinodivination;
 
 import games.moegirl.sinocraft.sinodivination.block.ModBlocks;
+import games.moegirl.sinocraft.sinodivination.block.blockentity.ModBlockEntity;
 import games.moegirl.sinocraft.sinodivination.item.ModItems;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -40,6 +41,7 @@ public class SinoDivination
 
         ModBlocks.REGISTRY.register(FMLJavaModLoadingContext.get().getModEventBus());
         ModItems.REGISTRY.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ModBlockEntity.REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     private void setup(final FMLCommonSetupEvent event)

@@ -15,10 +15,11 @@ public class ModBlocks {
     public static final RegistryObject<Block> ORE_SULPHUR = REGISTRY.register("ore_sulphur", () -> new Block(defaultBuilder()));
     public static final RegistryObject<Block> ORE_NITER = REGISTRY.register("ore_niter", () -> new Block(defaultBuilder()));
 
+    public static final RegistryObject<Block> POT = REGISTRY.register("pot", () -> new Pot(defaultBuilder()));
+
     public static BlockBehaviour.Properties defaultBuilder() {
         return BlockBehaviour.Properties.of(Material.STONE)
                 .requiresCorrectToolForDrops()
                 .strength(3.0F);
-//                .harvestTool(TreeType.PICKAXE)
     }
 }
