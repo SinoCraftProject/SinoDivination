@@ -1,8 +1,7 @@
 package games.moegirl.sinocraft.sinodivination.datagen;
 
-import games.moegirl.sinocraft.sinodivination.SinoDivination;
-import games.moegirl.sinocraft.sinocore.api.data.gen.DefaultBlockStateProvider;
 import games.moegirl.sinocraft.sinocore.api.data.gen.DefaultItemModelProvider;
+import games.moegirl.sinocraft.sinodivination.SinoDivination;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
@@ -13,7 +12,7 @@ public class DataGenRegister {
     public static void gatherData(GatherDataEvent event) {
         if (event.includeClient()) {
             //block/item models, blockstate JSONs, language files, etc.
-            event.getGenerator().addProvider(new DefaultBlockStateProvider(event.getGenerator(),
+            event.getGenerator().addProvider(new BlockStateProvider(event.getGenerator(),
                     SinoDivination.MOD_ID, event.getExistingFileHelper()));
             event.getGenerator().addProvider(new DefaultItemModelProvider(event.getGenerator(),
                     SinoDivination.MOD_ID, event.getExistingFileHelper()));

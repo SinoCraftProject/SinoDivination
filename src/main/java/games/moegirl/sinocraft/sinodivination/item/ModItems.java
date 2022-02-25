@@ -21,6 +21,8 @@ public class ModItems {
     public static final RegistryObject<Item> ORE_NITER = REGISTRY.register("ore_niter", () -> new BlockItem(ModBlocks.ORE_NITER.get(), defaultBuilder()));
     public static final RegistryObject<Item> NITER = REGISTRY.register("niter", () -> new Item(defaultBuilder()));
 
+    public static final RegistryObject<Item> POT = REGISTRY.register("pot", () -> new BlockItem(ModBlocks.POT.get(), defaultBuilder()));
+
     public static CreativeModeTab creativeTab = new CreativeModeTab(SinoDivination.MOD_ID) {
         @NonNull
         @Override
