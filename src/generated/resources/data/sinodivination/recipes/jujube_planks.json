@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "item": "sinodivination:jujube_log"
+    }
+  ],
+  "result": {
+    "item": "sinodivination:jujube_planks",
+    "count": 4
+  }
+}

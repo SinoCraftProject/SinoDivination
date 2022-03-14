@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_rh",
+  "textures": {
+    "bottom": "sinodivination:block/jujube_planks",
+    "top": "sinodivination:block/jujube_planks"
+  }
+}

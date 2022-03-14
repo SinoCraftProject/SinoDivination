@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "bark",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "sinodivination:stripped_jujube_log"
+    }
+  },
+  "result": {
+    "item": "sinodivination:stripped_jujube_wood",
+    "count": 3
+  }
+}

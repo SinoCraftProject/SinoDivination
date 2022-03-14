@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "sinodivination:block/cotinus_pressure_plate"
+    },
+    "powered=true": {
+      "model": "sinodivination:block/cotinus_pressure_plate_down"
+    }
+  }
+}

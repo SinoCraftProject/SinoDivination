@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "sinodivination:items/sulphur"
+    "layer0": "sinodivination:item/sulphur"
   }
 }

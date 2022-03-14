@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "sinodivination:block/cotinus_leaves"
+  }
+}
