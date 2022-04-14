@@ -1,7 +1,7 @@
 package games.moegirl.sinocraft.sinodivination.block;
 
 import games.moegirl.sinocraft.sinocore.api.block.ILootableBlock;
-import games.moegirl.sinocraft.sinocore.api.util.BlockLootables;
+import games.moegirl.sinocraft.sinocore.api.utility.BlockLootables;
 import games.moegirl.sinocraft.sinodivination.item.SDItems;
 import net.minecraft.world.level.block.OreBlock;
 import net.minecraft.world.level.material.Material;

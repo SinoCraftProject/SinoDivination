@@ -1,6 +1,6 @@
 package games.moegirl.sinocraft.sinodivination.datagen;
 
-import games.moegirl.sinocraft.sinocore.api.data.gen.ItemModelProviderBase;
+import games.moegirl.sinocraft.sinocore.api.data.ItemModelProviderBase;
 import games.moegirl.sinocraft.sinocore.api.tree.Tree;
 import games.moegirl.sinocraft.sinodivination.SinoDivination;
 import games.moegirl.sinocraft.sinodivination.item.SDItems;

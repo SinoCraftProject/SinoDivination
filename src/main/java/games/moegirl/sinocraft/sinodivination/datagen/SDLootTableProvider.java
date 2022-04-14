@@ -1,8 +1,8 @@
 package games.moegirl.sinocraft.sinodivination.datagen;
 
 import com.mojang.datafixers.util.Pair;
-import games.moegirl.sinocraft.sinocore.api.data.gen.loot.LootTableProviderBase;
-import games.moegirl.sinocraft.sinocore.api.data.gen.loot.block.BlockLootTableBase;
+import games.moegirl.sinocraft.sinocore.api.data.loot.BlockLootTableBase;
+import games.moegirl.sinocraft.sinocore.api.data.loot.LootTableProviderBase;
 import games.moegirl.sinocraft.sinocore.api.tree.TreeBlockLoot;
 import games.moegirl.sinocraft.sinodivination.SinoDivination;
 import games.moegirl.sinocraft.sinodivination.tree.SDTrees;

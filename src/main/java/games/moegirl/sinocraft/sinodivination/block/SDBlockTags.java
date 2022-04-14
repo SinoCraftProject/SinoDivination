@@ -1,14 +1,13 @@
 package games.moegirl.sinocraft.sinodivination.block;
 
 import games.moegirl.sinocraft.sinodivination.SinoDivination;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.ForgeTagHandler;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class SDBlockTags {
 
-    public static final Tag.Named<Block> COTINUS_WOODEN = ForgeTagHandler.createOptionalTag(ForgeRegistries.BLOCKS,
+    public static final TagKey<Block> COTINUS_WOODEN = TagKey.create(Registry.BLOCK_REGISTRY,
             new ResourceLocation(SinoDivination.MOD_ID, "wooden_cotinus"));
 }

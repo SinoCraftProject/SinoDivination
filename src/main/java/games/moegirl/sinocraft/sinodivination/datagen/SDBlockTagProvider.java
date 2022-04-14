@@ -1,6 +1,6 @@
 package games.moegirl.sinocraft.sinodivination.datagen;
 
-import games.moegirl.sinocraft.sinocore.api.data.gen.BlockTagsProviderBase;
+import games.moegirl.sinocraft.sinocore.api.data.BlockTagsProviderBase;
 import games.moegirl.sinocraft.sinodivination.SinoDivination;
 import games.moegirl.sinocraft.sinodivination.block.SDBlockTags;
 import games.moegirl.sinocraft.sinodivination.tree.SDTrees;
