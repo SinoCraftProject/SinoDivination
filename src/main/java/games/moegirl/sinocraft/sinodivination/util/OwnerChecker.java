@@ -9,6 +9,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.block.entity.BlockEntity;
 
 import javax.annotation.Nullable;
 import java.util.HashSet;
@@ -16,6 +17,15 @@ import java.util.Set;
 import java.util.UUID;
 
 public abstract class OwnerChecker {
+
+    public static OwnerChecker forBlock(BlockEntity entity) {
+        return new OwnerChecker() {
+            @Override
+            protected void setChanged() {
+                entity.setChanged();
+            }
+        };
+    }
 
     @Nullable
     private UUID owner = null;
@@ -32,12 +42,9 @@ public abstract class OwnerChecker {
         return false;
     }
 
-    public void allow(@Nullable Entity entity) {
-        UUID uuid = getUUID(entity);
-        if (uuid != null) {
-            allowed.add(uuid);
-            setChanged();
-        }
+    public void allow(UUID uuid) {
+        allowed.add(uuid);
+        setChanged();
     }
 
     public void removeAllow(@Nullable Entity entity) {
@@ -63,6 +70,13 @@ public abstract class OwnerChecker {
     @Nullable
     public UUID getOwner() {
         return owner;
+    }
+
+    public boolean isOwner(@Nullable Entity entity) {
+        if (owner == null) {
+            return true;
+        }
+        return owner.equals(getUUID(entity));
     }
 
     @Nullable
@@ -101,5 +115,4 @@ public abstract class OwnerChecker {
                     .forEach(allowed::add);
         }
     }
-
 }

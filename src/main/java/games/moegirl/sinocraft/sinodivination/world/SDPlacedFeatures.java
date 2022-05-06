@@ -22,24 +22,24 @@ import net.minecraftforge.common.util.Lazy;
 
 public class SDPlacedFeatures {
 
-    private static final PlacedFeatureRegister REGISTER = new PlacedFeatureRegister(SinoDivination.MOD_ID);
+    public static final PlacedFeatureRegister REGISTRY = new PlacedFeatureRegister(SinoDivination.MOD_ID);
 
     private static final PlacedFeatureRegister.Entry<OreConfiguration, OreFeatureBuilder> JADE =
-            REGISTER.registerOre(SDBlocks.ORE_JADE.getId().getPath(), builder -> builder
+            REGISTRY.registerOre(SDBlocks.ORE_JADE.getId().getPath(), builder -> builder
                     .addStoneOre(SDBlocks.ORE_JADE)
                     .fromConfiguration(OreFeatures.ORE_GOLD_BURIED.value().config())
                     .fromModifier(OrePlacements.ORE_GOLD.value())
                     .replaceModifier(HeightRangePlacement.triangle(VerticalAnchor.absolute(-10), VerticalAnchor.absolute(10))));
 
     private static final PlacedFeatureRegister.Entry<OreConfiguration, OreFeatureBuilder> SULFUR =
-            REGISTER.registerOre(SDBlocks.ORE_SULPHUR.getId().getPath(), builder -> builder
+            REGISTRY.registerOre(SDBlocks.ORE_SULPHUR.getId().getPath(), builder -> builder
                     .addStoneOre(SDBlocks.ORE_SULPHUR)
                     .fromConfiguration(OreFeatures.ORE_IRON.value().config())
                     .fromModifier(OrePlacements.ORE_IRON_MIDDLE.value())
                     .replaceModifier(HeightRangePlacement.triangle(VerticalAnchor.absolute(-32), VerticalAnchor.absolute(8))));
 
     private static final PlacedFeatureRegister.Entry<OreConfiguration, OreFeatureBuilder> NITER =
-            REGISTER.registerOre(SDBlocks.ORE_NITER.getId().getPath(), builder -> builder
+            REGISTRY.registerOre(SDBlocks.ORE_NITER.getId().getPath(), builder -> builder
                     .addStoneOre(SDBlocks.ORE_NITER)
                     .fromConfiguration(OreFeatures.ORE_IRON.value().config())
                     .fromModifier(OrePlacements.ORE_IRON_MIDDLE.value())
@@ -49,12 +49,8 @@ public class SDPlacedFeatures {
             .fromConfiguration(TreeFeatures.OAK.value().config())
             .fromModifier(TreePlacements.OAK_CHECKED.value())
             .minimumSize(new TwoLayersFeatureSize(1, 0, 1))
-            .foliage(BlockStateProvider.simple(SDTrees.COTINUS.getBlocks().leaves()))
+            .foliage(BlockStateProvider.simple(SDTrees.COTINUS.leaves()))
             .foliagePlacer(new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3))
-            .trunk(BlockStateProvider.simple(SDTrees.COTINUS.getBlocks().log()))
+            .trunk(BlockStateProvider.simple(SDTrees.COTINUS.log()))
             .trunkPlacer(new StraightTrunkPlacer(4, 2, 0)));
-
-    public static void register() {
-        REGISTER.register();
-    }
 }

@@ -9,8 +9,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.predicate.BlockPredicate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,18 +25,23 @@ public class ChangingSeedlingDecoction extends Item {
 
     private static final List<Function<BlockState, Optional<BlockState>>> RECIPES = new ArrayList<>();
 
-    public static void registerRecipe(Predicate<? super BlockState> from, Supplier<BlockState> to) {
-        RECIPES.add(bs -> Optional.of(bs).filter(from).map(b -> to.get()));
-    }
-
     public static void registerRecipe(Function<BlockState, Optional<BlockState>> recipe) {
         RECIPES.add(recipe);
     }
 
+    public static void registerRecipe(Predicate<? super BlockState> from, Supplier<BlockState> to) {
+        RECIPES.add(bs -> Optional.of(bs).filter(from).map(b -> to.get()));
+    }
+
+    public static void registerRecipe(Block input, Supplier<? extends Block> output) {
+        registerRecipe(BlockPredicate.forBlock(input), () -> output.get().defaultBlockState());
+    }
+
     public ChangingSeedlingDecoction() {
         super(new Properties().tab(DivinationTab.INSTANCE).craftRemainder(Items.BOWL));
-        registerRecipe(b -> b.getBlock() == Blocks.BIRCH_SAPLING,
-                () -> SDTrees.COTINUS.getBlocks().sapling().defaultBlockState());
+        registerRecipe(Blocks.BIRCH_SAPLING, SDTrees.COTINUS.sapling);
+        registerRecipe(Blocks.OAK_SAPLING, SDTrees.JUJUBE.sapling);
+        registerRecipe(Blocks.SPRUCE_SAPLING, SDTrees.SOPHORA.sapling);
     }
 
     @Override

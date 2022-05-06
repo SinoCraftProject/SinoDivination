@@ -9,11 +9,13 @@ buildscript {
             name = 'ParchmentMC'
             url = 'https://maven.parchmentmc.org/'
         }
+        maven {url 'https://repo.spongepowered.org/repository/maven-public/'}
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath group: 'org.parchmentmc', name: 'librarian', version: '1.+'
+        classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
@@ -21,6 +23,7 @@ apply plugin: 'org.parchmentmc.librarian.forgegradle'   // Parchment mappings.
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
+apply plugin: 'org.spongepowered.mixin'
 
 version = '1.18.2-1.0.1'
 group = 'games.moegirl.sinocraft.sinodivination' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -123,6 +126,11 @@ minecraft {
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
+mixin {
+    add sourceSets.main, "sinodivination.refmap.json"
+    config "sinodivination.mixins.json"
+}
+
 repositories {
     // Put repositories for dependencies here
     // ForgeGradle automatically adds the Forge maven and Maven Central for you
@@ -158,6 +166,7 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
     implementation fg.deobf('com.github.SinoCraftProject:SinoCore:main-SNAPSHOT')
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
@@ -170,7 +179,8 @@ jar {
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
                 "Implementation-Vendor"   : "examplemodsareus",
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                "MixinConfigs": "sinodivination.mixins.json"
         ])
     }
 }
