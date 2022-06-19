@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "chest",
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "sinodivination:cotinus_planks"
+    }
+  },
+  "result": {
+    "item": "sinodivination:cotinus_chest"
+  }
+}

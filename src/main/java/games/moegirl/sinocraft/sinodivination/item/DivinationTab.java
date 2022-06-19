@@ -1,14 +1,13 @@
 package games.moegirl.sinocraft.sinodivination.item;
 
-import games.moegirl.sinocraft.sinocore.api.item.BaseCreativeTab;
 import games.moegirl.sinocraft.sinodivination.SinoDivination;
-import net.minecraft.world.level.ItemLike;
-import org.jetbrains.annotations.Nullable;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 
 /**
  * Item's creative tab
  */
-public class DivinationTab extends BaseCreativeTab {
+public class DivinationTab extends CreativeModeTab {
 
     public static final DivinationTab INSTANCE = new DivinationTab();
 
@@ -16,9 +15,8 @@ public class DivinationTab extends BaseCreativeTab {
         super(SinoDivination.MOD_ID);
     }
 
-    @Nullable
     @Override
-    public ItemLike getIcon() {
-        return SDItems.ORE_JADE.get();
+    public ItemStack makeIcon() {
+        return new ItemStack(SDItems.ORE_JADE.get());
     }
 }

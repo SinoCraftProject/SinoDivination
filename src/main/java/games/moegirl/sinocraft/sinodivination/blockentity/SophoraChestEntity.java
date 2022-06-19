@@ -33,11 +33,6 @@ public class SophoraChestEntity extends WoodenChestEntity implements ISophoraEnt
     }
 
     @Override
-    public BlockEntity getSelf() {
-        return this;
-    }
-
-    @Override
     public void setEntity(@Nullable Entity entity) {
         if (entity instanceof Player player && !SophoraEntity.holdGhostGuardStick(entity)) {
             this.entity = new PlayerRecord(player);

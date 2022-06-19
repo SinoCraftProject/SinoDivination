@@ -1,5 +1,7 @@
 package games.moegirl.sinocraft.sinodivination.block;
 
+import games.moegirl.sinocraft.sinodivination.block.base.CotinusBlock;
+import games.moegirl.sinocraft.sinodivination.block.base.WoodenChest;
 import games.moegirl.sinocraft.sinodivination.blockentity.SDBlockEntities;
 import games.moegirl.sinocraft.sinodivination.item.SDItems;
 import games.moegirl.sinocraft.sinodivination.tree.SDWoodwork;
@@ -13,7 +15,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 
-public class CotinusChest extends WoodenChest implements ICotinusBlock {
+public class CotinusChest extends WoodenChest implements CotinusBlock {
 
     public CotinusChest() {
         super(SDWoodwork.COTINUS, SDBlockEntities.COTINUS_CHEST, SDItems.COTINUS_CHEST);

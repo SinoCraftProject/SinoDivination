@@ -1,6 +1,6 @@
 package games.moegirl.sinocraft.sinodivination.item;
 
-import games.moegirl.sinocraft.sinodivination.block.WoodenChest;
+import games.moegirl.sinocraft.sinodivination.block.base.WoodenChest;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;

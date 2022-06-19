@@ -2,12 +2,13 @@ package games.moegirl.sinocraft.sinodivination.datagen;
 
 import games.moegirl.sinocraft.sinocore.api.data.BlockTagsProviderBase;
 import games.moegirl.sinocraft.sinodivination.SinoDivination;
-import games.moegirl.sinocraft.sinodivination.block.SDBlockTags;
 import games.moegirl.sinocraft.sinodivination.block.SDBlocks;
-import games.moegirl.sinocraft.sinodivination.block.WoodenChest;
+import games.moegirl.sinocraft.sinodivination.block.base.WoodenChest;
 import games.moegirl.sinocraft.sinodivination.tree.SDTrees;
 import games.moegirl.sinocraft.sinodivination.tree.SDWoodwork;
+import games.moegirl.sinocraft.sinodivination.util.SDTags;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.registries.RegistryObject;
@@ -29,9 +30,14 @@ public class SDBlockTagProvider extends BlockTagsProviderBase {
         chest(SDBlocks.COTINUS_CHEST);
         chest(SDBlocks.JUJUBE_CHEST);
         chest(SDBlocks.SOPHORA_CHEST);
-        add(SDBlockTags.COTINUS_BLOCK, SDTrees.COTINUS.allBlocks());
-        add(SDBlockTags.COTINUS_BLOCK, SDWoodwork.COTINUS.allBlocks());
-        add(SDBlockTags.COTINUS_BLOCK, SDBlocks.COTINUS_CHEST);
+        add(SDTags.COTINUS_BLOCK, SDTrees.COTINUS.allBlocks());
+        add(SDTags.COTINUS_BLOCK, SDWoodwork.COTINUS.allBlocks());
+        add(SDTags.COTINUS_BLOCK, SDBlocks.COTINUS_CHEST.get());
+        add(SDTags.SOPHORA_BLOCK, SDTrees.SOPHORA.allBlocks());
+        add(SDTags.SOPHORA_BLOCK, SDWoodwork.SOPHORA.allBlocks());
+        add(SDTags.SOPHORA_BLOCK, SDBlocks.SOPHORA_CHEST.get());
+        tag(SDTags.HEAT_SOURCE).addTag(BlockTags.FIRE);
+        add(SDTags.HEAT_SOURCE, Blocks.LAVA, Blocks.TORCH, Blocks.REDSTONE_TORCH, Blocks.SOUL_TORCH);
     }
 
     protected <T extends WoodenChest> void chest(RegistryObject<T> chestObj) {

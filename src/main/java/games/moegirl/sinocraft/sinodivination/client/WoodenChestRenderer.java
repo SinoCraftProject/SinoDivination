@@ -1,7 +1,7 @@
 package games.moegirl.sinocraft.sinodivination.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import games.moegirl.sinocraft.sinodivination.block.WoodenChest;
+import games.moegirl.sinocraft.sinodivination.block.base.WoodenChest;
 import games.moegirl.sinocraft.sinodivination.blockentity.WoodenChestEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
@@ -19,7 +19,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.IItemRenderProperties;
 import net.minecraftforge.common.util.Lazy;
-import net.minecraftforge.registries.RegistryObject;
 
 import javax.annotation.Nullable;
 import java.util.Calendar;
@@ -106,7 +105,7 @@ public class WoodenChestRenderer implements IItemRenderProperties {
     }
 
     public static void getAllMaterials(Consumer<Material> pMaterialConsumer) {
-        WoodenChest.stream().map(RegistryObject::get).forEach(chest -> {
+        WoodenChest.stream().forEach(chest -> {
             for (ChestType chestType : ChestType.values()) {
                 getOrCreateMaterial(chest.isTrapped, chest.name, chestType);
             }

@@ -1,5 +1,7 @@
 package games.moegirl.sinocraft.sinodivination.block;
 
+import games.moegirl.sinocraft.sinodivination.block.base.SophoraBlock;
+import games.moegirl.sinocraft.sinodivination.block.base.WoodenChest;
 import games.moegirl.sinocraft.sinodivination.blockentity.SDBlockEntities;
 import games.moegirl.sinocraft.sinodivination.item.SDItems;
 import games.moegirl.sinocraft.sinodivination.tree.SDWoodwork;
@@ -9,7 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class SophoraChest extends WoodenChest implements ISophoraBlock {
+public class SophoraChest extends WoodenChest implements SophoraBlock {
 
     public SophoraChest() {
         super(SDWoodwork.SOPHORA, SDBlockEntities.SOPHORA_CHEST, SDItems.SOPHORA_CHEST);

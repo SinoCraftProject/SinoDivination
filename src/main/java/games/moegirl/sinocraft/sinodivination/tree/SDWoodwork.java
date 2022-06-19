@@ -6,6 +6,7 @@ import games.moegirl.sinocraft.sinocore.api.woodwork.WoodworkManager;
 import games.moegirl.sinocraft.sinodivination.SinoDivination;
 import games.moegirl.sinocraft.sinodivination.block.*;
 import games.moegirl.sinocraft.sinodivination.blockentity.SDBlockEntities;
+import games.moegirl.sinocraft.sinodivination.item.DivinationTab;
 import games.moegirl.sinocraft.sinodivination.item.SDItems;
 import games.moegirl.sinocraft.sinodivination.network.SDNetworks;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -17,12 +18,14 @@ public class SDWoodwork {
             SDBlockEntities.REGISTRY, NetworkHolder.simple(SDNetworks.CHANNEL, SDNetworks.ID));
 
     public static final Woodwork COTINUS = Woodwork.builder("cotinus")
+            .defaultTab(DivinationTab.INSTANCE)
             .customDoor((properties, __) -> new CotinusDoor(properties))
             .customTrapdoor((properties, __) -> new CotinusTrapdoor(properties))
             .customFenceGate((properties, __) -> new CotinusFenceGate(properties))
             .build(WOODWORK);
 
     public static final Woodwork JUJUBE = Woodwork.builder("jujube")
+            .defaultTab(DivinationTab.INSTANCE)
             .customStrengthModifier(modifier -> modifier.calcAfter(f -> 2 * f))
             .customDoor(JujubeDoor::new)
             .customTrapdoor(JujubeTrapdoor::new)
@@ -30,6 +33,7 @@ public class SDWoodwork {
             .build(WOODWORK);
 
     public static final Woodwork SOPHORA = Woodwork.builder("sophora")
+            .defaultTab(DivinationTab.INSTANCE)
             .customDoor((properties, __) -> new SophoraDoor(properties))
             .customTrapdoor((properties, __) -> new SophoraTrapdoor(properties))
             .customFenceGate((properties, __) -> new SophoraFenceGate(properties))

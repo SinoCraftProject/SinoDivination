@@ -1,5 +1,6 @@
 package games.moegirl.sinocraft.sinodivination.block;
 
+import games.moegirl.sinocraft.sinodivination.block.base.SophoraBlock;
 import games.moegirl.sinocraft.sinodivination.blockentity.SDBlockEntities;
 import games.moegirl.sinocraft.sinodivination.blockentity.SophoraDoorEntity;
 import net.minecraft.core.BlockPos;
@@ -11,7 +12,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-public class SophoraDoor extends DoorBlock implements ISophoraBlock {
+public class SophoraDoor extends DoorBlock implements SophoraBlock {
 
     public SophoraDoor(Properties properties) {
         super(properties);

@@ -9,9 +9,10 @@ public class StringUtils {
             if (Character.isUpperCase(c)) {
                 name.append('_').append(Character.toLowerCase(c));
             } else {
-                name.append('_').append(c);
+                name.append(c);
             }
         }
         return name.toString();
     }
+
 }

@@ -1,6 +1,6 @@
 package games.moegirl.sinocraft.sinodivination.blockentity;
 
-import games.moegirl.sinocraft.sinodivination.block.WoodenChest;
+import games.moegirl.sinocraft.sinodivination.block.base.WoodenChest;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;

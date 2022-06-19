@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/door_bottom_rh",
   "textures": {
-    "bottom": "sinodivination:block/cotinus_planks",
-    "top": "sinodivination:block/cotinus_planks"
+    "bottom": "sinodivination:block/cotinus_door_bottom",
+    "top": "sinodivination:block/cotinus_door_top"
   }
 }

@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/door_bottom",
   "textures": {
-    "bottom": "sinodivination:block/jujube_planks",
-    "top": "sinodivination:block/jujube_planks"
+    "bottom": "sinodivination:block/jujube_door_bottom",
+    "top": "sinodivination:block/jujube_door_top"
   }
 }

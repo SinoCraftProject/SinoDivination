@@ -4,6 +4,7 @@ import games.moegirl.sinocraft.sinocore.api.utility.OptionalTag;
 import games.moegirl.sinocraft.sinodivination.SinoDivination;
 import games.moegirl.sinocraft.sinodivination.blockentity.ICotinusEntity;
 import games.moegirl.sinocraft.sinodivination.blockentity.SophoraChestEntity;
+import games.moegirl.sinocraft.sinodivination.util.SDLangKeys;
 import games.moegirl.sinocraft.sinodivination.util.TagSerializers;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
@@ -31,8 +32,6 @@ import java.util.UUID;
 
 public class LifeSymbol extends Item {
 
-    public static final String KEY_NAME = SinoDivination.MOD_ID + ".symbol.name";
-    public static final String KEY_DATE = SinoDivination.MOD_ID + ".symbol.date";
     public static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT);
 
     public LifeSymbol() {
@@ -63,10 +62,10 @@ public class LifeSymbol extends Item {
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
         getRecordEntityName(pStack)
-                .map(c -> new TranslatableComponent(KEY_NAME).append(c))
+                .map(c -> new TranslatableComponent(SDLangKeys.SYMBOL_NAME).append(c))
                 .ifPresent(pTooltipComponents::add);
         getRecordEntityDate(pStack)
-                .map(d -> new TranslatableComponent(KEY_DATE, d.toLocalDate().format(DATE_FORMATTER)))
+                .map(d -> new TranslatableComponent(SDLangKeys.SYMBOL_DATE, d.toLocalDate().format(DATE_FORMATTER)))
                 .ifPresent(pTooltipComponents::add);
     }
 

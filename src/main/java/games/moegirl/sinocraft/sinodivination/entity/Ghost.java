@@ -1,6 +1,6 @@
 package games.moegirl.sinocraft.sinodivination.entity;
 
-import games.moegirl.sinocraft.sinodivination.block.SDBlockTags;
+import games.moegirl.sinocraft.sinodivination.util.SDTags;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
@@ -36,6 +36,6 @@ public class Ghost extends Entity {
     }
 
     public boolean canThrough(BlockState block) {
-        return block.is(SDBlockTags.COTINUS_BLOCK);
+        return block.is(SDTags.COTINUS_BLOCK);
     }
 }

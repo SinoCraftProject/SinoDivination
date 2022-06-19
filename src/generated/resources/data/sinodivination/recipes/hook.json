@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "sinodivination",
+  "pattern": [
+    "YY",
+    "Y ",
+    "Y "
+  ],
+  "key": {
+    "Y": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "sinodivination:hook"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "sinodivination",
+  "pattern": [
+    "X",
+    "Y",
+    "X"
+  ],
+  "key": {
+    "X": {
+      "item": "sinodivination:sophora_wood"
+    },
+    "Y": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "sinodivination:stick_sophora"
+  }
+}

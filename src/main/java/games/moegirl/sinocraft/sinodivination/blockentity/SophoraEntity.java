@@ -14,8 +14,9 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraftforge.common.ForgeHooks;
-import org.jetbrains.annotations.Nullable;
 
+import javax.annotation.Nullable;
+import java.util.Optional;
 import java.util.UUID;
 
 public class SophoraEntity extends BlockEntity implements ISophoraEntity {
@@ -28,13 +29,13 @@ public class SophoraEntity extends BlockEntity implements ISophoraEntity {
     }
 
     @Override
-    public BlockEntity getSelf() {
-        return this;
-    }
-
-    @Override
     public void setEntity(Entity entity) {
         this.entity = entity.getUUID();
+    }
+
+    @Nullable
+    public UUID getEntity() {
+        return entity;
     }
 
     @Override
@@ -73,6 +74,6 @@ public class SophoraEntity extends BlockEntity implements ISophoraEntity {
     }
 
     public static boolean holdGhostGuardStick(@Nullable Entity entity) {
-        return entity instanceof LivingEntity living && (living.getMainHandItem().is(SDItems.GHOST_GUARD_STICK.get()) || living.getOffhandItem().is(SDItems.GHOST_GUARD_STICK.get()));
+        return entity instanceof LivingEntity living && (living.getMainHandItem().is(SDItems.STICK_SOPHORA.get()) || living.getOffhandItem().is(SDItems.STICK_SOPHORA.get()));
     }
 }

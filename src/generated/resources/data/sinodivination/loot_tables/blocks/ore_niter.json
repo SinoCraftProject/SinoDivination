@@ -2,7 +2,6 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "name": "main",
       "rolls": 1.0,
       "bonus_rolls": 0.0,
       "entries": [
@@ -11,9 +10,9 @@
           "name": "sinodivination:ore_niter"
         }
       ],
-      "functions": [
+      "conditions": [
         {
-          "function": "minecraft:explosion_decay"
+          "condition": "minecraft:survives_explosion"
         }
       ]
     }

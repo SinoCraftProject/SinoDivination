@@ -1,16 +1,17 @@
 package games.moegirl.sinocraft.sinodivination.blockentity;
 
 import games.moegirl.sinocraft.sinodivination.block.SDBlocks;
-import games.moegirl.sinocraft.sinodivination.block.WoodenChest;
 import games.moegirl.sinocraft.sinodivination.util.OwnerChecker;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.Connection;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 
 public class CotinusChestEntity extends WoodenChestEntity implements ICotinusEntity {
@@ -22,13 +23,18 @@ public class CotinusChestEntity extends WoodenChestEntity implements ICotinusEnt
     }
 
     @Override
-    public BlockEntity getSelf() {
-        return this;
+    public OwnerChecker owner() {
+        return checker;
     }
 
     @Override
-    public OwnerChecker owner() {
-        return checker;
+    public CompoundTag getUpdateTag() {
+        return saveWithoutMetadata();
+    }
+
+    @Override
+    public Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
     }
 
     @Override

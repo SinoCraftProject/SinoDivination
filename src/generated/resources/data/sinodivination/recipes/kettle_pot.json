@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "sinodivination",
+  "pattern": [
+    "Y Y",
+    "ZAZ",
+    "ZZZ"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:cauldron"
+    },
+    "Y": {
+      "tag": "forge:ingots/iron"
+    },
+    "Z": {
+      "tag": "forge:stone"
+    }
+  },
+  "result": {
+    "item": "sinodivination:kettle_pot"
+  }
+}

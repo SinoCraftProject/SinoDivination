@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "sinodivination:block/rehmannia_stage_2"
+  }
+}

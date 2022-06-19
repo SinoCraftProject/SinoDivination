@@ -1,0 +1,93 @@
+width = 256
+height = 256
+
+title = [113, 5]
+
+[background]
+type = "texture"
+size = [225, 181]
+
+[progress_filled]
+type = "texture"
+size = [17, 24]
+position = [0, 181]
+
+[inventory]
+type = "slots"
+count = [3, 9]
+position = [30, 97]
+
+[selection]
+type = "slots"
+count = 9
+position = [30, 155]
+
+[in]
+type = "slots"
+count = 9
+offset = 4
+position = [6, 25]
+
+[out]
+type = "slots"
+count = 9
+offset = 4
+position = [6, 72]
+
+[feed]
+type = "slot"
+position = [201, 47]
+
+[progress0]
+type = "progress"
+position = [5, 44]
+filled_texture = "progress_filled"
+direction = "vertical"
+
+[progress1]
+type = "progress"
+position = [27, 44]
+filled_texture = "progress_filled"
+direction = "vertical"
+
+[progress2]
+type = "progress"
+position = [50, 44]
+filled_texture = "progress_filled"
+direction = "vertical"
+
+[progress3]
+type = "progress"
+position = [72, 44]
+filled_texture = "progress_filled"
+direction = "vertical"
+
+[progress4]
+type = "progress"
+position = [94, 44]
+filled_texture = "progress_filled"
+direction = "vertical"
+
+[progress5]
+type = "progress"
+position = [116, 44]
+filled_texture = "progress_filled"
+direction = "vertical"
+
+[progress6]
+type = "progress"
+position = [139, 44]
+filled_texture = "progress_filled"
+direction = "vertical"
+
+[progress7]
+type = "progress"
+position = [161, 44]
+filled_texture = "progress_filled"
+direction = "vertical"
+
+[progress8]
+type = "progress"
+position = [183, 44]
+filled_texture = "progress_filled"
+direction = "vertical"

@@ -1,5 +1,6 @@
 package games.moegirl.sinocraft.sinodivination.block;
 
+import games.moegirl.sinocraft.sinodivination.block.base.CotinusBlock;
 import games.moegirl.sinocraft.sinodivination.blockentity.SDBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
@@ -15,7 +16,7 @@ import net.minecraft.world.phys.BlockHitResult;
 
 import javax.annotation.Nullable;
 
-public class CotinusFenceGate extends FenceGateBlock implements ICotinusBlock {
+public class CotinusFenceGate extends FenceGateBlock implements CotinusBlock {
 
     public CotinusFenceGate(Properties properties) {
         super(properties);

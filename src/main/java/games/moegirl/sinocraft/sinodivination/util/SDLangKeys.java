@@ -1,0 +1,35 @@
+package games.moegirl.sinocraft.sinodivination.util;
+
+import games.moegirl.sinocraft.sinodivination.SinoDivination;
+import games.moegirl.sinocraft.sinodivination.blockentity.SDBlockEntities;
+import games.moegirl.sinocraft.sinodivination.recipe.SDRecipes;
+
+import java.util.Set;
+import java.util.TreeSet;
+
+public class SDLangKeys {
+
+    public static final Set<String> TRANSLATION_KEYS = new TreeSet<>();
+
+    public static final String SYMBOL_NAME = buildTranslationKey("symbol", "name");
+    public static final String SYMBOL_DATE = buildTranslationKey("symbol", "date");
+
+    public static final String SILKWORM_PLAGUE_TITLE = buildTranslationKey("gui", SDBlockEntities.SILKWORM_PLAQUE.getId().getPath(), "title");
+
+    public static final String JEI_RECIPE_CHANGE_SOUP = buildTranslationKey("jei", SDRecipes.CHANGE_SOUP.name().getPath(), "recipe");
+
+    public static final String TOP_BLOCK_OWNER = buildTranslationKey("top", "block", "owner");
+    public static final String TOP_BLOCK_ALLOWED = buildTranslationKey("top", "block", "allowed");
+    public static final String TOP_BIRTHDAY = buildTranslationKey("top", "birthday");
+    public static final String TOP_BIRTHDAY_NO = buildTranslationKey("top", "birthday", "no");
+
+    public static String buildTranslationKey(String type, String key) {
+        String k = SinoDivination.MOD_ID + "." + type + "." + key;
+        TRANSLATION_KEYS.add(k);
+        return k;
+    }
+
+    public static String buildTranslationKey(String type, String... params) {
+        return buildTranslationKey(type, String.join("_", params));
+    }
+}

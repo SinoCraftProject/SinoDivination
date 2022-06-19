@@ -1,0 +1,29 @@
+package games.moegirl.sinocraft.sinodivination.util.container;
+
+import net.minecraft.world.Container;
+import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
+
+public class OutputOnlyContainer extends LimitedContainer<OutputOnlyContainer> {
+
+    public OutputOnlyContainer(Container inv) {
+        super(inv);
+    }
+
+    public OutputOnlyContainer(int count) {
+        super(count);
+    }
+
+    public OutputOnlyContainer(int count, int stackSize) {
+        super(count, stackSize);
+    }
+
+    @Override
+    public void setStackInSlot(int slot, @NotNull ItemStack stack) {
+    }
+
+    @Override
+    public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+        return false;
+    }
+}

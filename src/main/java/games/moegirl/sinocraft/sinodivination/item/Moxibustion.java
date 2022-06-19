@@ -1,8 +1,5 @@
 package games.moegirl.sinocraft.sinodivination.item;
 
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
@@ -32,10 +29,15 @@ public class Moxibustion extends Item {
     public ItemStack finishUsingItem(ItemStack pStack, Level pLevel, LivingEntity pLivingEntity) {
         if (!pLevel.isClientSide) {
             pLivingEntity.curePotionEffects(pStack);
-        }
-
-        if (pLivingEntity instanceof Player player && !player.getAbilities().instabuild) {
-            pStack.shrink(1);
+            pLivingEntity.getActiveEffects().stream()
+                    .filter(e -> !e.getEffect().isBeneficial())
+                    .findFirst()
+                    .ifPresent(instance -> {
+                        pLivingEntity.removeEffect(instance.getEffect());
+                        if (pLivingEntity instanceof Player player && !player.getAbilities().instabuild) {
+                            pStack.shrink(1);
+                        }
+                    });
         }
 
         return pStack;

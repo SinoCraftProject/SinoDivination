@@ -29,10 +29,10 @@ public class DataGenRegister {
             event.getGenerator().addProvider(new SDLzhLanguageProvider(event));
         }
         if (event.includeServer()) {
+            SDBlockTagProvider provider;
             //recipes, advancements, tags, etc.
             event.getGenerator().addProvider(new SDRecipeProvider(event.getGenerator()));
-            SDBlockTagProvider provider = new SDBlockTagProvider(event);
-            event.getGenerator().addProvider(provider);
+            event.getGenerator().addProvider(provider = new SDBlockTagProvider(event));
             event.getGenerator().addProvider(new SDItemTagProvider(event, provider));
         }
     }

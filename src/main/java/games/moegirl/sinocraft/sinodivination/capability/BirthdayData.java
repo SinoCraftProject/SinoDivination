@@ -1,9 +1,9 @@
 package games.moegirl.sinocraft.sinodivination.capability;
 
 import games.moegirl.sinocraft.sinodivination.SinoDivination;
+import games.moegirl.sinocraft.sinodivination.util.TagSerializers;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.capabilities.Capability;
@@ -46,14 +46,12 @@ public class BirthdayData implements ICapabilitySerializable<CompoundTag> {
     @Override
     public CompoundTag serializeNBT() {
         CompoundTag tag = new CompoundTag();
-        tag.putString("dateTime", birthday.toString());
-        return null;
+        TagSerializers.writeDate(birthday, tag);
+        return tag;
     }
 
     @Override
     public void deserializeNBT(CompoundTag nbt) {
-        if (nbt.contains("dateTime", Tag.TAG_STRING)) {
-            birthday = LocalDateTime.parse(nbt.getString("dateTime"));
-        }
+        birthday = TagSerializers.readDate(nbt);
     }
 }

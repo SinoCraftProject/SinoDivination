@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "chest",
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "sinodivination:sophora_planks"
+    }
+  },
+  "result": {
+    "item": "sinodivination:sophora_chest"
+  }
+}

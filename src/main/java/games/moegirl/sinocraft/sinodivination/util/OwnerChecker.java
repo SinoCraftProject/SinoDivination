@@ -9,7 +9,9 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 import java.util.HashSet;
@@ -23,6 +25,11 @@ public abstract class OwnerChecker {
             @Override
             protected void setChanged() {
                 entity.setChanged();
+                Level level = entity.getLevel();
+                if (level != null && !level.isClientSide) {
+                    BlockState bs = entity.getBlockState();
+                    level.sendBlockUpdated(entity.getBlockPos(), bs, bs, 3);
+                }
             }
         };
     }

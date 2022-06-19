@@ -1,5 +1,6 @@
 package games.moegirl.sinocraft.sinodivination.block;
 
+import games.moegirl.sinocraft.sinodivination.block.base.CotinusBlock;
 import games.moegirl.sinocraft.sinodivination.blockentity.CotinusDoorEntity;
 import games.moegirl.sinocraft.sinodivination.blockentity.SDBlockEntities;
 import net.minecraft.core.BlockPos;
@@ -15,7 +16,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
-public class CotinusDoor extends DoorBlock implements ICotinusBlock {
+public class CotinusDoor extends DoorBlock implements CotinusBlock {
 
     public CotinusDoor(Properties properties) {
         super(properties);

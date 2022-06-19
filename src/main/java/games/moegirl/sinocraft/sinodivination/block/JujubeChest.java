@@ -1,15 +1,18 @@
 package games.moegirl.sinocraft.sinodivination.block;
 
-import games.moegirl.sinocraft.sinodivination.blockentity.JujubeChestEntity;
+import games.moegirl.sinocraft.sinodivination.block.base.WoodenChest;
 import games.moegirl.sinocraft.sinodivination.blockentity.SDBlockEntities;
 import games.moegirl.sinocraft.sinodivination.item.SDItems;
 import games.moegirl.sinocraft.sinodivination.tree.SDWoodwork;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEventListener;
-import org.jetbrains.annotations.Nullable;
+import net.minecraft.world.level.block.state.properties.ChestType;
+import net.minecraft.world.phys.BlockHitResult;
 
 public class JujubeChest extends WoodenChest {
 
@@ -18,21 +21,24 @@ public class JujubeChest extends WoodenChest {
     }
 
     @Override
-    public boolean hasAnalogOutputSignal(BlockState pState) {
-        return true;
+    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+        if (noSignal(pState, pLevel, pPos)) {
+            return InteractionResult.CONSUME;
+        }
+        return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
     }
 
-    @Override
-    public int getAnalogOutputSignal(BlockState pState, Level pLevel, BlockPos pPos) {
-        return pLevel.getBlockEntity(pPos, blockEntityType.get())
-                .map(be -> (JujubeChestEntity) be)
-                .filter(JujubeChestEntity::isOpen)
-                .isPresent() ? 1 : 0;
-    }
-
-    @Nullable
-    @Override
-    public <T extends BlockEntity> GameEventListener getListener(Level pLevel, T pBlockEntity) {
-        return (GameEventListener) pBlockEntity;
+    private boolean noSignal(BlockState pState, Level pLevel, BlockPos pPos) {
+        if (pLevel.hasNeighborSignal(pPos)) {
+            return false;
+        }
+        ChestType value = pState.getValue(TYPE);
+        Direction direction = pState.getValue(FACING);
+        if (value == ChestType.LEFT) {
+            return !pLevel.hasNeighborSignal(pPos.relative(direction.getClockWise()));
+        } else if (value == ChestType.RIGHT) {
+            return !pLevel.hasNeighborSignal(pPos.relative(direction.getCounterClockWise()));
+        }
+        return false;
     }
 }

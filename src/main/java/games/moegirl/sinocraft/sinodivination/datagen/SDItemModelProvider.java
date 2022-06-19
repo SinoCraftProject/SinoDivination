@@ -3,12 +3,11 @@ package games.moegirl.sinocraft.sinodivination.datagen;
 import games.moegirl.sinocraft.sinocore.api.data.ItemModelProviderBase;
 import games.moegirl.sinocraft.sinodivination.SinoDivination;
 import games.moegirl.sinocraft.sinodivination.block.SDBlocks;
-import games.moegirl.sinocraft.sinodivination.block.WoodenChest;
+import games.moegirl.sinocraft.sinodivination.block.base.WoodenChest;
 import games.moegirl.sinocraft.sinodivination.item.SDItems;
 import games.moegirl.sinocraft.sinodivination.tree.SDTrees;
 import games.moegirl.sinocraft.sinodivination.tree.SDWoodwork;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraftforge.client.model.generators.ModelProvider;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.registries.RegistryObject;
@@ -20,7 +19,7 @@ public class SDItemModelProvider extends ItemModelProviderBase {
     }
 
     @Override
-    protected void registerModels() {
+    protected void registerItemModels() {
         SDTrees.COTINUS.register().addItemModels(this);
         SDTrees.JUJUBE.register().addItemModels(this);
         SDTrees.SOPHORA.register().addItemModels(this);
@@ -31,14 +30,12 @@ public class SDItemModelProvider extends ItemModelProviderBase {
         chest(SDBlocks.JUJUBE_CHEST);
         chest(SDBlocks.SOPHORA_CHEST);
 
-        skipItems(SDTrees.COTINUS.allItems().toArray(Item[]::new));
-        skipItems(SDTrees.JUJUBE.allItems().toArray(Item[]::new));
-        skipItems(SDTrees.SOPHORA.allItems().toArray(Item[]::new));
-        skipItems(SDWoodwork.COTINUS.allItems().toArray(Item[]::new));
-        skipItems(SDWoodwork.JUJUBE.allItems().toArray(Item[]::new));
-        skipItems(SDWoodwork.SOPHORA.allItems().toArray(Item[]::new));
-        skipItems(SDItems.COTINUS_CHEST, SDItems.JUJUBE_CHEST, SDItems.SOPHORA_CHEST);
-        super.registerModels();
+        generatedItem(SDItems.RICE.get());
+        generatedItem(SDItems.REHMANNIA.get());
+        generatedItem(SDItems.SESAME.get());
+        generatedItem(SDItems.DRAGONLIVER_MELON.get());
+        generatedItem(SDItems.WORMWOOD_LEAF.get());
+        generatedItem(SDItems.GARLIC.get());
     }
 
     protected <T extends WoodenChest> void chest(RegistryObject<T> chestObj) {

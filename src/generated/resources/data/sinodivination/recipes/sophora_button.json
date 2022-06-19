@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "wooden_button",
+  "ingredients": [
+    {
+      "item": "sinodivination:sophora_planks"
+    }
+  ],
+  "result": {
+    "item": "sinodivination:sophora_button"
+  }
+}

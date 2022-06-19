@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "sinodivination",
+  "ingredients": [
+    {
+      "item": "sinodivination:sulfur"
+    },
+    {
+      "item": "sinodivination:niter"
+    },
+    {
+      "tag": "minecraft:coals"
+    }
+  ],
+  "result": {
+    "item": "minecraft:gunpowder"
+  }
+}
