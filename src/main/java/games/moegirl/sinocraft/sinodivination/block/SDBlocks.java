@@ -52,8 +52,6 @@ public class SDBlocks {
 
     public static final RegistryObject<BrightStemGrass> BRIGHT_STEM_GRASS = simple(BrightStemGrass.class);
 
-    public static final RegistryObject<Block> SMOOTH_STONE = simple("smooth_block");
-
     public static final RegistryObject<Bellows> BELLOWS = simple(Bellows.class);
 
     public static final RegistryObject<KettlePot> KETTLE_POT = simple(KettlePot.class);

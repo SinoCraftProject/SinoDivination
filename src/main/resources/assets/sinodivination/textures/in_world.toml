@@ -1,21 +1,6 @@
 width = 64
 height = 128
 
-[up_0]
-type = "texture"
-uv = [0, 0]
-size = [32, 32]
-
-[up_1]
-type = "texture"
-uv = [0, 32]
-size = [32, 32]
-
-[up_2]
-type = "texture"
-uv = [0, 64]
-size = [32, 32]
-
 [wrong]
 type = "texture"
 uv = [38, 6]

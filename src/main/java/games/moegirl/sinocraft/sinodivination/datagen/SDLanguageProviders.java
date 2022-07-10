@@ -43,7 +43,6 @@ public class SDLanguageProviders extends LanguageProviderBase {
         addBlock(SDBlocks.SESAME, "Jusheng", "巨胜");
         addBlock(SDBlocks.ZHU_CAO, "Zhu Cao", "朱草");
         addBlock(SDBlocks.BRIGHT_STEM_GRASS, "Bright Stem Grass", "明茎草");
-        addBlock(SDBlocks.SMOOTH_STONE, "Smooth Stone", "平滑石头");
         addBlock(SDBlocks.BELLOWS, "Bellows", "风箱");
         addBlock(SDBlocks.KETTLE_POT, "Kettle Pot", "釜锅");
         addBlock(SDBlocks.SILKWORM_PLAQUE, "Silkworm Plaque", "蚕匾");

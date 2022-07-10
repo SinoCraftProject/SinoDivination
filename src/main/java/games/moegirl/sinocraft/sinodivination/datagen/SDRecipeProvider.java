@@ -43,10 +43,6 @@ public class SDRecipeProvider extends RecipeProvider {
         addStick(SDTrees.COTINUS, SDItems.STICK_COTINUS, consumer);
         addStick(SDTrees.JUJUBE, SDItems.STICK_JUJUBE, consumer);
         addStick(SDTrees.SOPHORA, SDItems.STICK_SOPHORA, consumer);
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Tags.Items.STONE), SDItems.SMOOTH_STONE.get(), 0.1f, 200)
-                .group(SinoDivination.MOD_ID)
-                .unlockedBy("has_stone", has(Tags.Items.STONE))
-                .save(consumer);
         shaped(SDBlocks.KETTLE_POT, Blocks.CAULDRON)
                 .pattern("Y Y")
                 .pattern("ZAZ")
@@ -66,6 +62,14 @@ public class SDRecipeProvider extends RecipeProvider {
                 .requires(Ingredient.of(SDItems.NITER.get()))
                 .requires(Ingredient.of(ItemTags.COALS))
                 .save(consumer);
+        shaped(Blocks.BLAST_FURNACE, Blocks.FURNACE)
+                .pattern("YYY")
+                .pattern("YXY")
+                .pattern("ZZZ")
+                .define('X', Blocks.FURNACE)
+                .define('Y', Blocks.STONE)
+                .define('Z', Blocks.SMOOTH_STONE)
+                .save(consumer);
         ChangeSoupRecipe.builder(Blocks.BIRCH_SAPLING, SDTrees.COTINUS.sapling).save(consumer);
         ChangeSoupRecipe.builder(Blocks.OAK_SAPLING, SDTrees.JUJUBE.sapling).save(consumer);
         ChangeSoupRecipe.builder(Blocks.SPRUCE_SAPLING, SDTrees.SOPHORA.sapling).save(consumer);
@@ -84,7 +88,11 @@ public class SDRecipeProvider extends RecipeProvider {
     }
 
     private ShapedRecipeBuilder shaped(RegistryObject<? extends ItemLike> result, ItemLike unlockedBy) {
-        return ShapedRecipeBuilder.shaped(result.get())
+        return shaped(result.get(), unlockedBy);
+    }
+
+    private ShapedRecipeBuilder shaped(ItemLike result, ItemLike unlockedBy) {
+        return ShapedRecipeBuilder.shaped(result)
                 .group(SinoDivination.MOD_ID)
                 .unlockedBy("has_block", has(unlockedBy));
     }

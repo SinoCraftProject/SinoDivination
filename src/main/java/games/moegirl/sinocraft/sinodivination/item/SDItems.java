@@ -80,8 +80,6 @@ public class SDItems {
 
     public static final RegistryObject<Item> BRIGHT_STEM_GRASS = simple(SDBlocks.BRIGHT_STEM_GRASS);
 
-    public static final RegistryObject<BlockItem> SMOOTH_STONE = block(SDBlocks.SMOOTH_STONE);
-
     public static final RegistryObject<BlockItem> BELLOWS = block(SDBlocks.BELLOWS);
 
     public static final RegistryObject<BlockItem> KETTLE_POT = block(SDBlocks.KETTLE_POT);
