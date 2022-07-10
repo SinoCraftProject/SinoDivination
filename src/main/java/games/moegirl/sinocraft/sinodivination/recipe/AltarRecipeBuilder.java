@@ -13,6 +13,7 @@ public class AltarRecipeBuilder extends SimpleRecipeBuilder<AltarRecipe, AltarRe
     private ItemStack result = ItemStack.EMPTY;
     private Ingredient base = Ingredient.EMPTY;
     private Item[] sacrificialVessels = new Item[]{Items.AIR, Items.AIR, Items.AIR, Items.AIR};
+    private int tick = 40;
 
     public AltarRecipeBuilder(ResourceLocation id) {
         super(id);
@@ -49,6 +50,11 @@ public class AltarRecipeBuilder extends SimpleRecipeBuilder<AltarRecipe, AltarRe
         return this;
     }
 
+    public AltarRecipeBuilder tick(int tick) {
+        this.tick = tick;
+        return this;
+    }
+
     public AltarRecipeBuilder result(ItemStack stack) {
         this.result = stack;
         return this;
@@ -56,6 +62,6 @@ public class AltarRecipeBuilder extends SimpleRecipeBuilder<AltarRecipe, AltarRe
 
     @Override
     public AltarRecipe build() {
-        return new AltarRecipe(id, sacrificialVessels, base, result);
+        return new AltarRecipe(id, sacrificialVessels, base, tick, result);
     }
 }

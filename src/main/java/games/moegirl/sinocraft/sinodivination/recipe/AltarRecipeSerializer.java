@@ -28,6 +28,7 @@ public final class AltarRecipeSerializer extends AbstractRecipeSerializer<AltarR
         }
         jsonObject.add("sacrificialVessels", sacrificialVessels);
         jsonObject.add("base", altarRecipe.base.toJson());
+        jsonObject.addProperty("tick", altarRecipe.tick);
         RecipeSerializers.write(jsonObject, "result", ItemStack.CODEC, altarRecipe.getResultItem());
     }
 
@@ -44,8 +45,9 @@ public final class AltarRecipeSerializer extends AbstractRecipeSerializer<AltarR
             }
         }
         Ingredient base = Ingredient.fromJson(pSerializedRecipe.get("base"));
+        int tick = pSerializedRecipe.get("tick").getAsInt();
         ItemStack result = RecipeSerializers.read(ItemStack.CODEC, pSerializedRecipe, "result").orElseThrow();
-        return new AltarRecipe(pRecipeId, sacrificialVessels, base, result);
+        return new AltarRecipe(pRecipeId, sacrificialVessels, base, tick, result);
     }
 
     @Override
@@ -57,8 +59,9 @@ public final class AltarRecipeSerializer extends AbstractRecipeSerializer<AltarR
             sacrificialVessels[i] = Registry.ITEM.byId(pBuffer.readVarInt());
         }
         Ingredient base = Ingredient.fromNetwork(pBuffer);
+        int tick = pBuffer.readVarInt();
         ItemStack result = pBuffer.readItem();
-        return new AltarRecipe(pRecipeId, sacrificialVessels, base, result);
+        return new AltarRecipe(pRecipeId, sacrificialVessels, base, tick, result);
     }
 
     @Override
@@ -76,6 +79,7 @@ public final class AltarRecipeSerializer extends AbstractRecipeSerializer<AltarR
             }
         }
         pRecipe.base.toNetwork(pBuffer);
+        pBuffer.writeVarInt(pRecipe.tick);
         pBuffer.writeItemStack(pRecipe.getResultItem(), false);
     }
 }

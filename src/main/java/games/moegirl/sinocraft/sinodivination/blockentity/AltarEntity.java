@@ -3,6 +3,8 @@ package games.moegirl.sinocraft.sinodivination.blockentity;
 import games.moegirl.sinocraft.sinodivination.util.container.InputOnlyContainer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -15,9 +17,9 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Optional;
 
-public class AltarEntity extends BlockEntity implements IAltarEntity {
+public class AltarEntity extends BlockEntity {
 
-    private final InputOnlyContainer in = new InputOnlyContainer(1, 1).bindEntityChange(this);
+    private final InputOnlyContainer in = new InputOnlyContainer(1, 1).bindEntityChangeWithUpdate(this);
     @Nullable
     private Direction direction = null;
 
@@ -34,16 +36,16 @@ public class AltarEntity extends BlockEntity implements IAltarEntity {
         return super.getCapability(cap, side);
     }
 
-    @Override
     public ItemStack takeItem() {
-        ItemStack stack = in.getStackInSlot(0);
-        in.setStackInSlot(0, ItemStack.EMPTY);
-        return stack;
+        return in.setStackInSlot2(0, ItemStack.EMPTY);
     }
 
-    @Override
     public ItemStack putItem(ItemStack stack) {
         return in.insertItem2(0, stack, false);
+    }
+
+    public Item getItem() {
+        return in.getStackInSlot(0).getItem();
     }
 
     public void setDirection(Direction direction) {
@@ -52,5 +54,22 @@ public class AltarEntity extends BlockEntity implements IAltarEntity {
 
     public Optional<Direction> getDirection() {
         return isRemoved() ? Optional.empty() : Optional.ofNullable(direction);
+    }
+
+    @Override
+    public CompoundTag getUpdateTag() {
+        return saveWithoutMetadata();
+    }
+
+    @Override
+    protected void saveAdditional(CompoundTag pTag) {
+        super.saveAdditional(pTag);
+        in.save(pTag, "Altar");
+    }
+
+    @Override
+    public void load(CompoundTag pTag) {
+        super.load(pTag);
+        in.load(pTag, "Altar");
     }
 }

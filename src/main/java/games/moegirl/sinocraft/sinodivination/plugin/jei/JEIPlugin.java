@@ -37,7 +37,7 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registration) {
-        registration.addRecipeCategories(new ChangingSeedingRecipeCategory(registration));
+        registration.addRecipeCategories(new ChangeSoupRecipeCategory(registration));
     }
 
     @Override

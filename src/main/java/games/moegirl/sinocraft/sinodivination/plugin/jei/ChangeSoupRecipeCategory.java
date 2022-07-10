@@ -12,9 +12,9 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import net.minecraft.world.item.ItemStack;
 
-public class ChangingSeedingRecipeCategory extends AbstractRecipeCategory<ChangeSoupRecipe> {
+public class ChangeSoupRecipeCategory extends AbstractRecipeCategory<ChangeSoupRecipe> {
 
-    public ChangingSeedingRecipeCategory(IRecipeCategoryRegistration registration) {
+    public ChangeSoupRecipeCategory(IRecipeCategoryRegistration registration) {
         super(registration, JEIPlugin.CHANGING_SEEDING, SDRecipes.CHANGE_SOUP, SDLangKeys.JEI_RECIPE_CHANGE_SOUP);
     }
 

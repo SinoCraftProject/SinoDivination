@@ -144,7 +144,7 @@ public class KettlePotEntity extends BlockEntity implements BlockEntityTicker<Ke
 
     public void beginRecipe() {
         if (recipe == null && level != null && !level.isClientSide) {
-            SDRecipes.KETTLE_POT.match(level, RecipeContainer.createTank(input.getRawInv(), fluid)).ifPresent(r -> {
+            SDRecipes.KETTLE_POT.match(level, RecipeContainer.createTank(input.getInv(), fluid)).ifPresent(r -> {
                 recipeId = null;
                 progress = 0;
                 recipe = r;

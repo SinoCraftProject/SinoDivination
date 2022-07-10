@@ -18,7 +18,7 @@ public class SilkwormPlaqueScreen extends AbstractContainerScreen<SilkwormPlaque
     @Override
     protected void init() {
         super.init();
-        TEXTURE.getPoint("title").ifPresent(p -> {
+        TEXTURE.points().get("title").ifPresent(p -> {
             titleLabelX = p.x();
             titleLabelY = p.y();
         });

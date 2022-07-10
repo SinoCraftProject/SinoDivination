@@ -92,6 +92,12 @@ public class SDItems {
 
     public static final RegistryObject<Item> SILK = simple("silk");
 
+    public static final RegistryObject<Item> STICK_RICE = simple("stick_rice");
+
+    public static final RegistryObject<BlockItem> ALTAR = block(SDBlocks.ALTAR);
+
+    public static final RegistryObject<BlockItem> TRIPOD = block(SDBlocks.TRIPOD);
+
     // =================================================================================================================
 
     public static RegistryObject<Item> simple(String name) {

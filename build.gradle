@@ -184,7 +184,7 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
     compileOnly fg.deobf('com.github.SinoCraftProject:SinoCore:main-SNAPSHOT:api')
-    runtimeOnly fg.deobf('com.github.SinoCraftProject:SinoCore:main-SNAPSHOT:dev')
+    runtimeOnly fg.deobf('com.github.SinoCraftProject:SinoCore:main-SNAPSHOT')
     compileOnly fg.deobf('mezz.jei:jei-1.18.2:9.7.0.195:api')
     runtimeOnly fg.deobf('mezz.jei:jei-1.18.2:9.7.0.195')
     implementation fg.deobf('curse.maven:the-one-probe-245211:3671753')

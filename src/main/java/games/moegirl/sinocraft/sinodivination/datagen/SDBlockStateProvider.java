@@ -53,18 +53,6 @@ public class SDBlockStateProvider extends BlockStateProviderBase {
         super.registerStatesAndModels();
     }
 
-    @Override
-    public VariantBlockStateBuilder getVariantBuilder(Block b) {
-        if (!isAdding()) System.out.println("VariantBuilder " + b);
-        return super.getVariantBuilder(b);
-    }
-
-    @Override
-    public MultiPartBlockStateBuilder getMultipartBuilder(Block b) {
-        if (!isAdding()) System.out.println("MultipartBuilder " + b);
-        return super.getMultipartBuilder(b);
-    }
-
     private <T extends WoodenChest> void chest(RegistryObject<T> chestObj) {
         T chest = chestObj.get();
         simpleBlock(chest, models().getBuilder(chest.delegate.name().getPath()).texture("particle", blockTexture(chest.planks())));

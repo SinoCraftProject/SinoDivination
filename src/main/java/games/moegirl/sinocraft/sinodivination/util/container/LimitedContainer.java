@@ -4,25 +4,23 @@ import games.moegirl.sinocraft.sinocore.api.utility.Self;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
-import net.minecraft.world.Container;
 import net.minecraft.world.ContainerListener;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.util.INBTSerializable;
-import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.items.wrapper.InvWrapper;
-import org.jetbrains.annotations.NotNull;
 
 public class LimitedContainer<T extends LimitedContainer<T>> extends InvWrapper implements Self<T>, INBTSerializable<ListTag> {
 
     protected SlotChecker checker = (_1, _2) -> true;
-    protected final ContainerWrapper container;
     protected boolean saveEmpty = false;
+    protected SimpleContainer container;
 
-    public LimitedContainer(Container inv) {
-        super(new ContainerWrapper(inv));
-        container = (ContainerWrapper) super.getInv();
+    public LimitedContainer(SimpleContainer inv) {
+        super(inv);
+        container = inv;
     }
 
     public LimitedContainer(int count) {
@@ -56,8 +54,17 @@ public class LimitedContainer<T extends LimitedContainer<T>> extends InvWrapper 
     }
 
     public T bindEntityChange(BlockEntity entity) {
-        container.addListener(__ -> entity.setChanged());
-        return self();
+        return addChangeListener(__ -> entity.setChanged());
+    }
+
+    public T bindEntityChangeWithUpdate(BlockEntity entity) {
+        return addChangeListener(__ -> {
+            entity.setChanged();
+            Level level = entity.getLevel();
+            if (level != null && !level.isClientSide) {
+                level.setBlockAndUpdate(entity.getBlockPos(), entity.getBlockState());
+            }
+        });
     }
 
     public T saveEmpty() {
@@ -65,97 +72,40 @@ public class LimitedContainer<T extends LimitedContainer<T>> extends InvWrapper 
         return self();
     }
 
-    @NotNull
     @Override
-    public ItemStack insertItem(int slot, @NotNull ItemStack stack, boolean simulate) {
+    public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
         return isItemValid(slot, stack) ? super.insertItem(slot, stack, simulate) : stack;
     }
 
     @Override
-    public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+    public boolean isItemValid(int slot, ItemStack stack) {
         return checker.check(slot, stack) && super.isItemValid(slot, stack);
     }
 
     public ItemStack insertItem2(int slot, ItemStack stack, boolean simulate) {
-        if (getRawInv().getClass() == SimpleContainer.class) {
-            return super.insertItem(slot, stack, simulate);
-        }
-
-        if (stack.isEmpty())
-            return ItemStack.EMPTY;
-
-        ItemStack stackInSlot = getInv().getItem(slot);
-
-        int m;
-        if (!stackInSlot.isEmpty()) {
-            if (stackInSlot.getCount() >= Math.min(stackInSlot.getMaxStackSize(), getSlotLimit(slot)))
-                return stack;
-
-            if (!ItemHandlerHelper.canItemStacksStack(stack, stackInSlot))
-                return stack;
-
-            m = Math.min(stack.getMaxStackSize(), getSlotLimit(slot)) - stackInSlot.getCount();
-
-            if (stack.getCount() <= m) {
-                if (!simulate) {
-                    ItemStack copy = stack.copy();
-                    copy.grow(stackInSlot.getCount());
-                    getInv().setItem(slot, copy);
-                    getInv().setChanged();
-                }
-
-                return ItemStack.EMPTY;
-            } else {
-                // copy the stack to not modify the original one
-                stack = stack.copy();
-                if (!simulate) {
-                    ItemStack copy = stack.split(m);
-                    copy.grow(stackInSlot.getCount());
-                    getInv().setItem(slot, copy);
-                    getInv().setChanged();
-                } else {
-                    stack.shrink(m);
-                }
-                return stack;
-            }
-        } else {
-            m = Math.min(stack.getMaxStackSize(), getSlotLimit(slot));
-            if (m < stack.getCount()) {
-                // copy the stack to not modify the original one
-                stack = stack.copy();
-                if (!simulate) {
-                    getInv().setItem(slot, stack.split(m));
-                    getInv().setChanged();
-                } else {
-                    stack.shrink(m);
-                }
-                return stack;
-            } else {
-                if (!simulate) {
-                    getInv().setItem(slot, stack);
-                    getInv().setChanged();
-                }
-                return ItemStack.EMPTY;
-            }
-        }
+        return super.insertItem(slot, stack, simulate);
     }
 
-    @NotNull
     public ItemStack extractItem2(int slot, int amount, boolean simulate) {
         return super.extractItem(slot, amount, simulate);
     }
 
-    public boolean isItemValid2(int slot, @NotNull ItemStack stack) {
+    public boolean isItemValid2(int slot, ItemStack stack) {
         return super.isItemValid(slot, stack);
     }
 
-    public Container getRawInv() {
-        return container.container;
+    public ItemStack setStackInSlot2(int slot, ItemStack stack) {
+        ItemStack s = getStackInSlot(slot);
+        if (!ItemStack.isSameItemSameTags(s, stack)) {
+            super.setStackInSlot(slot, stack);
+            notifyInvChanged();
+        }
+        return s;
     }
 
-    @Override
-    public ContainerWrapper getInv() {
-        return container;
+    public void shrink(int slot, int count) {
+        getStackInSlot(slot).shrink(count);
+        notifyInvChanged();
     }
 
     @Override
@@ -176,7 +126,7 @@ public class LimitedContainer<T extends LimitedContainer<T>> extends InvWrapper 
 
     @Override
     public void deserializeNBT(ListTag nbt) {
-        container.container.clearContent();
+        container.clearContent();
         for (Tag tag : nbt) {
             CompoundTag t = (CompoundTag) tag;
             int slot = t.getByte("Slot");
@@ -190,5 +140,9 @@ public class LimitedContainer<T extends LimitedContainer<T>> extends InvWrapper 
 
     public void load(CompoundTag nbt, String name) {
         deserializeNBT(nbt.getList(name, Tag.TAG_COMPOUND));
+    }
+
+    public void notifyInvChanged() {
+        container.setChanged();
     }
 }

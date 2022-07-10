@@ -86,8 +86,8 @@ public class SilkwormPlaqueEntity extends BlockEntity implements MenuProvider, B
     @Override
     public void tick(Level pLevel, BlockPos pPos, BlockState pState, SilkwormPlaqueEntity pBlockEntity) {
         if (!pLevel.isClientSide) {
-            if (nutrition <= 99) {
-                nutrition += feed.extractItem2(0, (int) (100 - nutrition), false).getCount();
+            if (nutrition <= 90) {
+                nutrition += feed.extractItem2(0, (int) ((100 - nutrition) / 10), false).getCount() * 10;
             }
             for (SilkwormHolder silkworm : silkworms) {
                 int i = silkworm.index;

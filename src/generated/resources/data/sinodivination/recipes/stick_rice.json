@@ -1,0 +1,28 @@
+{
+  "type": "sinodivination:kettle_pot",
+  "inputs": [
+    {
+      "item": "sinodivination:rice",
+      "count": 3
+    },
+    {
+      "item": "sinodivination:jujube",
+      "count": 1
+    },
+    {
+      "item": "sinodivination:wormwood_leaf",
+      "count": 1
+    }
+  ],
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "fluid": {
+    "fluid": "minecraft:water",
+    "amount": 1000
+  },
+  "result": {
+    "id": "sinodivination:stick_rice",
+    "Count": 1
+  }
+}

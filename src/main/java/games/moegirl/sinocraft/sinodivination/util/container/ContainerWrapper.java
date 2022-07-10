@@ -42,7 +42,7 @@ public class ContainerWrapper implements Container {
     public ItemStack removeItem(int pIndex, int pCount) {
         ItemStack stack = container.removeItem(pIndex, pCount);
         if (!stack.isEmpty()) {
-            notifyListeners();
+            notifyInvChanged();
         }
         return stack;
     }
@@ -55,7 +55,7 @@ public class ContainerWrapper implements Container {
     @Override
     public void setItem(int pIndex, ItemStack pStack) {
         container.setItem(pIndex, pStack);
-        notifyListeners();
+        notifyInvChanged();
     }
 
     @Override
@@ -101,10 +101,10 @@ public class ContainerWrapper implements Container {
     @Override
     public void clearContent() {
         container.clearContent();
-        notifyListeners();
+        notifyInvChanged();
     }
 
-    private void notifyListeners() {
+    public void notifyInvChanged() {
         for (ContainerListener listener : listeners) {
             listener.containerChanged(container);
         }

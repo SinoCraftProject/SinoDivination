@@ -6,6 +6,7 @@ import games.moegirl.sinocraft.sinodivination.block.SDBlocks;
 import games.moegirl.sinocraft.sinodivination.block.base.WoodenChest;
 import games.moegirl.sinocraft.sinodivination.item.SDItems;
 import games.moegirl.sinocraft.sinodivination.recipe.ChangeSoupRecipe;
+import games.moegirl.sinocraft.sinodivination.recipe.KettlePotRecipe;
 import games.moegirl.sinocraft.sinodivination.tree.SDTrees;
 import games.moegirl.sinocraft.sinodivination.tree.SDWoodwork;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
@@ -16,7 +17,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.registries.RegistryObject;
@@ -71,6 +71,16 @@ public class SDRecipeProvider extends RecipeProvider {
         ChangeSoupRecipe.builder(Blocks.SPRUCE_SAPLING, SDTrees.SOPHORA.sapling).save(consumer);
         ChangeSoupRecipe.builder(Blocks.POPPY, SDBlocks.ZHU_CAO).save(consumer);
         ChangeSoupRecipe.builder(Blocks.CAVE_VINES, SDBlocks.BRIGHT_STEM_GRASS).save(consumer);
+        KettlePotRecipe.builder(SDItems.CHANGE_SOUP, 3)
+                .input(3, Items.BONE_MEAL)
+                .input(Items.EGG)
+                .input(Items.FERMENTED_SPIDER_EYE)
+                .save(consumer);
+        KettlePotRecipe.builder(SDItems.STICK_RICE)
+                .input(3, SDItems.RICE)
+                .input(SDItems.JUJUBE)
+                .input(SDItems.WORMWOOD_LEAF)
+                .save(consumer);
     }
 
     private ShapedRecipeBuilder shaped(RegistryObject<? extends ItemLike> result, ItemLike unlockedBy) {

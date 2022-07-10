@@ -1,7 +1,6 @@
 package games.moegirl.sinocraft.sinodivination.block.base;
 
 import games.moegirl.sinocraft.sinocore.api.block.AbstractEntityBlock;
-import games.moegirl.sinocraft.sinodivination.blockentity.IAltarEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -15,7 +14,7 @@ import net.minecraft.world.phys.BlockHitResult;
 
 import java.util.function.Supplier;
 
-public class AltarBlock<T extends BlockEntity & IAltarEntity> extends AbstractEntityBlock<T> {
+public abstract class AltarBlock<T extends BlockEntity> extends AbstractEntityBlock<T> {
 
     public AltarBlock(Supplier<BlockEntityType<T>> entityType) {
         super(entityType);
@@ -27,18 +26,22 @@ public class AltarBlock<T extends BlockEntity & IAltarEntity> extends AbstractEn
             ItemStack itemInHand = pPlayer.getItemInHand(pHand);
             pLevel.getBlockEntity(pPos, entityType.get()).ifPresent(entity -> {
                 if (itemInHand.isEmpty() || pPlayer.isShiftKeyDown()) {
-                    ItemStack item = entity.takeItem();
+                    ItemStack item = takeItem(entity);
                     if (!item.isEmpty()) {
                         if (!pPlayer.getInventory().add(item)) {
                             pPlayer.drop(item, false);
                         }
                     }
                 } else {
-                    ItemStack stack = entity.putItem(itemInHand);
+                    ItemStack stack = putItem(entity, itemInHand);
                     pPlayer.setItemInHand(pHand, stack);
                 }
             });
         }
         return InteractionResult.sidedSuccess(pLevel.isClientSide);
     }
+
+    public abstract ItemStack takeItem(T be);
+
+    public abstract ItemStack putItem(T be, ItemStack stack);
 }

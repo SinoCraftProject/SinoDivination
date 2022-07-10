@@ -1,12 +1,12 @@
 package games.moegirl.sinocraft.sinodivination.menu;
 
+import games.moegirl.sinocraft.sinocore.api.utility.texture.SlotStrategy;
+import games.moegirl.sinocraft.sinocore.api.utility.texture.TextureMap;
 import games.moegirl.sinocraft.sinodivination.SinoDivination;
 import games.moegirl.sinocraft.sinodivination.block.SDBlocks;
 import games.moegirl.sinocraft.sinodivination.blockentity.SDBlockEntities;
 import games.moegirl.sinocraft.sinodivination.blockentity.SilkwormPlaqueEntity;
 import games.moegirl.sinocraft.sinodivination.item.SDItems;
-import games.moegirl.sinocraft.sinodivination.util.texture.SlotStrategy;
-import games.moegirl.sinocraft.sinodivination.util.texture.TextureMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;

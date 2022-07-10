@@ -47,31 +47,31 @@ public interface SlotChecker {
         return (i, s) -> i != slot && s.is(tag);
     }
 
-    static SlotChecker ban(int slot) {
+    static SlotChecker not(int slot) {
         return (i, __) -> i != slot;
     }
 
-    static SlotChecker ban(Supplier<? extends ItemLike> item) {
+    static SlotChecker not(Supplier<? extends ItemLike> item) {
         return (__, s) -> !s.is(item.get().asItem());
     }
 
-    static SlotChecker ban(ItemLike item) {
+    static SlotChecker not(ItemLike item) {
         return (__, s) -> !s.is(item.asItem());
     }
 
-    static SlotChecker ban(TagKey<Item> tag) {
+    static SlotChecker not(TagKey<Item> tag) {
         return (__, s) -> !s.is(tag);
     }
 
-    static SlotChecker ban(int slot, Supplier<? extends ItemLike> item) {
+    static SlotChecker not(int slot, Supplier<? extends ItemLike> item) {
         return (i, s) -> i != slot || !s.is(item.get().asItem());
     }
 
-    static SlotChecker ban(int slot, ItemLike item) {
+    static SlotChecker not(int slot, ItemLike item) {
         return (i, s) -> i != slot || !s.is(item.asItem());
     }
 
-    static SlotChecker ban(int slot, TagKey<Item> tag) {
+    static SlotChecker not(int slot, TagKey<Item> tag) {
         return (i, s) -> i != slot && !s.is(tag);
     }
 

@@ -1,0 +1,28 @@
+{
+  "type": "sinodivination:kettle_pot",
+  "inputs": [
+    {
+      "item": "minecraft:bone_meal",
+      "count": 3
+    },
+    {
+      "item": "minecraft:egg",
+      "count": 1
+    },
+    {
+      "item": "minecraft:fermented_spider_eye",
+      "count": 1
+    }
+  ],
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "fluid": {
+    "fluid": "minecraft:water",
+    "amount": 1000
+  },
+  "result": {
+    "id": "sinodivination:change_soup",
+    "Count": 3
+  }
+}

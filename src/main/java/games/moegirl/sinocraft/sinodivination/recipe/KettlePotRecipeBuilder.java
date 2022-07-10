@@ -13,11 +13,12 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.registries.RegistryObject;
 
-import static games.moegirl.sinocraft.sinodivination.recipe.KettlePotRecipe.IngredientEntry.EMPTY;
+import java.util.ArrayList;
+import java.util.List;
 
 public class KettlePotRecipeBuilder extends SimpleRecipeBuilder<KettlePotRecipe, KettlePotRecipeBuilder> {
 
-    private final KettlePotRecipe.IngredientEntry[] inputs = new KettlePotRecipe.IngredientEntry[]{EMPTY, EMPTY, EMPTY};
+    private final List<KettlePotRecipe.IngredientEntry> inputs = new ArrayList<>();
     private Ingredient container = Ingredient.of(Items.BOWL);
     private FluidIngredient fluid = new FluidIngredient(Fluids.WATER, 1000);
     private ItemStack output = ItemStack.EMPTY;
@@ -26,37 +27,37 @@ public class KettlePotRecipeBuilder extends SimpleRecipeBuilder<KettlePotRecipe,
         super(id);
     }
 
-    public KettlePotRecipeBuilder addInput(int index, Ingredient item) {
-        return addInput(index, 1, item);
+    public KettlePotRecipeBuilder input(Ingredient item) {
+        return input(1, item);
     }
 
-    public KettlePotRecipeBuilder addInput(int index, int count, Ingredient item) {
-        inputs[index] = new KettlePotRecipe.IngredientEntry(count, item);
+    public KettlePotRecipeBuilder input(int count, Ingredient item) {
+        inputs.add(new KettlePotRecipe.IngredientEntry(count, item));
         return this;
     }
 
-    public KettlePotRecipeBuilder addInput(int index, ItemLike... items) {
-        return addInput(index, Ingredient.of(items));
+    public KettlePotRecipeBuilder input(ItemLike... items) {
+        return input(Ingredient.of(items));
     }
 
-    public KettlePotRecipeBuilder addInput(int index, int count, ItemLike... items) {
-        return addInput(index, count, Ingredient.of(items));
+    public KettlePotRecipeBuilder input(int count, ItemLike... items) {
+        return input(count, Ingredient.of(items));
     }
 
-    public KettlePotRecipeBuilder addInput(int index, TagKey<Item> item) {
-        return addInput(index, Ingredient.of(item));
+    public KettlePotRecipeBuilder input(TagKey<Item> item) {
+        return input(Ingredient.of(item));
     }
 
-    public KettlePotRecipeBuilder addInput(int index, int count, TagKey<Item> item) {
-        return addInput(index, count, Ingredient.of(item));
+    public KettlePotRecipeBuilder input(int count, TagKey<Item> item) {
+        return input(count, Ingredient.of(item));
     }
 
-    public KettlePotRecipeBuilder addInput(int index, RegistryObject<? extends ItemLike> item) {
-        return addInput(index, Ingredient.of(item.get()));
+    public KettlePotRecipeBuilder input(RegistryObject<? extends ItemLike> item) {
+        return input(Ingredient.of(item.get()));
     }
 
-    public KettlePotRecipeBuilder addInput(int index, int count, RegistryObject<? extends ItemLike> item) {
-        return addInput(index, count, Ingredient.of(item.get()));
+    public KettlePotRecipeBuilder input(int count, RegistryObject<? extends ItemLike> item) {
+        return input(count, Ingredient.of(item.get()));
     }
 
     public KettlePotRecipeBuilder container(Ingredient ingredient) {
@@ -89,6 +90,6 @@ public class KettlePotRecipeBuilder extends SimpleRecipeBuilder<KettlePotRecipe,
 
     @Override
     public KettlePotRecipe build() {
-        return new KettlePotRecipe(id, inputs, container, fluid, output);
+        return new KettlePotRecipe(id, inputs.toArray(KettlePotRecipe.IngredientEntry[]::new), container, fluid, output);
     }
 }

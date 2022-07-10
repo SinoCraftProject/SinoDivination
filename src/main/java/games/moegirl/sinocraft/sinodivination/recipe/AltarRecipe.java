@@ -17,11 +17,17 @@ public class AltarRecipe extends SimpleRecipe<AltarRecipeContainer, AltarRecipe,
 
     final Item[] sacrificialVessels;
     final Ingredient base;
+    final int tick;
 
-    public AltarRecipe(ResourceLocation id, Item[] sacrificialVessels, Ingredient base, ItemStack result) {
+    public AltarRecipe(ResourceLocation id, Item[] sacrificialVessels, Ingredient base, int tick, ItemStack result) {
         super(SDRecipes.ALTAR, id, 5, result);
         this.sacrificialVessels = sacrificialVessels;
         this.base = base;
+        this.tick = tick;
+    }
+
+    public int getTick() {
+        return tick;
     }
 
     @Override

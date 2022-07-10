@@ -8,7 +8,9 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.registries.RegistryObject;
 
 import javax.annotation.Nullable;
 
@@ -18,12 +20,20 @@ public class KettlePotRecipe extends SimpleRecipe<RecipeContainer, KettlePotReci
         return new KettlePotRecipeBuilder(id);
     }
 
+    public static KettlePotRecipeBuilder builder(RegistryObject<? extends ItemLike> output) {
+        return builder(output, 1);
+    }
+
+    public static KettlePotRecipeBuilder builder(RegistryObject<? extends ItemLike> output, int count) {
+        return new KettlePotRecipeBuilder(output.getId()).output(new ItemStack(output.get(), count));
+    }
+
     final IngredientEntry[] inputs;
     final FluidIngredient fluid;
     final Ingredient container;
 
     public KettlePotRecipe(ResourceLocation id, IngredientEntry[] inputs, Ingredient container, FluidIngredient fluid, ItemStack output) {
-        super(SDRecipes.KETTLE_POT, id, 1, output);
+        super(SDRecipes.KETTLE_POT, id, inputs.length, output);
         this.inputs = inputs;
         this.container = container;
         this.fluid = fluid;

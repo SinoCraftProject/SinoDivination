@@ -1,12 +1,13 @@
 package games.moegirl.sinocraft.sinodivination.util.container;
 
 import net.minecraft.world.Container;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 public class InputOnlyContainer extends LimitedContainer<InputOnlyContainer> {
 
-    public InputOnlyContainer(Container inv) {
+    public InputOnlyContainer(SimpleContainer inv) {
         super(inv);
     }
 

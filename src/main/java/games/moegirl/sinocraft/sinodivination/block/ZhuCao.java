@@ -17,7 +17,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-// todo by lq2007: What is the english of 朱草 ?
 public class ZhuCao extends Block implements IForgeShearable, ILootableBlock {
 
     public ZhuCao() {

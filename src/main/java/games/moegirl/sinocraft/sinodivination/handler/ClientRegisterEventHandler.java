@@ -4,9 +4,14 @@ import games.moegirl.sinocraft.sinodivination.block.SDBlocks;
 import games.moegirl.sinocraft.sinodivination.block.base.WoodenChest;
 import games.moegirl.sinocraft.sinodivination.blockentity.AltarEntity;
 import games.moegirl.sinocraft.sinodivination.blockentity.SDBlockEntities;
+import games.moegirl.sinocraft.sinodivination.blockentity.TripodEntity;
+import games.moegirl.sinocraft.sinodivination.client.AltarRenderer;
+import games.moegirl.sinocraft.sinodivination.client.TripodRenderer;
 import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
+import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraftforge.api.distmarker.Dist;
@@ -31,6 +36,8 @@ public class ClientRegisterEventHandler {
         registerChestEntity(event, SDBlocks.COTINUS_CHEST);
         registerChestEntity(event, SDBlocks.JUJUBE_CHEST);
         registerChestEntity(event, SDBlocks.SOPHORA_CHEST);
+        event.registerBlockEntityRenderer(SDBlockEntities.TRIPOD.get(), TripodRenderer::new);
+        event.registerBlockEntityRenderer(SDBlockEntities.ALTAR.get(), AltarRenderer::new);
     }
 
     @SubscribeEvent
