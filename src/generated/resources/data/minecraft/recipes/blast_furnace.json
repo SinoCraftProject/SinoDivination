@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "sinodivination",
+  "pattern": [
+    "YYY",
+    "YXY",
+    "ZZZ"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:furnace"
+    },
+    "Y": {
+      "item": "minecraft:stone"
+    },
+    "Z": {
+      "item": "minecraft:smooth_stone"
+    }
+  },
+  "result": {
+    "item": "minecraft:blast_furnace"
+  }
+}

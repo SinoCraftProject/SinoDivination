@@ -15,7 +15,7 @@ import net.minecraft.world.item.ItemStack;
 public class ChangeSoupRecipeCategory extends AbstractRecipeCategory<ChangeSoupRecipe> {
 
     public ChangeSoupRecipeCategory(IRecipeCategoryRegistration registration) {
-        super(registration, JEIPlugin.CHANGING_SEEDING, SDRecipes.CHANGE_SOUP, SDLangKeys.JEI_RECIPE_CHANGE_SOUP);
+        super(registration, JEIPlugin.CHANGE_SOUP, SDRecipes.CHANGE_SOUP, SDLangKeys.JEI_RECIPE_CHANGE_SOUP);
     }
 
     @Override

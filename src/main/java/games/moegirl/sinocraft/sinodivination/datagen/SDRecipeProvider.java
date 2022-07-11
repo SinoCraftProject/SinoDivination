@@ -11,7 +11,10 @@ import games.moegirl.sinocraft.sinodivination.tree.SDTrees;
 import games.moegirl.sinocraft.sinodivination.tree.SDWoodwork;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.recipes.*;
+import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -69,6 +72,14 @@ public class SDRecipeProvider extends RecipeProvider {
                 .define('X', Blocks.FURNACE)
                 .define('Y', Blocks.STONE)
                 .define('Z', Blocks.SMOOTH_STONE)
+                .save(consumer);
+        shaped(SDBlocks.BELLOWS, Items.STICK)
+                .pattern("AYY")
+                .pattern("A Z")
+                .pattern("AYY")
+                .define('A', ItemTags.PLANKS)
+                .define('Y', Items.STICK)
+                .define('Z', Tags.Items.CHESTS)
                 .save(consumer);
         ChangeSoupRecipe.builder(Blocks.BIRCH_SAPLING, SDTrees.COTINUS.sapling).save(consumer);
         ChangeSoupRecipe.builder(Blocks.OAK_SAPLING, SDTrees.JUJUBE.sapling).save(consumer);

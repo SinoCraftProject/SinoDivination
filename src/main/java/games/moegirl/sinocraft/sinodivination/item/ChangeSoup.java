@@ -29,7 +29,7 @@ public class ChangeSoup extends Item {
             if (result.isPresent()) {
                 level.setBlock(pos, result.get(), 2);
                 Player player = pContext.getPlayer();
-                if (player != null) {
+                if (player != null && !player.isCreative()) {
                     player.setItemInHand(pContext.getHand(), new ItemStack(Items.BOWL));
                 }
                 return InteractionResult.SUCCESS;

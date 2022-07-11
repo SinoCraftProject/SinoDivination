@@ -54,6 +54,11 @@ public abstract class OwnerChecker {
         setChanged();
     }
 
+    public void allow(Entity entity) {
+        allowed.add(entity.getUUID());
+        setChanged();
+    }
+
     public void removeAllow(@Nullable Entity entity) {
         if (entity != null && allowed.remove(entity.getUUID())) {
             setChanged();

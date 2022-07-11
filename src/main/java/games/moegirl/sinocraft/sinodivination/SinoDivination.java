@@ -3,6 +3,7 @@ package games.moegirl.sinocraft.sinodivination;
 import games.moegirl.sinocraft.sinodivination.block.SDBlocks;
 import games.moegirl.sinocraft.sinodivination.blockentity.SDBlockEntities;
 import games.moegirl.sinocraft.sinodivination.client.screen.SDScreens;
+import games.moegirl.sinocraft.sinodivination.command.SDCommands;
 import games.moegirl.sinocraft.sinodivination.entity.SDEntities;
 import games.moegirl.sinocraft.sinodivination.item.SDItems;
 import games.moegirl.sinocraft.sinodivination.menu.SDMenus;
@@ -34,6 +35,7 @@ public class SinoDivination {
         SDMenus.REGISTRY.register(bus);
         SDRecipes.REGISTRY.register(bus);
         SDScreens.register(bus);
+        SDCommands.REGISTER.register();
     }
 
     public void onClientSetup(FMLClientSetupEvent event) {

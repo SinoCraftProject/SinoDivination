@@ -16,7 +16,6 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraftforge.common.ForgeHooks;
 
 import javax.annotation.Nullable;
-import java.util.Optional;
 import java.util.UUID;
 
 public class SophoraEntity extends BlockEntity implements ISophoraEntity {
@@ -31,6 +30,14 @@ public class SophoraEntity extends BlockEntity implements ISophoraEntity {
     @Override
     public void setEntity(Entity entity) {
         this.entity = entity.getUUID();
+    }
+
+    /**
+     * @deprecated Only use for debug
+     */
+    @Deprecated
+    public void setEntity(UUID entity) {
+        this.entity = entity;
     }
 
     @Nullable
