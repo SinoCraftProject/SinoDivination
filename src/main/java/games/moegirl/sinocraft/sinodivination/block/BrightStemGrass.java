@@ -23,6 +23,7 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.IForgeShearable;
 import net.minecraftforge.common.Tags;
@@ -41,12 +42,12 @@ public class BrightStemGrass extends Block implements IForgeShearable, ILootable
 
     static {
         // todo by lq2007: shape VINE: box(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
-        SHAPES.put(Direction.UP, null);
-        SHAPES.put(Direction.DOWN, null);
-        SHAPES.put(Direction.EAST, null);
-        SHAPES.put(Direction.WEST, null);
-        SHAPES.put(Direction.NORTH, null);
-        SHAPES.put(Direction.SOUTH, null);
+        SHAPES.put(Direction.UP, Shapes.block());
+        SHAPES.put(Direction.DOWN, Shapes.block());
+        SHAPES.put(Direction.EAST, Shapes.block());
+        SHAPES.put(Direction.WEST, Shapes.block());
+        SHAPES.put(Direction.NORTH, Shapes.block());
+        SHAPES.put(Direction.SOUTH, Shapes.block());
     }
 
     public BrightStemGrass() {

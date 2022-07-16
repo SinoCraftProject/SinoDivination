@@ -39,6 +39,6 @@ public class JujubeChest extends WoodenChest {
         } else if (value == ChestType.RIGHT) {
             return !pLevel.hasNeighborSignal(pPos.relative(direction.getCounterClockWise()));
         }
-        return false;
+        return true;
     }
 }

@@ -1,6 +1,7 @@
 package games.moegirl.sinocraft.sinodivination.blockentity;
 
 import games.moegirl.sinocraft.sinodivination.recipe.AltarRecipe;
+import games.moegirl.sinocraft.sinodivination.recipe.AltarRecipeContainer;
 import games.moegirl.sinocraft.sinodivination.recipe.SDRecipes;
 import games.moegirl.sinocraft.sinodivination.util.container.ComposeItemHandler;
 import games.moegirl.sinocraft.sinodivination.util.container.InputOnlyContainer;

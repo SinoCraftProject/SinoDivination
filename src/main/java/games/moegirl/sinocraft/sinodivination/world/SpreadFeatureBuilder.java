@@ -9,13 +9,13 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 /**
  * A feature to create vegetation, like flower
  */
-public class VegetationFeatureBuilder extends BaseFeatureBuilder<RandomPatchConfiguration, VegetationFeatureBuilder> {
+public class SpreadFeatureBuilder extends BaseFeatureBuilder<RandomPatchConfiguration, SpreadFeatureBuilder> {
 
     private int tries = 96;
     private int xz = 7, y = 3;
     private Holder<PlacedFeature> supplier;
 
-    public VegetationFeatureBuilder() {
+    public SpreadFeatureBuilder() {
         super(Feature.RANDOM_PATCH);
     }
 
@@ -25,7 +25,7 @@ public class VegetationFeatureBuilder extends BaseFeatureBuilder<RandomPatchConf
      * @param tries tries
      * @return this builder
      */
-    public VegetationFeatureBuilder tries(int tries) {
+    public SpreadFeatureBuilder tries(int tries) {
         this.tries = tries;
         return this;
     }
@@ -36,7 +36,7 @@ public class VegetationFeatureBuilder extends BaseFeatureBuilder<RandomPatchConf
      * @param xzSpread x, y
      * @return this builder
      */
-    public VegetationFeatureBuilder spreadXZ(int xzSpread) {
+    public SpreadFeatureBuilder spreadXZ(int xzSpread) {
         this.xz = xzSpread;
         return this;
     }
@@ -47,7 +47,7 @@ public class VegetationFeatureBuilder extends BaseFeatureBuilder<RandomPatchConf
      * @param ySpread y
      * @return this builder
      */
-    public VegetationFeatureBuilder spreadY(int ySpread) {
+    public SpreadFeatureBuilder spreadY(int ySpread) {
         this.y = ySpread;
         return this;
     }
@@ -58,13 +58,24 @@ public class VegetationFeatureBuilder extends BaseFeatureBuilder<RandomPatchConf
      * @param feature feature
      * @return this builder
      */
-    public VegetationFeatureBuilder feature(Holder<PlacedFeature> feature) {
+    public SpreadFeatureBuilder feature(Holder<PlacedFeature> feature) {
         this.supplier = feature;
         return this;
     }
 
+    /**
+     * A feature to generate vegetation
+     *
+     * @param feature feature
+     * @return this builder
+     */
+    public SpreadFeatureBuilder feature(PlacedFeature feature) {
+        this.supplier = Holder.direct(feature);
+        return this;
+    }
+
     @Override
-    public VegetationFeatureBuilder fromConfiguration(RandomPatchConfiguration parent) {
+    public SpreadFeatureBuilder fromConfiguration(RandomPatchConfiguration parent) {
         tries = parent.tries();
         xz = parent.xzSpread();
         y = parent.ySpread();

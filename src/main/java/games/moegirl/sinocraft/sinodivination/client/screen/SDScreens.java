@@ -15,5 +15,6 @@ public class SDScreens {
 
     private static void onSetup(FMLClientSetupEvent event) {
         MenuScreens.register(SDMenus.SILKWORM_PLAQUE.get(), SilkwormPlaqueScreen::new);
+        MenuScreens.register(SDMenus.CARVING_TABLE.get(), CarvingTableScreen::new);
     }
 }

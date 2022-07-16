@@ -1,4 +1,4 @@
-package games.moegirl.sinocraft.sinodivination.blockentity;
+package games.moegirl.sinocraft.sinodivination.recipe;
 
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;

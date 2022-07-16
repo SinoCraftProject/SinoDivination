@@ -18,6 +18,7 @@ public abstract class BaseClientPacket<T extends BaseClientPacket<T>> extends Ba
     }
 
     @Override
+    @OnlyIn(Dist.CLIENT)
     protected void onClient(NetworkEvent.Context context) {
         net.minecraft.client.Minecraft mc = net.minecraft.client.Minecraft.getInstance();
         onClient(context, mc.player, mc);

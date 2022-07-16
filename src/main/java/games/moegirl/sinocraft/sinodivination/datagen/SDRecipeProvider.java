@@ -1,10 +1,11 @@
 package games.moegirl.sinocraft.sinodivination.datagen;
 
-import games.moegirl.sinocraft.sinocore.api.tree.Tree;
+import games.moegirl.sinocraft.sinocore.api.woodwork.Woodwork;
 import games.moegirl.sinocraft.sinodivination.SinoDivination;
 import games.moegirl.sinocraft.sinodivination.block.SDBlocks;
 import games.moegirl.sinocraft.sinodivination.block.base.WoodenChest;
 import games.moegirl.sinocraft.sinodivination.item.SDItems;
+import games.moegirl.sinocraft.sinodivination.recipe.CarvingTableRecipe;
 import games.moegirl.sinocraft.sinodivination.recipe.ChangeSoupRecipe;
 import games.moegirl.sinocraft.sinodivination.recipe.KettlePotRecipe;
 import games.moegirl.sinocraft.sinodivination.tree.SDTrees;
@@ -16,6 +17,7 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -43,9 +45,9 @@ public class SDRecipeProvider extends RecipeProvider {
         addChest(SDBlocks.COTINUS_CHEST, consumer);
         addChest(SDBlocks.JUJUBE_CHEST, consumer);
         addChest(SDBlocks.SOPHORA_CHEST, consumer);
-        addStick(SDTrees.COTINUS, SDItems.STICK_COTINUS, consumer);
-        addStick(SDTrees.JUJUBE, SDItems.STICK_JUJUBE, consumer);
-        addStick(SDTrees.SOPHORA, SDItems.STICK_SOPHORA, consumer);
+        addStick(SDWoodwork.COTINUS, SDItems.STICK_COTINUS, consumer);
+        addStick(SDWoodwork.JUJUBE, SDItems.STICK_JUJUBE, consumer);
+        addStick(SDWoodwork.SOPHORA, SDItems.STICK_SOPHORA, consumer);
         shaped(SDBlocks.KETTLE_POT, Blocks.CAULDRON)
                 .pattern("Y Y")
                 .pattern("ZAZ")
@@ -60,7 +62,7 @@ public class SDRecipeProvider extends RecipeProvider {
                 .pattern("Y ")
                 .define('Y', Items.STICK)
                 .save(consumer);
-        shapeless(Items.GUNPOWDER, SDItems.SULPHUR)
+        shapeless(Items.GUNPOWDER, 2, SDItems.SULPHUR)
                 .requires(Ingredient.of(SDItems.SULPHUR.get()))
                 .requires(Ingredient.of(SDItems.NITER.get()))
                 .requires(Ingredient.of(ItemTags.COALS))
@@ -81,6 +83,15 @@ public class SDRecipeProvider extends RecipeProvider {
                 .define('Y', Items.STICK)
                 .define('Z', Tags.Items.CHESTS)
                 .save(consumer);
+        shaped(SDBlocks.CARVING_TABLE, SDItems.JADE.get())
+                .pattern("XYX")
+                .pattern("XZX")
+                .pattern("AAA")
+                .define('A', Tags.Items.OBSIDIAN)
+                .define('X', Tags.Items.INGOTS_COPPER)
+                .define('Y', SDItems.JADE.get())
+                .define('Z', Blocks.STONECUTTER)
+                .save(consumer);
         ChangeSoupRecipe.builder(Blocks.BIRCH_SAPLING, SDTrees.COTINUS.sapling).save(consumer);
         ChangeSoupRecipe.builder(Blocks.OAK_SAPLING, SDTrees.JUJUBE.sapling).save(consumer);
         ChangeSoupRecipe.builder(Blocks.SPRUCE_SAPLING, SDTrees.SOPHORA.sapling).save(consumer);
@@ -96,6 +107,93 @@ public class SDRecipeProvider extends RecipeProvider {
                 .input(SDItems.JUJUBE)
                 .input(SDItems.WORMWOOD_LEAF)
                 .save(consumer);
+        CarvingTableRecipe.builder(SDItems.CANG_BI)
+                .pattern(" XX ")
+                .pattern("X  X")
+                .pattern(" XX ")
+                .define('X', SDItems.JADE)
+                .dye(DyeColor.BLUE)
+                .save(consumer);
+        CarvingTableRecipe.builder(SDItems.HUANG_CONG)
+                .pattern(" X ")
+                .pattern(" X ")
+                .pattern("X X")
+                .pattern("XXX")
+                .define('X', SDItems.JADE)
+                .dye(DyeColor.GRAY)
+                .save(consumer);
+        CarvingTableRecipe.builder(SDItems.QING_GUI)
+                .pattern(" X ")
+                .pattern("XXX")
+                .pattern("XXX")
+                .pattern("XXX")
+                .define('X', SDItems.JADE)
+                .dye(DyeColor.CYAN)
+                .save(consumer);
+        CarvingTableRecipe.builder(SDItems.CHI_ZHANG)
+                .pattern("X X")
+                .pattern("XXX")
+                .pattern("XXX")
+                .pattern("XXX")
+                .define('X', SDItems.JADE)
+                .dye(DyeColor.WHITE)
+                .save(consumer);
+        CarvingTableRecipe.builder(SDItems.BAI_HU)
+                .pattern("XX  ")
+                .pattern(" X X")
+                .pattern(" XXX")
+                .pattern("XX X")
+                .define('X', SDItems.JADE)
+                .dye(DyeColor.RED)
+                .save(consumer);
+        CarvingTableRecipe.builder(SDItems.XUAN_HUANG)
+                .pattern("X  X")
+                .pattern("XXXX")
+                .pattern(" XX ")
+                .define('X', SDItems.JADE)
+                .dye(DyeColor.BLACK)
+                .save(consumer);
+        CarvingTableRecipe.builder(SDItems.COPPER_GOBLET)
+                .pattern("XX X")
+                .pattern(" XXX")
+                .pattern("  X ")
+                .pattern(" X X")
+                .define('X', Items.COPPER_INGOT)
+                .save(consumer);
+        CarvingTableRecipe.builder(SDItems.COPPER_DAGGER_AXE)
+                .pattern("X   ")
+                .pattern("XXXX")
+                .pattern("XX  ")
+                .pattern("X   ")
+                .define('X', Items.COPPER_INGOT)
+                .save(consumer);
+        CarvingTableRecipe.builder(SDItems.COPPER_MIRROR)
+                .pattern(" XX ")
+                .pattern("XXXX")
+                .pattern("XXXX")
+                .pattern(" XX ")
+                .define('X', Items.COPPER_INGOT)
+                .save(consumer);
+        CarvingTableRecipe.builder(SDItems.COPPER_MASK)
+                .pattern("XXX ")
+                .pattern(" X  ")
+                .pattern("XXX ")
+                .pattern("X X ")
+                .define('X', Items.COPPER_INGOT)
+                .save(consumer);
+        CarvingTableRecipe.builder(SDItems.COPPER_LAMP)
+                .pattern(" XX ")
+                .pattern("X  X")
+                .pattern("XXXX")
+                .define('X', Items.COPPER_INGOT)
+                .save(consumer);
+        CarvingTableRecipe.builder(SDItems.COPPER_BEAST)
+                .pattern("XX  ")
+                .pattern(" X X")
+                .pattern(" XXX")
+                .pattern("XX X")
+                .define('X', Items.COPPER_INGOT)
+                .save(consumer);
     }
 
     private ShapedRecipeBuilder shaped(RegistryObject<? extends ItemLike> result, ItemLike unlockedBy) {
@@ -108,8 +206,8 @@ public class SDRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_block", has(unlockedBy));
     }
 
-    private ShapelessRecipeBuilder shapeless(ItemLike result, RegistryObject<? extends ItemLike> unlockedBy) {
-        return ShapelessRecipeBuilder.shapeless(result)
+    private ShapelessRecipeBuilder shapeless(ItemLike result, int count, RegistryObject<? extends ItemLike> unlockedBy) {
+        return ShapelessRecipeBuilder.shapeless(result, count)
                 .group(SinoDivination.MOD_ID)
                 .unlockedBy("has_block", has(unlockedBy.get()));
     }
@@ -125,15 +223,15 @@ public class SDRecipeProvider extends RecipeProvider {
                 .save(consumer);
     }
 
-    private <T extends Item> void addStick(Tree tree, RegistryObject<T> stick, Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
+    private <T extends Item> void addStick(Woodwork tree, RegistryObject<T> stick, Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
         ShapedRecipeBuilder.shaped(stick.get())
                 .group(SinoDivination.MOD_ID)
                 .pattern("X")
                 .pattern("Y")
                 .pattern("X")
-                .define('X', tree.wood())
+                .define('X', tree.planks())
                 .define('Y', Items.STICK)
-                .unlockedBy("has_block", has(tree.wood()))
+                .unlockedBy("has_block", has(tree.planks()))
                 .save(pFinishedRecipeConsumer);
     }
 }

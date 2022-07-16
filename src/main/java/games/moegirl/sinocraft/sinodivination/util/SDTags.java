@@ -11,27 +11,31 @@ public class SDTags {
 
     // Items ===========================================================================================================
 
-    public static final TagKey<Item> SACRIFICIAL_VESSEL = item("sacrificial_vessel");
+    public static final TagKey<Item> JADE_SACRIFICIAL_UTENSIL = item("jade_sacrificial_utensil");
+    public static final TagKey<Item> COPPER_SACRIFICIAL_UTENSIL = item("copper_sacrificial_utensil");
+    public static final TagKey<Item> SACRIFICIAL_UTENSIL = item("sacrificial_utensil");
+
+    public static final TagKey<Item> SACRIFICIAL_UTENSIL_MATERIAL = item("sacrificial_utensil_material");
 
     // Blocks ==========================================================================================================
 
-    // todo by lq2007: 无患木方块阻挡鬼魂通过
     public static final TagKey<Block> COTINUS_BLOCK = block("cotinus");
 
-    // todo by lq2007: 破坏时在玩家附近生成木鬼
     public static final TagKey<Block> SOPHORA_BLOCK = block("sophora");
 
     public static final TagKey<Block> FIRE_SOURCE = block("fire_source");
 
     public static final TagKey<Block> HEAT_SOURCE = block("heat");
 
+    public static final TagKey<Block> SPAWN_DRAGONLIVER_MELON = block("dragonliver_melon_spawner");
+
     // =================================================================================================================
 
     public static TagKey<Block> block(String name) {
-        return TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(SinoDivination.MOD_ID, "block/" + name));
+        return TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(SinoDivination.MOD_ID, name));
     }
 
     public static TagKey<Item> item(String name) {
-        return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(SinoDivination.MOD_ID, "item/" + name));
+        return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(SinoDivination.MOD_ID, name));
     }
 }

@@ -7,6 +7,7 @@ import games.moegirl.sinocraft.sinodivination.blockentity.SDBlockEntities;
 import games.moegirl.sinocraft.sinodivination.blockentity.TripodEntity;
 import games.moegirl.sinocraft.sinodivination.client.AltarRenderer;
 import games.moegirl.sinocraft.sinodivination.client.TripodRenderer;
+import games.moegirl.sinocraft.sinodivination.tree.SDTrees;
 import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;

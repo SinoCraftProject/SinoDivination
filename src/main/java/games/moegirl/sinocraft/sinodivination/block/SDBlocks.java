@@ -2,16 +2,12 @@ package games.moegirl.sinocraft.sinodivination.block;
 
 import games.moegirl.sinocraft.sinocore.api.utility.Functions;
 import games.moegirl.sinocraft.sinodivination.SinoDivination;
-import games.moegirl.sinocraft.sinodivination.block.base.OreBlock;
 import games.moegirl.sinocraft.sinodivination.block.base.SimpleCropBlock;
 import games.moegirl.sinocraft.sinodivination.block.base.WoodenChest;
 import games.moegirl.sinocraft.sinodivination.item.SDItems;
 import games.moegirl.sinocraft.sinodivination.util.StringUtils;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -24,9 +20,9 @@ public class SDBlocks {
 
     public static final RegistryObject<OreJade> ORE_JADE = simple(OreJade.class);
 
-    public static final RegistryObject<OreBlock> ORE_NITER = ore("ore_niter");
+    public static final RegistryObject<OreNiter> ORE_NITER = simple(OreNiter.class);
 
-    public static final RegistryObject<OreBlock> ORE_SULPHUR = ore("ore_sulphur");
+    public static final RegistryObject<OreSulphur> ORE_SULPHUR = simple(OreSulphur.class);
 
     public static final RegistryObject<WoodenChest> COTINUS_CHEST = simple(CotinusChest.class);
 
@@ -62,15 +58,9 @@ public class SDBlocks {
 
     public static final RegistryObject<Altar> ALTAR = simple(Altar.class);
 
+    public static final RegistryObject<CarvingTable> CARVING_TABLE = simple(CarvingTable.class);
+
     // =================================================================================================================
-
-    public static RegistryObject<OreBlock> ore(String name) {
-        return block(name, () -> new OreBlock(Material.STONE));
-    }
-
-    public static RegistryObject<Block> simple(String name) {
-        return block(name, () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
-    }
 
     public static <T extends Block> RegistryObject<T> simple(Class<? extends T> aClass) {
         return block(StringUtils.to_snake_name(aClass.getSimpleName()), Functions.constructor(aClass));

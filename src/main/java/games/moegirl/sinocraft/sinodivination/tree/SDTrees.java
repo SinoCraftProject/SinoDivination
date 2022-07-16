@@ -20,11 +20,13 @@ public class SDTrees {
     public static final Tree JUJUBE = Tree.builder(SinoDivination.MOD_ID, "jujube")
             .tab(DivinationTab.INSTANCE)
             .blockStrengthModifier(new FloatModifier().calcAfter(i -> 2 * i))
+            .grower(() -> SDPlacedFeatures.JUJUBE.get().buildConfigured())
             .customLeaves(JujubeLeaves::new)
             .build(SDBlocks.REGISTRY, SDItems.REGISTRY);
 
     public static final Tree SOPHORA = Tree.builder(SinoDivination.MOD_ID, "sophora")
             .tab(DivinationTab.INSTANCE)
+            .grower(() -> SDPlacedFeatures.SOPHORA.get().buildConfigured())
             .build(SDBlocks.REGISTRY, SDItems.REGISTRY);
 
     public static void register(IEventBus bus) {

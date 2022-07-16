@@ -2,7 +2,7 @@ plugins {
     id 'eclipse'
     id 'maven-publish'
     id "architectury-plugin" version "3.4-SNAPSHOT"
-    id "dev.architectury.loom" version "0.11.0-SNAPSHOT" apply false
+    id "dev.architectury.loom" version "0.11.0-SNAPSHOT"
 }
 
 apply plugin: 'java'
@@ -102,7 +102,6 @@ dependencies {
     modRuntimeOnly 'mezz.jei:jei-1.18.2:9.7.0.195'
     modImplementation 'curse.maven:the-one-probe-245211:3671753'
     modRuntimeOnly 'curse.maven:appleskin-248787:3686482'
-    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
@@ -119,6 +118,11 @@ jar {
                 "MixinConfigs": "sinodivination.mixins.json"
         ])
     }
+}
+
+// Why????
+tasks['processResources'].configure {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
 // Example configuration to allow publishing using the maven-publish plugin

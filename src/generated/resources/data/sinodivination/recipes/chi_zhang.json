@@ -1,0 +1,21 @@
+{
+  "type": "sinodivination:carving_table",
+  "pattern": [
+    "X X",
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "sinodivination:jade"
+    }
+  },
+  "dye": {
+    "tag": "forge:dyes/white"
+  },
+  "result": {
+    "id": "sinodivination:chi_zhang",
+    "Count": 1
+  }
+}

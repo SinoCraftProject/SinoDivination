@@ -30,7 +30,7 @@ public class SDItems {
 
     public static final RegistryObject<Item> SULPHUR = simple("sulfur", FireChargeItem.class);
 
-    public static final RegistryObject<SwordItem> STICK_COTINUS = sword("stick_cotinus", Tiers.WOOD, 6, -2.4F, 1);
+    public static final RegistryObject<SwordItem> STICK_COTINUS = sword("stick_cotinus", Tiers.WOOD, 3, -2.4F, 1);
 
     public static final RegistryObject<Item> CHANGE_SOUP = simple(ChangeSoup.class);
 
@@ -40,7 +40,7 @@ public class SDItems {
 
     public static final RegistryObject<Item> JUJUBE = food("jujube", 2);
 
-    public static final RegistryObject<SwordItem> STICK_SOPHORA = sword("stick_sophora", Tiers.WOOD, 6, -2.4F, 2);
+    public static final RegistryObject<SwordItem> STICK_SOPHORA = sword("stick_sophora", Tiers.WOOD, 3, -2.4F, 2);
 
     public static final RegistryObject<? extends WoodenChestItem> COTINUS_CHEST = chest(SDBlocks.COTINUS_CHEST);
 
@@ -95,6 +95,32 @@ public class SDItems {
     public static final RegistryObject<BlockItem> ALTAR = block(SDBlocks.ALTAR);
 
     public static final RegistryObject<BlockItem> TRIPOD = block(SDBlocks.TRIPOD);
+
+    public static final RegistryObject<BlockItem> CARVING_TABLE = block(SDBlocks.CARVING_TABLE);
+
+    public static final RegistryObject<Item> CANG_BI = simple("cang_bi");
+
+    public static final RegistryObject<Item> HUANG_CONG = simple("huang_cong");
+
+    public static final RegistryObject<Item> QING_GUI = simple("qing_gui");
+
+    public static final RegistryObject<Item> CHI_ZHANG = simple("chi_zhang");
+
+    public static final RegistryObject<Item> BAI_HU = simple("bai_hu");
+
+    public static final RegistryObject<Item> XUAN_HUANG = simple("xuan_huang");
+
+    public static final RegistryObject<Item> COPPER_GOBLET = simple("copper_goblet");
+
+    public static final RegistryObject<Item> COPPER_DAGGER_AXE = simple("copper_dagger_axe");
+
+    public static final RegistryObject<Item> COPPER_MIRROR = simple("copper_mirror");
+
+    public static final RegistryObject<Item> COPPER_MASK = simple("copper_mask");
+
+    public static final RegistryObject<Item> COPPER_LAMP = simple("copper_lamp");
+
+    public static final RegistryObject<Item> COPPER_BEAST = simple("copper_beast");
 
     // =================================================================================================================
 

@@ -8,6 +8,7 @@ import games.moegirl.sinocraft.sinodivination.item.SDItems;
 import games.moegirl.sinocraft.sinodivination.tree.SDTrees;
 import games.moegirl.sinocraft.sinodivination.tree.SDWoodwork;
 import games.moegirl.sinocraft.sinodivination.util.SDLangKeys;
+import games.moegirl.sinocraft.sinodivination.util.StringUtils;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -46,8 +47,9 @@ public class SDLanguageProviders extends LanguageProviderBase {
         addBlock(SDBlocks.BELLOWS, "Bellows", "风箱");
         addBlock(SDBlocks.KETTLE_POT, "Kettle Pot", "釜锅");
         addBlock(SDBlocks.SILKWORM_PLAQUE, "Silkworm Plaque", "蚕匾");
-        addBlock(SDBlocks.TRIPOD, "Tripod", "鼎");
-        addBlock(SDBlocks.ALTAR, "Altar", "祭坛");
+        addBlock(SDBlocks.TRIPOD, "鼎");
+        addBlock(SDBlocks.ALTAR, "祭坛");
+        addBlock(SDBlocks.CARVING_TABLE, "雕刻台");
         // item
         addItem(SDItems.JADE, "Jade", "玉石");
         addItem(SDItems.NITER, "Niter", "硝石");
@@ -74,6 +76,18 @@ public class SDLanguageProviders extends LanguageProviderBase {
         addItem(SDItems.SILKWORM_BABY, "Silkworm Baby", "蚕宝宝");
         addItem(SDItems.HOOK, "Hook", "钩棍");
         addItem(SDItems.SILK, "Silk", "丝");
+        addItem(SDItems.CANG_BI, "Cang Bi", "苍壁");
+        addItem(SDItems.HUANG_CONG, "Huang Cong", "黄琮");
+        addItem(SDItems.QING_GUI, "Qing Gui", "青珪");
+        addItem(SDItems.CHI_ZHANG, "Chi Zhang", "赤璋");
+        addItem(SDItems.BAI_HU, "Bai Hu", "白琥");
+        addItem(SDItems.XUAN_HUANG, "Xuan Huang", "玄璜");
+        addItem(SDItems.COPPER_GOBLET, "铜爵");
+        addItem(SDItems.COPPER_DAGGER_AXE, "Copper Dagger-axe", "铜戈");
+        addItem(SDItems.COPPER_MIRROR, "铜镜");
+        addItem(SDItems.COPPER_MASK, "铜面");
+        addItem(SDItems.COPPER_LAMP, "铜镫");
+        addItem(SDItems.COPPER_BEAST, "铜兽");
         // suit
         SDTrees.COTINUS.register().addLanguagesEn(en);
         SDTrees.COTINUS.register().addLanguagesZh(zh, "无患");
@@ -91,7 +105,8 @@ public class SDLanguageProviders extends LanguageProviderBase {
         add(SDLangKeys.SYMBOL_DATE, "Birthday", "生辰八字：");
         add(SDLangKeys.SYMBOL_NAME, "Name", "姓名：");
         add(SDLangKeys.SILKWORM_PLAGUE_TITLE, "Silkworm Plague", "蚕匾");
-        add(SDLangKeys.JEI_RECIPE_CHANGE_SOUP, "Recipe: Change Soup", "变荑汤");
+        add(SDLangKeys.JEI_RECIPE_CHANGE_SOUP, "Change Soup", "变荑汤");
+        add(SDLangKeys.JEI_RECIPE_CARVING_TABLE, "Carving Table", "雕刻台");
         add(SDLangKeys.TOP_BIRTHDAY, "Birthday(%s): %s", "生辰八字(%s): %s");
         add(SDLangKeys.TOP_BIRTHDAY_NO, "Birthday: No Record", "生辰八字：无记录");
         add(SDLangKeys.TOP_BLOCK_OWNER, "Owner: %s", "所有者: %s");
@@ -122,5 +137,15 @@ public class SDLanguageProviders extends LanguageProviderBase {
         } else if (!hasZh) {
             LOGGER.warn("Lost chinese language for {} {}", type, name);
         }
+    }
+
+    private void addItem(RegistryObject<? extends Item> item, String zhName) {
+        String enName = StringUtils.toPascalName(item.getId().getPath(), true);
+        super.addItem(item, enName, zhName);
+    }
+
+    private void addBlock(RegistryObject<? extends Block> block, String zhName) {
+        String enName = StringUtils.toPascalName(block.getId().getPath(), true);
+        super.addBlock(block, enName, zhName);
     }
 }

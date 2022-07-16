@@ -1,0 +1,18 @@
+{
+  "type": "sinodivination:carving_table",
+  "pattern": [
+    "XXX ",
+    " X  ",
+    "XXX ",
+    "X X "
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:copper_ingot"
+    }
+  },
+  "result": {
+    "id": "sinodivination:copper_mask",
+    "Count": 1
+  }
+}

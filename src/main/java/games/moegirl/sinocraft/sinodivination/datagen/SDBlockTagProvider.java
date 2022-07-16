@@ -38,6 +38,11 @@ public class SDBlockTagProvider extends BlockTagsProviderBase {
         add(SDTags.SOPHORA_BLOCK, SDBlocks.SOPHORA_CHEST.get());
         tag(SDTags.HEAT_SOURCE).addTag(BlockTags.FIRE);
         add(SDTags.HEAT_SOURCE, Blocks.LAVA, Blocks.TORCH, Blocks.REDSTONE_TORCH, Blocks.SOUL_TORCH);
+        tag(SDTags.FIRE_SOURCE).addTag(BlockTags.FIRE).addTag(BlockTags.CAMPFIRES);
+        tag(SDTags.SPAWN_DRAGONLIVER_MELON).addTag(Tags.Blocks.GRAVEL).addTag(BlockTags.DIRT);
+        addPickaxe(SDBlocks.ORE_JADE.get(), SDBlocks.ORE_NITER.get(), SDBlocks.ORE_SULPHUR.get());
+        addIronTool(SDBlocks.ORE_JADE.get());
+        addStoneTool(SDBlocks.ORE_NITER.get(), SDBlocks.ORE_SULPHUR.get());
     }
 
     protected <T extends WoodenChest> void chest(RegistryObject<T> chestObj) {

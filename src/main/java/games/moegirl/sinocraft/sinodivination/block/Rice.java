@@ -1,18 +1,17 @@
 package games.moegirl.sinocraft.sinodivination.block;
 
-import games.moegirl.sinocraft.sinocore.api.utility.RoundChecker;
 import games.moegirl.sinocraft.sinodivination.block.base.DoubleCropBlock;
 import games.moegirl.sinocraft.sinodivination.item.SDItems;
 import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -31,7 +30,8 @@ public class Rice extends DoubleCropBlock<Item> {
     };
 
     public Rice() {
-        super(SDItems.RICE, 0, 1, 3, 4);
+        super(Properties.of(Material.WATER_PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP),
+                SDItems.RICE, 0, 1, 3, 4);
     }
 
     @Override
@@ -41,16 +41,11 @@ public class Rice extends DoubleCropBlock<Item> {
 
     @Override
     public boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-        RoundChecker checker = new RoundChecker(pLevel, pPos);
-        return (pState.is(BlockTags.DIRT) || pState.is(Blocks.FARMLAND))
-                && pPos.getY() < pLevel.getMaxBuildHeight()
-                && checker.has(1, FluidTags.WATER)
-                && checker.isSource(1);
+        return pState.is(Blocks.WATER) && pLevel.getBlockState(pPos.above()).isAir();
     }
 
     @Override
     public boolean canSurviveLower(BlockState pState, LevelReader pLevel, BlockPos pPos) {
-        pState = pLevel.getBlockState(pPos.below());
-        return pState.is(BlockTags.DIRT) || pState.is(Blocks.FARMLAND);
+        return true;
     }
 }

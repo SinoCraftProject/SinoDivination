@@ -1,5 +1,6 @@
 package games.moegirl.sinocraft.sinodivination.blockentity;
 
+import games.moegirl.sinocraft.sinodivination.recipe.AltarRecipeContainer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.Item;

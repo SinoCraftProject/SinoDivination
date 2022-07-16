@@ -1,6 +1,8 @@
 package games.moegirl.sinocraft.sinodivination.network;
 
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
@@ -27,6 +29,7 @@ public abstract class BasePacket<T extends BasePacket<T>> {
         context.setPacketHandled(true);
     }
 
+    @OnlyIn(Dist.CLIENT)
     protected abstract void onClient(NetworkEvent.Context context);
 
     protected abstract void onServer(NetworkEvent.Context context);

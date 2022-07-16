@@ -1,7 +1,6 @@
 package games.moegirl.sinocraft.sinodivination.recipe;
 
 import games.moegirl.sinocraft.sinocore.api.crafting.SimpleRecipe;
-import games.moegirl.sinocraft.sinodivination.blockentity.AltarRecipeContainer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;

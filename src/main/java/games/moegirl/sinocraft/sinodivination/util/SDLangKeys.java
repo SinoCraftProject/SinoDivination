@@ -1,6 +1,7 @@
 package games.moegirl.sinocraft.sinodivination.util;
 
 import games.moegirl.sinocraft.sinodivination.SinoDivination;
+import games.moegirl.sinocraft.sinodivination.block.SDBlocks;
 import games.moegirl.sinocraft.sinodivination.blockentity.SDBlockEntities;
 import games.moegirl.sinocraft.sinodivination.recipe.SDRecipes;
 
@@ -15,8 +16,10 @@ public class SDLangKeys {
     public static final String SYMBOL_DATE = buildTranslationKey("symbol", "date");
 
     public static final String SILKWORM_PLAGUE_TITLE = buildTranslationKey("gui", SDBlockEntities.SILKWORM_PLAQUE.getId().getPath(), "title");
+    public static final String CARVING_TABLE_TITLE = buildTranslationKey("gui", SDBlocks.CARVING_TABLE.getId().getPath(), "title");
 
     public static final String JEI_RECIPE_CHANGE_SOUP = buildTranslationKey("jei", SDRecipes.CHANGE_SOUP.name().getPath(), "recipe");
+    public static final String JEI_RECIPE_CARVING_TABLE = buildTranslationKey("jei", SDRecipes.CARVING_TABLE.name().getPath(), "recipe");
 
     public static final String TOP_BLOCK_OWNER = buildTranslationKey("top", "block", "owner");
     public static final String TOP_BLOCK_ALLOWED = buildTranslationKey("top", "block", "allowed");

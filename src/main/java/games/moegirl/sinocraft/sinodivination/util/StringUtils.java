@@ -15,4 +15,26 @@ public class StringUtils {
         return name.toString();
     }
 
+    public static String toPascalName(String snake_name, boolean hasSpace) {
+        boolean next = true;
+        StringBuilder name = new StringBuilder();
+        for (int i = 0; i < snake_name.length(); i++) {
+            char c = snake_name.charAt(i);
+            if (c == '_') {
+                next = true;
+                if (hasSpace && !name.isEmpty()) {
+                    name.append(' ');
+                }
+                continue;
+            }
+            if (next) {
+                next = false;
+                name.append(Character.toUpperCase(c));
+            } else {
+                name.append(Character.toLowerCase(c));
+            }
+        }
+        return name.toString();
+    }
+
 }
