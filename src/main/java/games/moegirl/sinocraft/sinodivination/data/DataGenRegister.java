@@ -1,7 +1,8 @@
-package games.moegirl.sinocraft.sinodivination.datagen;
+package games.moegirl.sinocraft.sinodivination.data;
 
 import games.moegirl.sinocraft.sinodivination.SinoDivination;
 import games.moegirl.sinocraft.sinodivination.block.SDBlocks;
+import games.moegirl.sinocraft.sinodivination.data.provider.*;
 import games.moegirl.sinocraft.sinodivination.tree.SDWoodwork;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -11,7 +12,7 @@ import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = SinoDivination.MOD_ID)
 public class DataGenRegister {
     @SubscribeEvent
-    public static void gatherData(GatherDataEvent event) {
+    public static void onGatherData(GatherDataEvent event) {
         if (event.includeClient()) {
             ExistingFileHelper fileHelper = event.getExistingFileHelper();
             SDBlocks.COTINUS_CHEST.get().verifyTexture(fileHelper);
