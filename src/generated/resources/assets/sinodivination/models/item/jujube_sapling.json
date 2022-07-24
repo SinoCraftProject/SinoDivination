@@ -1,3 +1,6 @@
 {
-  "parent": "sinodivination:block/jujube_sapling"
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "sinodivination:block/jujube_sapling"
+  }
 }
