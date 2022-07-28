@@ -11,7 +11,7 @@ apply plugin: 'architectury-plugin'   // Parchment mappings.
 apply plugin: 'maven-publish'
 apply plugin: 'dev.architectury.loom'
 
-version = '1.18.2-1.0.1'
+version = '1.18.2-1.0.2'
 group = 'games.moegirl.sinocraft.sinodivination' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'sinodivination'
 
