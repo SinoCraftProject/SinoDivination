@@ -1,4 +1,4 @@
-package games.moegirl.sinocraft.sinodivination.datagen;
+package games.moegirl.sinocraft.sinodivination.data.provider;
 
 import games.moegirl.sinocraft.sinocore.api.data.BlockStateProviderBase;
 import games.moegirl.sinocraft.sinodivination.block.LucidGanoderma;

@@ -2,7 +2,7 @@ plugins {
     id 'eclipse'
     id 'maven-publish'
     id "architectury-plugin" version "3.4-SNAPSHOT"
-    id "dev.architectury.loom" version "0.11.0-SNAPSHOT"
+    id "dev.architectury.loom" version "0.12.0-SNAPSHOT" apply false
 }
 
 apply plugin: 'java'
@@ -98,8 +98,7 @@ dependencies {
 
     modCompileOnly 'com.github.SinoCraftProject:SinoCore:main-SNAPSHOT:api'
     modRuntimeOnly 'com.github.SinoCraftProject:SinoCore:main-SNAPSHOT'
-    modCompileOnly 'mezz.jei:jei-1.18.2:9.7.0.195:api'
-    modRuntimeOnly 'mezz.jei:jei-1.18.2:9.7.0.195'
+    // qyl27: Remove JEI because it was inherited from SinoCore.
     modImplementation 'curse.maven:the-one-probe-245211:3671753'
     modRuntimeOnly 'curse.maven:scannable-266784:3738448'
     modRuntimeOnly 'curse.maven:appleskin-248787:3686482'

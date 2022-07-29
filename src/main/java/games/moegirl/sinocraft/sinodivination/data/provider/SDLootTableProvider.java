@@ -1,4 +1,4 @@
-package games.moegirl.sinocraft.sinodivination.datagen;
+package games.moegirl.sinocraft.sinodivination.data.provider;
 
 import games.moegirl.sinocraft.sinocore.api.data.LootTableProviderBase;
 import games.moegirl.sinocraft.sinocore.api.tree.TreeBlockLoot;
