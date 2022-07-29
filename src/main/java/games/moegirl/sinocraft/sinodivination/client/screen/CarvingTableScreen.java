@@ -15,13 +15,18 @@ public class CarvingTableScreen extends AbstractContainerScreen<CarvingTableMenu
     }
 
     @Override
+    public void render(PoseStack poseStack, int mouseX, int mouseY, float partialTick) {
+        super.render(poseStack, mouseX, mouseY, partialTick);
+        renderTooltip(poseStack, mouseX, mouseY);
+    }
+
+    @Override
     protected void renderBg(PoseStack pPoseStack, float pPartialTick, int pMouseX, int pMouseY) {
         TEXTURE.blitTexture(pPoseStack, "background", this);
     }
 
     @Override
     protected void renderLabels(PoseStack poseStack, int mouseX, int mouseY) {
-        super.renderLabels(poseStack, mouseX, mouseY);
         TEXTURE.renderText(poseStack, this, "title");
     }
 }

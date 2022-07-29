@@ -30,6 +30,7 @@ public class SophoraEntity extends BlockEntity implements ISophoraEntity {
     @Override
     public void setEntity(Entity entity) {
         this.entity = entity.getUUID();
+        setChanged();
     }
 
     /**
@@ -38,6 +39,7 @@ public class SophoraEntity extends BlockEntity implements ISophoraEntity {
     @Deprecated
     public void setEntity(UUID entity) {
         this.entity = entity;
+        setChanged();
     }
 
     @Nullable
@@ -48,15 +50,15 @@ public class SophoraEntity extends BlockEntity implements ISophoraEntity {
     @Override
     public void load(CompoundTag pTag) {
         super.load(pTag);
-        if (entity != null) {
-            pTag.putUUID(SinoDivination.MOD_ID + ".record", entity);
-        }
+        entity = pTag.hasUUID(SinoDivination.MOD_ID + ".record") ? pTag.getUUID(SinoDivination.MOD_ID + ".record") : null;
     }
 
     @Override
     protected void saveAdditional(CompoundTag pTag) {
         super.saveAdditional(pTag);
-        entity = pTag.hasUUID(SinoDivination.MOD_ID + ".record") ? pTag.getUUID(SinoDivination.MOD_ID + ".record") : null;
+        if (entity != null) {
+            pTag.putUUID(SinoDivination.MOD_ID + ".record", entity);
+        }
     }
 
     @Override

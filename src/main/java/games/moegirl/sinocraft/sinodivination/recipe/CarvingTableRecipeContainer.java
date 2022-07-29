@@ -2,9 +2,11 @@ package games.moegirl.sinocraft.sinodivination.recipe;
 
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.Arrays;
+import java.util.function.Consumer;
 
 public class CarvingTableRecipeContainer implements Container {
 
@@ -15,6 +17,12 @@ public class CarvingTableRecipeContainer implements Container {
             new ItemStack[]{ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY}};
     private ItemStack output = ItemStack.EMPTY;
     private ItemStack dye = ItemStack.EMPTY;
+
+    private final AbstractContainerMenu menu;
+
+    public CarvingTableRecipeContainer(AbstractContainerMenu menu) {
+        this.menu = menu;
+    }
 
     @Override
     public int getContainerSize() {
@@ -119,6 +127,7 @@ public class CarvingTableRecipeContainer implements Container {
 
     @Override
     public void setChanged() {
+        menu.slotsChanged(this);
     }
 
     @Override
@@ -155,8 +164,16 @@ public class CarvingTableRecipeContainer implements Container {
         return inputs[row][column];
     }
 
-    public void setInput(int row, int column, ItemStack stack) {
-        inputs[row][column] = stack.copy();
-        setChanged();
+    public void forInputs(Consumer<ItemStack> consumer) {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (!inputs[i][j].isEmpty()) {
+                    consumer.accept(inputs[i][j]);
+                }
+            }
+        }
+        if (!dye.isEmpty()) {
+            consumer.accept(dye);
+        }
     }
 }

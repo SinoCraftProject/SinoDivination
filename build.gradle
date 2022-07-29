@@ -11,7 +11,7 @@ apply plugin: 'architectury-plugin'   // Parchment mappings.
 apply plugin: 'maven-publish'
 apply plugin: 'dev.architectury.loom'
 
-version = '1.18.2-1.0.1'
+version = '1.18.2-1.0.2'
 group = 'games.moegirl.sinocraft.sinodivination' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'sinodivination'
 
@@ -101,6 +101,7 @@ dependencies {
     modCompileOnly 'mezz.jei:jei-1.18.2:9.7.0.195:api'
     modRuntimeOnly 'mezz.jei:jei-1.18.2:9.7.0.195'
     modImplementation 'curse.maven:the-one-probe-245211:3671753'
+    modRuntimeOnly 'curse.maven:scannable-266784:3738448'
     modRuntimeOnly 'curse.maven:appleskin-248787:3686482'
 }
 

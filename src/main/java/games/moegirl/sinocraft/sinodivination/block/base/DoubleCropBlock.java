@@ -38,7 +38,7 @@ public abstract class DoubleCropBlock<T extends Item> extends DoublePlantBlock i
         this.minCropCount = minCropCount;
         this.maxCropCount = maxCropCount;
         registerDefaultState(defaultBlockState()
-                .setValue(HALF, DoubleBlockHalf.UPPER)
+                .setValue(HALF, DoubleBlockHalf.LOWER)
                 .setValue(getAgeProperty(), 0));
     }
 
