@@ -18,7 +18,7 @@ public class Niter extends Item {
     @Override
     public InteractionResult useOn(UseOnContext pContext) {
         Level level = pContext.getLevel();
-        BlockPos pos = pContext.getClickedPos();
+        BlockPos pos = pContext.getClickedPos().relative(pContext.getClickedFace());
         BlockState state = level.getBlockState(pos);
         ItemStack item = pContext.getItemInHand();
         if (state.is(Blocks.WATER) && state.getFluidState().isSource()) {

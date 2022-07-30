@@ -15,7 +15,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
-import org.jetbrains.annotations.Nullable;
 
 public class CarvingTable extends Block {
 
@@ -34,12 +33,12 @@ public class CarvingTable extends Block {
         return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
     }
 
-    @Nullable
     @Override
     public MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos) {
         return new SimpleMenuProvider((i, arg, arg2) -> {
             CarvingTableMenu menu = SDMenus.CARVING_TABLE.get().create(i, arg);
             menu.pos = pos;
+            menu.owner = arg2;
             return menu;
         }, TITLE);
     }

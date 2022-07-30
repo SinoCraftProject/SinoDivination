@@ -14,7 +14,7 @@ import net.minecraft.core.Vec3i;
 import net.minecraft.data.worldgen.features.OreFeatures;
 import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.data.worldgen.placement.OrePlacements;
-import net.minecraft.data.worldgen.placement.TreePlacements;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.biome.Biomes;
@@ -28,7 +28,10 @@ import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSi
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
-import net.minecraft.world.level.levelgen.placement.*;
+import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
+import net.minecraft.world.level.levelgen.placement.EnvironmentScanPlacement;
+import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.util.Lazy;
 import net.minecraftforge.registries.RegistryObject;
@@ -98,7 +101,7 @@ public class SDPlacedFeatures {
 
     public static final Lazy<TreeFeatureBuilder> COTINUS = Lazy.of(() -> new TreeFeatureBuilder()
             .fromConfiguration(TreeFeatures.OAK.value().config())
-            .fromModifier(TreePlacements.OAK_CHECKED.value())
+            .addModifier(PlacementUtils.filteredByBlockSurvival(SDTrees.COTINUS.sapling()))
             .minimumSize(new TwoLayersFeatureSize(1, 0, 1))
             .foliage(BlockStateProvider.simple(SDTrees.COTINUS.leaves()))
             .foliagePlacer(new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3))
@@ -107,7 +110,7 @@ public class SDPlacedFeatures {
 
     public static final Lazy<TreeFeatureBuilder> JUJUBE = Lazy.of(() -> new TreeFeatureBuilder()
             .fromConfiguration(TreeFeatures.OAK.value().config())
-            .fromModifier(TreePlacements.OAK_CHECKED.value())
+            .addModifier(PlacementUtils.filteredByBlockSurvival(SDTrees.JUJUBE.sapling()))
             .minimumSize(new TwoLayersFeatureSize(1, 0, 1))
             .foliage(BlockStateProvider.simple(SDTrees.JUJUBE.leaves()))
             .foliagePlacer(new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3))
@@ -116,7 +119,7 @@ public class SDPlacedFeatures {
 
     public static final Lazy<TreeFeatureBuilder> SOPHORA = Lazy.of(() -> new TreeFeatureBuilder()
             .fromConfiguration(TreeFeatures.OAK.value().config())
-            .fromModifier(TreePlacements.OAK_CHECKED.value())
+            .addModifier(PlacementUtils.filteredByBlockSurvival(SDTrees.SOPHORA.sapling()))
             .minimumSize(new TwoLayersFeatureSize(1, 0, 1))
             .foliage(BlockStateProvider.simple(SDTrees.SOPHORA.leaves()))
             .foliagePlacer(new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3))

@@ -1,6 +1,8 @@
 package games.moegirl.sinocraft.sinodivination.handler;
 
 import games.moegirl.sinocraft.sinodivination.block.SDBlocks;
+import games.moegirl.sinocraft.sinodivination.block.base.Crop;
+import games.moegirl.sinocraft.sinodivination.block.base.SimpleCropBlock;
 import games.moegirl.sinocraft.sinodivination.block.base.WoodenChest;
 import games.moegirl.sinocraft.sinodivination.blockentity.AltarEntity;
 import games.moegirl.sinocraft.sinodivination.blockentity.SDBlockEntities;
@@ -43,9 +45,10 @@ public class ClientRegisterEventHandler {
 
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
+
         SDBlocks.REGISTRY.getEntries().stream()
                 .map(Supplier::get)
-                .filter(b -> b instanceof CropBlock)
+                .filter(b -> b instanceof Crop<?>)
                 .forEach(b -> ItemBlockRenderTypes.setRenderLayer(b, RenderType.cutout()));
     }
 

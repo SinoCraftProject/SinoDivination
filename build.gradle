@@ -100,6 +100,7 @@ dependencies {
     modRuntimeOnly 'com.github.SinoCraftProject:SinoCore:main-SNAPSHOT'
     // qyl27: Remove JEI because it was inherited from SinoCore.
     modImplementation 'curse.maven:the-one-probe-245211:3671753'
+    modRuntimeOnly 'curse.maven:scannable-266784:3738448'
     modRuntimeOnly 'curse.maven:appleskin-248787:3686482'
 }
 

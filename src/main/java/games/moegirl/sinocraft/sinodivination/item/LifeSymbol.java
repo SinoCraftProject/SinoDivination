@@ -65,7 +65,7 @@ public class LifeSymbol extends Item {
                 .map(c -> new TranslatableComponent(SDLangKeys.SYMBOL_NAME).append(c))
                 .ifPresent(pTooltipComponents::add);
         getRecordEntityDate(pStack)
-                .map(d -> new TranslatableComponent(SDLangKeys.SYMBOL_DATE, d.toLocalDate().format(DATE_FORMATTER)))
+                .map(d -> new TranslatableComponent(SDLangKeys.SYMBOL_DATE).append(d.toLocalDate().format(DATE_FORMATTER)))
                 .ifPresent(pTooltipComponents::add);
     }
 

@@ -102,6 +102,7 @@ public class SDLanguageProviders extends LanguageProviderBase {
         SDWoodwork.SOPHORA.register().addLanguagesEn(en);
         SDWoodwork.SOPHORA.register().addLanguagesZh(zh, "槐");
         // single key
+        add(SDLangKeys.CARVING_TABLE_TITLE, "Carving Table", "雕刻台");
         add(SDLangKeys.SYMBOL_DATE, "Birthday", "生辰八字：");
         add(SDLangKeys.SYMBOL_NAME, "Name", "姓名：");
         add(SDLangKeys.SILKWORM_PLAGUE_TITLE, "Silkworm Plague", "蚕匾");
