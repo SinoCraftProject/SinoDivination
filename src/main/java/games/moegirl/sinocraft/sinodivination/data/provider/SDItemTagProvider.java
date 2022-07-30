@@ -6,7 +6,7 @@ import games.moegirl.sinocraft.sinodivination.block.base.WoodenChest;
 import games.moegirl.sinocraft.sinodivination.item.SDItems;
 import games.moegirl.sinocraft.sinodivination.tree.SDTrees;
 import games.moegirl.sinocraft.sinodivination.tree.SDWoodwork;
-import games.moegirl.sinocraft.sinodivination.util.SDTags;
+import games.moegirl.sinocraft.sinodivination.data.SDTags;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
@@ -33,6 +33,9 @@ public class SDItemTagProvider extends ItemTagsProvider {
         tag(SDTags.COPPER_SACRIFICIAL_UTENSIL).add(SDItems.COPPER_GOBLET.get(), SDItems.COPPER_DAGGER_AXE.get(), SDItems.COPPER_MIRROR.get(), SDItems.COPPER_MASK.get(), SDItems.COPPER_LAMP.get(), SDItems.COPPER_BEAST.get());
         tag(SDTags.SACRIFICIAL_UTENSIL_MATERIAL).add(SDItems.JADE.get()).addTag(Tags.Items.INGOTS_COPPER);
         tag(SDTags.SACRIFICIAL_UTENSIL).addTag(SDTags.COPPER_SACRIFICIAL_UTENSIL).addTag(SDTags.JADE_SACRIFICIAL_UTENSIL);
+
+        tag(SDTags.FORGE_DUSTS_SULFUR).add(SDItems.SULPHUR.get());
+        tag(SDTags.FORGE_DUSTS_NITER).add(SDItems.NITER.get());
     }
 
     protected <T extends WoodenChest> void chest(RegistryObject<T> chestObj) {

@@ -7,7 +7,7 @@ import games.moegirl.sinocraft.sinodivination.item.DivinationTab;
 import games.moegirl.sinocraft.sinodivination.item.SDItems;
 import games.moegirl.sinocraft.sinodivination.tree.SDTrees;
 import games.moegirl.sinocraft.sinodivination.tree.SDWoodwork;
-import games.moegirl.sinocraft.sinodivination.util.SDLangKeys;
+import games.moegirl.sinocraft.sinodivination.data.SDLangKeys;
 import games.moegirl.sinocraft.sinodivination.util.StringUtils;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.Item;

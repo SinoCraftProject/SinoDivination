@@ -5,7 +5,7 @@ import games.moegirl.sinocraft.sinocore.api.utility.texture.SlotsEntry;
 import games.moegirl.sinocraft.sinocore.api.utility.texture.TextureEntry;
 import games.moegirl.sinocraft.sinodivination.recipe.CarvingTableRecipe;
 import games.moegirl.sinocraft.sinodivination.recipe.SDRecipes;
-import games.moegirl.sinocraft.sinodivination.util.SDLangKeys;
+import games.moegirl.sinocraft.sinodivination.data.SDLangKeys;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;

@@ -1,4 +1,4 @@
-package games.moegirl.sinocraft.sinodivination.util;
+package games.moegirl.sinocraft.sinodivination.data;
 
 import games.moegirl.sinocraft.sinodivination.SinoDivination;
 import games.moegirl.sinocraft.sinodivination.block.SDBlocks;

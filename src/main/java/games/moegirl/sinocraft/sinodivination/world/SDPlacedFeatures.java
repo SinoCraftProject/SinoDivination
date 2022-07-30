@@ -7,7 +7,7 @@ import games.moegirl.sinocraft.sinocore.api.world.TreeFeatureBuilder;
 import games.moegirl.sinocraft.sinodivination.SinoDivination;
 import games.moegirl.sinocraft.sinodivination.block.SDBlocks;
 import games.moegirl.sinocraft.sinodivination.tree.SDTrees;
-import games.moegirl.sinocraft.sinodivination.util.SDTags;
+import games.moegirl.sinocraft.sinodivination.data.SDTags;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Vec3i;

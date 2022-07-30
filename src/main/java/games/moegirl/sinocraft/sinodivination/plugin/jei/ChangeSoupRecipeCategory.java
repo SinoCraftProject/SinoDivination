@@ -2,7 +2,7 @@ package games.moegirl.sinocraft.sinodivination.plugin.jei;
 
 import games.moegirl.sinocraft.sinodivination.recipe.ChangeSoupRecipe;
 import games.moegirl.sinocraft.sinodivination.recipe.SDRecipes;
-import games.moegirl.sinocraft.sinodivination.util.SDLangKeys;
+import games.moegirl.sinocraft.sinodivination.data.SDLangKeys;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;

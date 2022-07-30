@@ -3,7 +3,7 @@ package games.moegirl.sinocraft.sinodivination.block;
 import games.moegirl.sinocraft.sinocore.api.block.AbstractEntityBlock;
 import games.moegirl.sinocraft.sinodivination.blockentity.KettlePotEntity;
 import games.moegirl.sinocraft.sinodivination.blockentity.SDBlockEntities;
-import games.moegirl.sinocraft.sinodivination.util.SDTags;
+import games.moegirl.sinocraft.sinodivination.data.SDTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;

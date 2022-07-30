@@ -1,6 +1,6 @@
 package games.moegirl.sinocraft.sinodivination.entity;
 
-import games.moegirl.sinocraft.sinodivination.util.SDTags;
+import games.moegirl.sinocraft.sinodivination.data.SDTags;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;

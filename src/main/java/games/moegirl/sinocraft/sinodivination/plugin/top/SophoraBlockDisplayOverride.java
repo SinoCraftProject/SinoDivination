@@ -3,7 +3,7 @@ package games.moegirl.sinocraft.sinodivination.plugin.top;
 import games.moegirl.sinocraft.sinodivination.blockentity.ISophoraEntity;
 import games.moegirl.sinocraft.sinodivination.blockentity.SophoraChestEntity;
 import games.moegirl.sinocraft.sinodivination.blockentity.SophoraEntity;
-import games.moegirl.sinocraft.sinodivination.util.SDLangKeys;
+import games.moegirl.sinocraft.sinodivination.data.SDLangKeys;
 import mcjty.theoneprobe.api.IBlockDisplayOverride;
 import mcjty.theoneprobe.api.IProbeHitData;
 import mcjty.theoneprobe.api.IProbeInfo;

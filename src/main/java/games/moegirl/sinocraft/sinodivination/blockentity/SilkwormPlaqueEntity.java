@@ -2,7 +2,7 @@ package games.moegirl.sinocraft.sinodivination.blockentity;
 
 import games.moegirl.sinocraft.sinodivination.item.SDItems;
 import games.moegirl.sinocraft.sinodivination.menu.SilkwormPlaqueMenu;
-import games.moegirl.sinocraft.sinodivination.util.SDLangKeys;
+import games.moegirl.sinocraft.sinodivination.data.SDLangKeys;
 import games.moegirl.sinocraft.sinodivination.util.NbtUtils;
 import games.moegirl.sinocraft.sinodivination.util.container.ComposeItemHandler;
 import games.moegirl.sinocraft.sinodivination.util.container.InputOnlyContainer;

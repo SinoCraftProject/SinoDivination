@@ -2,7 +2,7 @@ package games.moegirl.sinocraft.sinodivination.block;
 
 import games.moegirl.sinocraft.sinodivination.menu.CarvingTableMenu;
 import games.moegirl.sinocraft.sinodivination.menu.SDMenus;
-import games.moegirl.sinocraft.sinodivination.util.SDLangKeys;
+import games.moegirl.sinocraft.sinodivination.data.SDLangKeys;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionHand;

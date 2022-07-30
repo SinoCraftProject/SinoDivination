@@ -4,7 +4,7 @@ import games.moegirl.sinocraft.sinocore.api.utility.OptionalTag;
 import games.moegirl.sinocraft.sinodivination.SinoDivination;
 import games.moegirl.sinocraft.sinodivination.blockentity.ICotinusEntity;
 import games.moegirl.sinocraft.sinodivination.blockentity.SophoraChestEntity;
-import games.moegirl.sinocraft.sinodivination.util.SDLangKeys;
+import games.moegirl.sinocraft.sinodivination.data.SDLangKeys;
 import games.moegirl.sinocraft.sinodivination.util.TagSerializers;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;

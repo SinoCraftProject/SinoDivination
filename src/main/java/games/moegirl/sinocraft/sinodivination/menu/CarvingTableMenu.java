@@ -4,7 +4,7 @@ import games.moegirl.sinocraft.sinocore.api.utility.texture.SlotStrategy;
 import games.moegirl.sinocraft.sinocore.api.utility.texture.TextureMap;
 import games.moegirl.sinocraft.sinodivination.SinoDivination;
 import games.moegirl.sinocraft.sinodivination.recipe.CarvingTableRecipeContainer;
-import games.moegirl.sinocraft.sinodivination.util.SDTags;
+import games.moegirl.sinocraft.sinodivination.data.SDTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;

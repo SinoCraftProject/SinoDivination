@@ -3,7 +3,7 @@ package games.moegirl.sinocraft.sinodivination.blockentity;
 import games.moegirl.sinocraft.sinocore.api.crafting.RecipeContainer;
 import games.moegirl.sinocraft.sinodivination.recipe.KettlePotRecipe;
 import games.moegirl.sinocraft.sinodivination.recipe.SDRecipes;
-import games.moegirl.sinocraft.sinodivination.util.SDTags;
+import games.moegirl.sinocraft.sinodivination.data.SDTags;
 import games.moegirl.sinocraft.sinodivination.util.container.ComposeItemHandler;
 import games.moegirl.sinocraft.sinodivination.util.container.InputOnlyContainer;
 import games.moegirl.sinocraft.sinodivination.util.container.OutputOnlyContainer;

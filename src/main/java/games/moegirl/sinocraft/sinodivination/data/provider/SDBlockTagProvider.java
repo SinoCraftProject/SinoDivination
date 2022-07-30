@@ -6,7 +6,7 @@ import games.moegirl.sinocraft.sinodivination.block.SDBlocks;
 import games.moegirl.sinocraft.sinodivination.block.base.WoodenChest;
 import games.moegirl.sinocraft.sinodivination.tree.SDTrees;
 import games.moegirl.sinocraft.sinodivination.tree.SDWoodwork;
-import games.moegirl.sinocraft.sinodivination.util.SDTags;
+import games.moegirl.sinocraft.sinodivination.data.SDTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
@@ -43,6 +43,9 @@ public class SDBlockTagProvider extends BlockTagsProviderBase {
         addPickaxe(SDBlocks.ORE_JADE.get(), SDBlocks.ORE_NITER.get(), SDBlocks.ORE_SULPHUR.get());
         addIronTool(SDBlocks.ORE_JADE.get());
         addStoneTool(SDBlocks.ORE_NITER.get(), SDBlocks.ORE_SULPHUR.get());
+
+        tag(SDTags.FORGE_ORES_SULFUR).add(SDBlocks.ORE_SULPHUR.get());
+        tag(SDTags.FORGE_ORES_NITER).add(SDBlocks.ORE_NITER.get());
     }
 
     protected <T extends WoodenChest> void chest(RegistryObject<T> chestObj) {
