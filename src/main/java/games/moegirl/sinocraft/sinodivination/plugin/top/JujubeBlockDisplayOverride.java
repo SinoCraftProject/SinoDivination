@@ -1,5 +1,6 @@
 package games.moegirl.sinocraft.sinodivination.plugin.top;
 
+import games.moegirl.sinocraft.sinocore.api.SinoCoreAPI;
 import games.moegirl.sinocraft.sinodivination.block.JujubeChest;
 import games.moegirl.sinocraft.sinodivination.block.SDBlocks;
 import games.moegirl.sinocraft.sinodivination.tree.SDWoodwork;
@@ -24,8 +25,8 @@ public enum JujubeBlockDisplayOverride implements IBlockDisplayOverride {
 
     @Override
     public boolean overrideStandardInfo(ProbeMode probeMode, IProbeInfo info, Player player, Level level, BlockState blockState, IProbeHitData data) {
-        Block block = blockState.getBlock();
-        if (probeMode == ProbeMode.DEBUG) {
+        if (SinoCoreAPI.DEBUG) {
+            Block block = blockState.getBlock();
             if (block == SDBlocks.JUJUBE_CHEST.get()) {
                 BlockPos pos = data.getPos();
                 info.text("Has Sign: " + level.hasNeighborSignal(pos));

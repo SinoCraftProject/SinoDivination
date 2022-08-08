@@ -1,5 +1,6 @@
 package games.moegirl.sinocraft.sinodivination.plugin.top;
 
+import games.moegirl.sinocraft.sinocore.api.SinoCoreAPI;
 import games.moegirl.sinocraft.sinodivination.blockentity.ISophoraEntity;
 import games.moegirl.sinocraft.sinodivination.blockentity.SophoraChestEntity;
 import games.moegirl.sinocraft.sinodivination.blockentity.SophoraEntity;
@@ -20,7 +21,7 @@ public enum SophoraBlockDisplayOverride implements IBlockDisplayOverride {
 
     @Override
     public boolean overrideStandardInfo(ProbeMode probeMode, IProbeInfo iProbeInfo, Player player, Level level, BlockState blockState, IProbeHitData iProbeHitData) {
-        if (level.getBlockEntity(iProbeHitData.getPos()) instanceof ISophoraEntity sophora) {
+        if (SinoCoreAPI.DEBUG && level.getBlockEntity(iProbeHitData.getPos()) instanceof ISophoraEntity sophora) {
             if (sophora instanceof SophoraEntity se) {
                 iProbeInfo.text(SDLangKeys.TOP_BLOCK_OWNER, TOPPlugins.getPlayerName(se.getEntity(), level));
             } else if (sophora instanceof SophoraChestEntity sce) {
