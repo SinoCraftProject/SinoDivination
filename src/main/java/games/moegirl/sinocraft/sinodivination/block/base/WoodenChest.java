@@ -21,14 +21,11 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import javax.annotation.Nullable;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Supplier;
@@ -37,7 +34,7 @@ import java.util.stream.Stream;
 public class WoodenChest extends ChestBlock implements ILootableBlock {
 
     private static final List<WoodenChest> CHESTS = new LinkedList<>();
-    private static final Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = LoggerFactory.getLogger(WoodenChest.class);
 
     public static Stream<WoodenChest> stream() {
         return CHESTS.stream();
@@ -50,8 +47,6 @@ public class WoodenChest extends ChestBlock implements ILootableBlock {
     public final RegistryObject<? extends WoodenChestItem> item;
 
     private final Supplier<? extends Block> planks;
-    @Nullable
-    private Object renderer = null;
 
     public WoodenChest(Woodwork woodwork, RegistryObject<BlockEntityType<? extends WoodenChestEntity>> entity,
                        RegistryObject<? extends WoodenChestItem> item) {
@@ -109,14 +104,6 @@ public class WoodenChest extends ChestBlock implements ILootableBlock {
 
     public Block planks() {
         return planks.get();
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public games.moegirl.sinocraft.sinodivination.client.WoodenChestRenderer renderer() {
-        if (renderer == null) {
-            renderer = new games.moegirl.sinocraft.sinodivination.client.WoodenChestRenderer(this);
-        }
-        return (games.moegirl.sinocraft.sinodivination.client.WoodenChestRenderer) renderer;
     }
 
     @Override

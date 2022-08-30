@@ -15,8 +15,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.properties.ChestType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.IItemRenderProperties;
 import net.minecraftforge.common.util.Lazy;
 
@@ -27,11 +25,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
 
-@OnlyIn(Dist.CLIENT)
 public class WoodenChestRenderer implements IItemRenderProperties {
 
     private static final Map<ResourceLocation, EnumMap<ChestType, Material>> NORMAL_MATERIALS = new HashMap<>();
     private static final Map<ResourceLocation, EnumMap<ChestType, Material>> TRAPPED_MATERIALS = new HashMap<>();
+    private static final Map<ResourceLocation, WoodenChestRenderer> RENDERERS = new HashMap<>();
 
     public final WoodenChest chest;
     private final BlockEntityWithoutLevelRenderer item;
@@ -50,7 +48,6 @@ public class WoodenChestRenderer implements IItemRenderProperties {
         return item;
     }
 
-    @OnlyIn(Dist.CLIENT)
     static class ItemRenderer extends BlockEntityWithoutLevelRenderer {
 
         private final Lazy<WoodenChestEntity> entity;
@@ -66,7 +63,6 @@ public class WoodenChestRenderer implements IItemRenderProperties {
         }
     }
 
-    @OnlyIn(Dist.CLIENT)
     static class BlockRenderer extends ChestRenderer<WoodenChestEntity> {
 
         private final boolean xmasTextures;
@@ -112,5 +108,9 @@ public class WoodenChestRenderer implements IItemRenderProperties {
         });
         NORMAL_MATERIALS.forEach((woodType, map) -> map.forEach((chestType, material) -> pMaterialConsumer.accept(material)));
         TRAPPED_MATERIALS.forEach((woodType, map) -> map.forEach((chestType, material) -> pMaterialConsumer.accept(material)));
+    }
+
+    public static WoodenChestRenderer get(WoodenChest chest) {
+        return RENDERERS.computeIfAbsent(chest.name, k -> new WoodenChestRenderer(chest));
     }
 }

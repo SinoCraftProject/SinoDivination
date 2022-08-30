@@ -2,23 +2,17 @@ package games.moegirl.sinocraft.sinodivination.handler;
 
 import games.moegirl.sinocraft.sinodivination.block.SDBlocks;
 import games.moegirl.sinocraft.sinodivination.block.base.Crop;
-import games.moegirl.sinocraft.sinodivination.block.base.SimpleCropBlock;
 import games.moegirl.sinocraft.sinodivination.block.base.WoodenChest;
 import games.moegirl.sinocraft.sinodivination.blockentity.AltarEntity;
 import games.moegirl.sinocraft.sinodivination.blockentity.SDBlockEntities;
-import games.moegirl.sinocraft.sinodivination.blockentity.TripodEntity;
 import games.moegirl.sinocraft.sinodivination.client.AltarRenderer;
 import games.moegirl.sinocraft.sinodivination.client.TripodRenderer;
-import games.moegirl.sinocraft.sinodivination.tree.SDTrees;
+import games.moegirl.sinocraft.sinodivination.client.WoodenChestRenderer;
 import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
-import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.Direction;
-import net.minecraft.world.level.block.CropBlock;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -30,7 +24,6 @@ import java.awt.*;
 import java.util.Map;
 import java.util.function.Supplier;
 
-@OnlyIn(Dist.CLIENT)
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ClientRegisterEventHandler {
 
@@ -70,6 +63,6 @@ public class ClientRegisterEventHandler {
 
     private static <T extends WoodenChest> void registerChestEntity(EntityRenderersEvent.RegisterRenderers event, RegistryObject<T> chestObj) {
         T chest = chestObj.get();
-        event.registerBlockEntityRenderer(chest.entity(), chest.renderer()::getBlockRenderer);
+        event.registerBlockEntityRenderer(chest.entity(), WoodenChestRenderer.get(chest)::getBlockRenderer);
     }
 }

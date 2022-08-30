@@ -14,15 +14,12 @@ import net.minecraft.core.Vec3i;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class TripodRenderer implements BlockEntityRenderer<TripodEntity> {
 
     private static final TextureMap TEXTURE = TextureMap.of(new ResourceLocation(SinoDivination.MOD_ID, "textures/in_world.png"));
 
-    private final BlockEntityRendererProvider.Context context;
+    public final BlockEntityRendererProvider.Context context;
 
     public TripodRenderer(BlockEntityRendererProvider.Context context) {
         this.context = context;
@@ -56,7 +53,7 @@ public class TripodRenderer implements BlockEntityRenderer<TripodEntity> {
     }
 
     private void renderFullyStructure(TripodEntity tripod, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay) {
-
+        // todo render
     }
 
     @Override

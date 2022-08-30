@@ -34,7 +34,7 @@ public class WoodenChestItem extends BlockItem {
 
     @Override
     public void initializeClient(Consumer<IItemRenderProperties> consumer) {
-        WoodenChest chest = chestHolder.get();
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> consumer.accept(chest.renderer()));
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () ->
+                consumer.accept(games.moegirl.sinocraft.sinodivination.client.WoodenChestRenderer.get(chestHolder.get())));
     }
 }

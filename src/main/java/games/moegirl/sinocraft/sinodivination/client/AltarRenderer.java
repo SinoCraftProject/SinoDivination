@@ -2,18 +2,14 @@ package games.moegirl.sinocraft.sinodivination.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import games.moegirl.sinocraft.sinodivination.blockentity.AltarEntity;
-import games.moegirl.sinocraft.sinodivination.blockentity.TripodEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class AltarRenderer implements BlockEntityRenderer<AltarEntity> {
 
-    private final BlockEntityRendererProvider.Context context;
+    public final BlockEntityRendererProvider.Context context;
 
     public AltarRenderer(BlockEntityRendererProvider.Context context) {
         this.context = context;
