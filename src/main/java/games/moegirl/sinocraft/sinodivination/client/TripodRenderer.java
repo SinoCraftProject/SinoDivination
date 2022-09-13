@@ -1,6 +1,7 @@
 package games.moegirl.sinocraft.sinodivination.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import games.moegirl.sinocraft.sinocore.api.client.screen.TextureMapClient;
 import games.moegirl.sinocraft.sinocore.api.utility.texture.Rect;
 import games.moegirl.sinocraft.sinocore.api.utility.texture.TextureMap;
 import games.moegirl.sinocraft.sinodivination.SinoDivination;
@@ -18,6 +19,7 @@ import net.minecraft.world.phys.Vec3;
 public class TripodRenderer implements BlockEntityRenderer<TripodEntity> {
 
     private static final TextureMap TEXTURE = TextureMap.of(new ResourceLocation(SinoDivination.MOD_ID, "textures/in_world.png"));
+    private static final TextureMapClient CLIENT = new TextureMapClient(TEXTURE);
 
     public final BlockEntityRendererProvider.Context context;
 
@@ -48,7 +50,7 @@ public class TripodRenderer implements BlockEntityRenderer<TripodEntity> {
         Vec3i normal = direction.getNormal();
         float x = (normal.getX() + 1) * 0.333f;
         float z = (normal.getZ() + 1) * 0.333f;
-        TEXTURE.blitTexture(bufferSource, poseStack, type.texture, true, Rect.xz(x, 1.01f, z, 0.333f, 0.333f), packedLight);
+        CLIENT.blitTexture(bufferSource, poseStack, type.texture, true, Rect.xz(x, 1.01f, z, 0.333f, 0.333f), packedLight);
         return false;
     }
 

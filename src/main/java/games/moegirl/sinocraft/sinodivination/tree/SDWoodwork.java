@@ -1,5 +1,6 @@
 package games.moegirl.sinocraft.sinodivination.tree;
 
+import games.moegirl.sinocraft.sinocore.api.client.WoodworkClientRegister;
 import games.moegirl.sinocraft.sinocore.api.woodwork.NetworkHolder;
 import games.moegirl.sinocraft.sinocore.api.woodwork.Woodwork;
 import games.moegirl.sinocraft.sinocore.api.woodwork.WoodworkManager;
@@ -9,7 +10,14 @@ import games.moegirl.sinocraft.sinodivination.blockentity.SDBlockEntities;
 import games.moegirl.sinocraft.sinodivination.item.DivinationTab;
 import games.moegirl.sinocraft.sinodivination.item.SDItems;
 import games.moegirl.sinocraft.sinodivination.network.SDNetworks;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
 public class SDWoodwork {
 
@@ -39,9 +47,15 @@ public class SDWoodwork {
             .customFenceGate((properties, __) -> new SophoraFenceGate(properties))
             .build(WOODWORK);
 
-    static void register(IEventBus bus) {
-        COTINUS.register().register(bus);
-        JUJUBE.register().register(bus);
-        SOPHORA.register().register(bus);
+    public static final List<Object> CLIENT = new ArrayList<>(WOODWORK.allNames().size());
+
+    public static void register(IEventBus bus) {
+        bus.addListener((Consumer<FMLClientSetupEvent>) event -> DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+            WOODWORK.forEach(woodwork -> {
+                WoodworkClientRegister register = new WoodworkClientRegister(woodwork);
+                CLIENT.add(register);
+                register.registerRender();
+            });
+        }));
     }
 }

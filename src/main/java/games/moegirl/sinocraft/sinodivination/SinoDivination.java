@@ -35,7 +35,6 @@ public class SinoDivination {
 
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        bus.addListener(this::onClientSetup);
         SDNetworks.register();
         SDBlocks.REGISTRY.register(bus);
         SDItems.REGISTRY.register(bus);
@@ -43,23 +42,12 @@ public class SinoDivination {
         SDPlacedFeatures.REGISTRY.register();
         SDEntities.REGISTRY.register(bus);
         SDTrees.register(bus);
+        SDWoodwork.register(bus);
         SDMenus.REGISTRY.register(bus);
         SDRecipes.REGISTRY.register(bus);
         SDScreens.register(bus);
         SDCommands.REGISTER.register();
 
         logger.info("Reverence for heaven and earth, respect ghosts and gods.");
-    }
-
-    public void onClientSetup(FMLClientSetupEvent event) {
-        event.enqueueWork(() -> {
-            SDWoodwork.JUJUBE.register().registerRender();
-            SDWoodwork.COTINUS.register().registerRender();
-            SDWoodwork.SOPHORA.register().registerRender();
-
-            SDTrees.JUJUBE.register().registerRenderType();
-            SDTrees.COTINUS.register().registerRenderType();
-            SDTrees.SOPHORA.register().registerRenderType();
-        });
     }
 }

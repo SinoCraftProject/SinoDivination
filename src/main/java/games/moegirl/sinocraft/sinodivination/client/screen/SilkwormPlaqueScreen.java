@@ -1,6 +1,7 @@
 package games.moegirl.sinocraft.sinodivination.client.screen;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import games.moegirl.sinocraft.sinocore.api.client.screen.TextureMapClient;
 import games.moegirl.sinocraft.sinodivination.blockentity.SilkwormPlaqueEntity;
 import games.moegirl.sinocraft.sinodivination.menu.SilkwormPlaqueMenu;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -10,6 +11,8 @@ import net.minecraft.world.entity.player.Inventory;
 import static games.moegirl.sinocraft.sinodivination.menu.SilkwormPlaqueMenu.TEXTURE;
 
 public class SilkwormPlaqueScreen extends AbstractContainerScreen<SilkwormPlaqueMenu> {
+
+    private static final TextureMapClient CLIENT = new TextureMapClient(TEXTURE);
 
     public SilkwormPlaqueScreen(SilkwormPlaqueMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
@@ -26,10 +29,10 @@ public class SilkwormPlaqueScreen extends AbstractContainerScreen<SilkwormPlaque
 
     @Override
     protected void renderBg(PoseStack pPoseStack, float pPartialTick, int pMouseX, int pMouseY) {
-        TEXTURE.blitTexture(pPoseStack, "background", this);
+        CLIENT.blitTexture(pPoseStack, "background", this);
         SilkwormPlaqueEntity entity = menu.entity();
         for (int i = 0; i < SilkwormPlaqueEntity.SILKWORM_COUNT; i++) {
-            TEXTURE.blitProgress(pPoseStack, "progress" + i, this, entity.silkworm(i).progress());
+            CLIENT.blitProgress(pPoseStack, "progress" + i, this, entity.silkworm(i).progress());
         }
     }
 }

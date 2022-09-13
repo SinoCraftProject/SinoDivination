@@ -1,5 +1,6 @@
 package games.moegirl.sinocraft.sinodivination.handler;
 
+import games.moegirl.sinocraft.sinocore.api.client.WoodworkClientRegister;
 import games.moegirl.sinocraft.sinodivination.block.SDBlocks;
 import games.moegirl.sinocraft.sinodivination.block.base.Crop;
 import games.moegirl.sinocraft.sinodivination.block.base.WoodenChest;
@@ -8,6 +9,7 @@ import games.moegirl.sinocraft.sinodivination.blockentity.SDBlockEntities;
 import games.moegirl.sinocraft.sinodivination.client.AltarRenderer;
 import games.moegirl.sinocraft.sinodivination.client.TripodRenderer;
 import games.moegirl.sinocraft.sinodivination.client.WoodenChestRenderer;
+import games.moegirl.sinocraft.sinodivination.tree.SDWoodwork;
 import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -34,6 +36,10 @@ public class ClientRegisterEventHandler {
         registerChestEntity(event, SDBlocks.SOPHORA_CHEST);
         event.registerBlockEntityRenderer(SDBlockEntities.TRIPOD.get(), TripodRenderer::new);
         event.registerBlockEntityRenderer(SDBlockEntities.ALTAR.get(), AltarRenderer::new);
+        for (Object o : SDWoodwork.CLIENT) {
+            WoodworkClientRegister register = (WoodworkClientRegister) o;
+            register.registerRenderer(event);
+        }
     }
 
     @SubscribeEvent

@@ -6,6 +6,11 @@ import games.moegirl.sinocraft.sinodivination.block.KettlePot;
 import games.moegirl.sinocraft.sinodivination.block.SDBlocks;
 import games.moegirl.sinocraft.sinodivination.block.base.WoodenChest;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.BlockAndTintGetter;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -13,6 +18,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.Optional;
 
 import static games.moegirl.sinocraft.sinodivination.tree.SDWoodwork.COTINUS;
 import static games.moegirl.sinocraft.sinodivination.tree.SDWoodwork.SOPHORA;
@@ -42,6 +49,18 @@ public class SDBlockEntities {
     public static final RegistryObject<BlockEntityType<AltarEntity>> ALTAR = simple(AltarEntity::new, SDBlocks.ALTAR);
 
     public static final RegistryObject<BlockEntityType<KettlePotEntity>> KETTLE_POT = simple(KettlePotEntity::new, SDBlocks.KETTLE_POT);
+
+    // =================================================================================================================
+
+    public static Optional<KettlePotEntity> getKettlePot(LevelReader level, BlockPos pos) {
+        return getEntity(level, pos, KETTLE_POT);
+    }
+
+    public static <T extends BlockEntity> Optional<T> getEntity(LevelReader level, BlockPos pos,
+                                                                RegistryObject<BlockEntityType<T>> type) {
+        if (level.isClientSide() || level.isAreaLoaded(pos, 1)) return Optional.empty();
+        return level.getBlockEntity(pos, type.get());
+    }
 
     // =================================================================================================================
 
