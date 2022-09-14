@@ -36,7 +36,7 @@ public class SDBlockTagProvider extends BlockTagsProviderBase {
         add(SDTags.SOPHORA_BLOCK, SDTrees.SOPHORA.allBlocks());
         add(SDTags.SOPHORA_BLOCK, SDWoodwork.SOPHORA.allBlocks());
         add(SDTags.SOPHORA_BLOCK, SDBlocks.SOPHORA_CHEST.get());
-        tag(SDTags.HEAT_SOURCE).addTag(BlockTags.FIRE);
+        tag(SDTags.HEAT_SOURCE).addTag(BlockTags.FIRE).addTag(BlockTags.CAMPFIRES);
         add(SDTags.HEAT_SOURCE, Blocks.LAVA, Blocks.TORCH, Blocks.REDSTONE_TORCH, Blocks.SOUL_TORCH);
         tag(SDTags.FIRE_SOURCE).addTag(BlockTags.FIRE).addTag(BlockTags.CAMPFIRES);
         tag(SDTags.SPAWN_DRAGONLIVER_MELON).addTag(Tags.Blocks.GRAVEL).addTag(BlockTags.DIRT);

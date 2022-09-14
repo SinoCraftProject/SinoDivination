@@ -105,9 +105,9 @@ public abstract class RecipeProcessor<E extends BlockEntity, C extends Container
                 if (cooldown <= 0) {
                     progress += getProcessStep();
                     if (progress >= 100) {
+                        assert recipe != null;
+                        recipeFinished(recipe);
                         if (hasRemainItems()) {
-                            assert recipe != null;
-                            recipeFinished(recipe);
                             setStatus(Status.BLOCKING);
                         } else {
                             setStatus(Status.IDLE);

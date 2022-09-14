@@ -17,6 +17,7 @@ public class TOPPlugins implements Function<ITheOneProbe, Void> {
         api.registerBlockDisplayOverride(CotinusBlockDisplayOverride.INSTANCE);
         api.registerBlockDisplayOverride(JujubeBlockDisplayOverride.INSTANCE);
         api.registerBlockDisplayOverride(SophoraBlockDisplayOverride.INSTANCE);
+        api.registerBlockDisplayOverride(KettlePotDisplayOverride.INSTANCE);
         return null;
     }
 

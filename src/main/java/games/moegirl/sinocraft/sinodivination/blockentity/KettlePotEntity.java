@@ -83,6 +83,10 @@ public class KettlePotEntity extends BlockEntity implements BlockEntityTicker<Ke
         processor.run();
     }
 
+    public KettlePotProcessor getProcessor() {
+        return processor;
+    }
+
     public Optional<ItemStack> takeResult(ItemStack container) {
         return processor.takeItem(container);
     }

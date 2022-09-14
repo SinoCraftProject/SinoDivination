@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "#minecraft:fire",
+    "#minecraft:campfires",
     "minecraft:lava",
     "minecraft:torch",
     "minecraft:redstone_torch",

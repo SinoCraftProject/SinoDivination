@@ -84,7 +84,7 @@ public class KettlePotProcessor extends RecipeProcessor<KettlePotEntity, RecipeC
     @Override
     protected void recipeFinished(KettlePotRecipe recipe) {
         container = recipe.getContainer();
-        result = recipe.getResultItem();
+        result = recipe.getResultItem().copy();
     }
 
     @Override
@@ -95,6 +95,10 @@ public class KettlePotProcessor extends RecipeProcessor<KettlePotEntity, RecipeC
     @Override
     protected int getProcessStep() {
         return 5;
+    }
+
+    public ItemStack getResult() {
+        return result;
     }
 
     public Optional<ItemStack> takeItem(ItemStack container) {

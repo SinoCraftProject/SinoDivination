@@ -2,14 +2,9 @@ package games.moegirl.sinocraft.sinodivination.blockentity;
 
 import com.mojang.datafixers.util.Function3;
 import games.moegirl.sinocraft.sinodivination.SinoDivination;
-import games.moegirl.sinocraft.sinodivination.block.KettlePot;
 import games.moegirl.sinocraft.sinodivination.block.SDBlocks;
 import games.moegirl.sinocraft.sinodivination.block.base.WoodenChest;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.BlockAndTintGetter;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -58,7 +53,7 @@ public class SDBlockEntities {
 
     public static <T extends BlockEntity> Optional<T> getEntity(LevelReader level, BlockPos pos,
                                                                 RegistryObject<BlockEntityType<T>> type) {
-        if (level.isClientSide() || level.isAreaLoaded(pos, 1)) return Optional.empty();
+        if (level.isClientSide() || !level.isAreaLoaded(pos, 1)) return Optional.empty();
         return level.getBlockEntity(pos, type.get());
     }
 
