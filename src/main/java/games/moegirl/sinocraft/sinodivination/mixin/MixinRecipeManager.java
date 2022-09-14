@@ -109,9 +109,9 @@ public abstract class MixinRecipeManager {
 
         Iterator<Map.Entry<ResourceLocation, Recipe<?>>> iterator = smelting.entrySet().iterator();
         int count = 0;
+        var blastingRecipePairs = blasting.values().stream()
+                .map(r -> Pair.of(r, r.getIngredients().get(0).getItems())).toList();
         while (iterator.hasNext()) {
-            var blastingRecipePairs = blasting.values().stream()
-                    .map(r -> Pair.of(r, r.getIngredients().get(0).getItems())).toList();
             Map.Entry<ResourceLocation, Recipe<?>> next = iterator.next();
             ResourceLocation id = next.getKey();
             Recipe<?> recipe = next.getValue();
