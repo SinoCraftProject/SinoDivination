@@ -5,6 +5,7 @@ import games.moegirl.sinocraft.sinocore.api.crafting.RecipeContainer;
 import games.moegirl.sinocraft.sinocore.api.crafting.SimpleRecipe;
 import games.moegirl.sinocraft.sinocore.api.crafting.ingredient.FluidIngredient;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import net.minecraft.core.NonNullList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -40,6 +41,11 @@ public class KettlePotRecipe extends SimpleRecipe<RecipeContainer, KettlePotReci
     }
 
     @Override
+    public NonNullList<Ingredient> getIngredients() {
+        return NonNullList.of(inputs[0].ingredient, inputs[1].ingredient, inputs[2].ingredient);
+    }
+
+    @Override
     public boolean matches(RecipeContainer pContainer, Level pLevel) {
         return fluid.test(pContainer.getFluid(0)) && CraftHelper.matchShapeless(pContainer, inputs, IngredientEntry::test) != null;
     }
@@ -55,6 +61,10 @@ public class KettlePotRecipe extends SimpleRecipe<RecipeContainer, KettlePotReci
 
     public FluidIngredient getFluid() {
         return fluid;
+    }
+
+    public IngredientEntry getInput(int i) {
+        return inputs[i];
     }
 
     public record IngredientEntry(int count, Ingredient ingredient) {

@@ -108,6 +108,7 @@ public class SDLanguageProviders extends LanguageProviderBase {
         add(SDLangKeys.SILKWORM_PLAGUE_TITLE, "Silkworm Plague", "蚕匾");
         add(SDLangKeys.JEI_RECIPE_CHANGE_SOUP, "Change Soup", "变荑汤");
         add(SDLangKeys.JEI_RECIPE_CARVING_TABLE, "Carving Table", "雕刻台");
+        add(SDLangKeys.JEI_RECIPE_KETTLE_POT, "Kettle Pot", "釜锅");
         add(SDLangKeys.TOP_BIRTHDAY, "Birthday(%s): %s", "生辰八字(%s): %s");
         add(SDLangKeys.TOP_BIRTHDAY_NO, "Birthday: No Record", "生辰八字：无记录");
         add(SDLangKeys.TOP_BLOCK_OWNER, "Owner: %s", "所有者: %s");

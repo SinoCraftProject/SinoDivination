@@ -20,6 +20,7 @@ public class SDLangKeys {
 
     public static final String JEI_RECIPE_CHANGE_SOUP = buildTranslationKey("jei", SDRecipes.CHANGE_SOUP.name().getPath(), "recipe");
     public static final String JEI_RECIPE_CARVING_TABLE = buildTranslationKey("jei", SDRecipes.CARVING_TABLE.name().getPath(), "recipe");
+    public static final String JEI_RECIPE_KETTLE_POT = buildTranslationKey("jei", SDRecipes.KETTLE_POT.name().getPath(), "recipe");
 
     public static final String TOP_BLOCK_OWNER = buildTranslationKey("top", "block", "owner");
     public static final String TOP_BLOCK_ALLOWED = buildTranslationKey("top", "block", "allowed");

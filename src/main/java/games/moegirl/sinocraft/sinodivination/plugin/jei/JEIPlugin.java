@@ -6,6 +6,7 @@ import games.moegirl.sinocraft.sinodivination.block.SDBlocks;
 import games.moegirl.sinocraft.sinodivination.item.SDItems;
 import games.moegirl.sinocraft.sinodivination.recipe.CarvingTableRecipe;
 import games.moegirl.sinocraft.sinodivination.recipe.ChangeSoupRecipe;
+import games.moegirl.sinocraft.sinodivination.recipe.KettlePotRecipe;
 import games.moegirl.sinocraft.sinodivination.recipe.SDRecipes;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -31,6 +32,7 @@ public class JEIPlugin implements IModPlugin {
 
     public static final RecipeType<ChangeSoupRecipe> CHANGE_SOUP = newRecipeType(SDRecipes.CHANGE_SOUP);
     public static final RecipeType<CarvingTableRecipe> CARVING_TABLE = newRecipeType(SDRecipes.CARVING_TABLE);
+    public static final RecipeType<KettlePotRecipe> KETTLE_POT = newRecipeType(SDRecipes.KETTLE_POT);
 
     @Override
     public void registerIngredients(IModIngredientRegistration registration) {
@@ -45,6 +47,7 @@ public class JEIPlugin implements IModPlugin {
     public void registerCategories(IRecipeCategoryRegistration registration) {
         registration.addRecipeCategories(new ChangeSoupRecipeCategory(registration));
         registration.addRecipeCategories(new CarvingTableRecipeCategory(registration));
+        registration.addRecipeCategories(new KettlePotRecipeCategory(registration));
     }
 
     @Override
@@ -52,12 +55,14 @@ public class JEIPlugin implements IModPlugin {
         Level level = net.minecraft.client.Minecraft.getInstance().level;
         registration.addRecipes(CHANGE_SOUP, getRecipes(level, SDRecipes.CHANGE_SOUP));
         registration.addRecipes(CARVING_TABLE, getRecipes(level, SDRecipes.CARVING_TABLE));
+        registration.addRecipes(KETTLE_POT, getRecipes(level, SDRecipes.KETTLE_POT));
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(new ItemStack(SDItems.CHANGE_SOUP.get()), CHANGE_SOUP);
         registration.addRecipeCatalyst(new ItemStack(SDBlocks.CARVING_TABLE.get()), CARVING_TABLE);
+        registration.addRecipeCatalyst(new ItemStack(SDBlocks.KETTLE_POT.get()), KETTLE_POT);
     }
 
     private static <C extends Container, T extends Recipe<C>> RecipeType<T> newRecipeType(RecipeHolder<?, T, ?> type) {

@@ -3,9 +3,9 @@ package games.moegirl.sinocraft.sinodivination.plugin.jei;
 import games.moegirl.sinocraft.sinocore.api.utility.texture.SlotEntry;
 import games.moegirl.sinocraft.sinocore.api.utility.texture.SlotsEntry;
 import games.moegirl.sinocraft.sinocore.api.utility.texture.TextureEntry;
+import games.moegirl.sinocraft.sinodivination.data.SDLangKeys;
 import games.moegirl.sinocraft.sinodivination.recipe.CarvingTableRecipe;
 import games.moegirl.sinocraft.sinodivination.recipe.SDRecipes;
-import games.moegirl.sinocraft.sinodivination.data.SDLangKeys;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -13,10 +13,7 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-
-import java.util.Arrays;
 
 import static games.moegirl.sinocraft.sinodivination.menu.CarvingTableMenu.TEXTURE;
 
@@ -44,20 +41,13 @@ public class CarvingTableRecipeCategory extends AbstractRecipeCategory<CarvingTa
                 if (input.isEmpty()) continue;
                 int idx = row * 4 + column;
                 SlotEntry entry = INPUTS.entries().get(idx);
-                addSlot(builder, RecipeIngredientRole.INPUT, entry, input);
+                builder.addSlot(RecipeIngredientRole.INPUT, entry.x() - JEI.x(), entry.y() - JEI.y()).addIngredients(input);
             }
         }
         if (!recipe.getDye().isEmpty()) {
-            addSlot(builder, RecipeIngredientRole.INPUT, DYE, recipe.getDye());
+            builder.addSlot(RecipeIngredientRole.INPUT, DYE.x() - JEI.x(), DYE.y() - JEI.y()).addIngredients(recipe.getDye());
         }
-        addSlot(builder, RecipeIngredientRole.OUTPUT, OUTPUT, recipe.getResultItem());
-    }
-
-    private void addSlot(IRecipeLayoutBuilder builder, RecipeIngredientRole role, SlotEntry slot, Ingredient item) {
-        builder.addSlot(role, slot.x() - JEI.x(), slot.y() - JEI.y()).addIngredients(VanillaTypes.ITEM_STACK, Arrays.asList(item.getItems()));
-    }
-
-    private void addSlot(IRecipeLayoutBuilder builder, RecipeIngredientRole role, SlotEntry slot, ItemStack item) {
-        builder.addSlot(role, slot.x() - JEI.x(), slot.y() - JEI.y()).addIngredient(VanillaTypes.ITEM_STACK, item);
+        builder.addSlot(RecipeIngredientRole.OUTPUT, CarvingTableRecipeCategory.OUTPUT.x() - JEI.x(), CarvingTableRecipeCategory.OUTPUT.y() - JEI.y())
+                .addIngredient(VanillaTypes.ITEM_STACK, recipe.getResultItem());
     }
 }
