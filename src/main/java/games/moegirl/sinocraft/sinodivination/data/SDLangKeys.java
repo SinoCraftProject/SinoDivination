@@ -27,7 +27,7 @@ public class SDLangKeys {
     public static final String TOP_BIRTHDAY_NO = buildTranslationKey("top", "birthday", "no");
 
     public static String buildTranslationKey(String type, String key) {
-        String k = SinoDivination.MOD_ID + "." + type + "." + key;
+        String k = SinoDivination.MODID + "." + type + "." + key;
         TRANSLATION_KEYS.add(k);
         return k;
     }

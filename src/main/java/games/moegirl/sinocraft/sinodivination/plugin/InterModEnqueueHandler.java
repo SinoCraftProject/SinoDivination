@@ -10,7 +10,7 @@ import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 
 import java.util.function.Supplier;
 
-@Mod.EventBusSubscriber(modid = SinoDivination.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = SinoDivination.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class InterModEnqueueHandler {
 
     @SubscribeEvent

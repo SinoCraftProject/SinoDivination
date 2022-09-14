@@ -16,7 +16,7 @@ import java.util.function.Supplier;
 
 public class SDItems {
 
-    public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, SinoDivination.MOD_ID);
+    public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, SinoDivination.MODID);
 
     public static final RegistryObject<BlockItem> ORE_JADE = block(SDBlocks.ORE_JADE);
 

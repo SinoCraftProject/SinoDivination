@@ -12,7 +12,7 @@ public class DivinationTab extends CreativeModeTab {
     public static final DivinationTab INSTANCE = new DivinationTab();
 
     DivinationTab() {
-        super(SinoDivination.MOD_ID);
+        super(SinoDivination.MODID);
     }
 
     @Override

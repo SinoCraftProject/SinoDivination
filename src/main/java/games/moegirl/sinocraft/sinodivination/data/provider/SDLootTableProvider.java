@@ -12,7 +12,7 @@ import net.minecraft.data.DataGenerator;
 public class SDLootTableProvider extends LootTableProviderBase {
 
     public SDLootTableProvider(DataGenerator pGenerator) {
-        super(pGenerator, SinoDivination.MOD_ID, SDBlocks.REGISTRY);
+        super(pGenerator, SinoDivination.MODID, SDBlocks.REGISTRY);
     }
 
     @Override

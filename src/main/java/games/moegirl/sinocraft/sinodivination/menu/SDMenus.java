@@ -10,7 +10,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class SDMenus {
 
-    public static final DeferredRegister<MenuType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.CONTAINERS, SinoDivination.MOD_ID);
+    public static final DeferredRegister<MenuType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.CONTAINERS, SinoDivination.MODID);
 
     public static final RegistryObject<MenuType<SilkwormPlaqueMenu>> SILKWORM_PLAQUE = simple(SilkwormPlaqueMenu.class, SilkwormPlaqueMenu::new);
 

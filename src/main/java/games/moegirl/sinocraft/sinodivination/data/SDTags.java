@@ -40,10 +40,10 @@ public class SDTags {
     // =================================================================================================================
 
     public static TagKey<Block> block(String name) {
-        return TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(SinoDivination.MOD_ID, name));
+        return TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(SinoDivination.MODID, name));
     }
 
     public static TagKey<Item> item(String name) {
-        return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(SinoDivination.MOD_ID, name));
+        return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(SinoDivination.MODID, name));
     }
 }

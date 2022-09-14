@@ -107,22 +107,22 @@ public abstract class OwnerChecker {
 
     public void save(CompoundTag tag) {
         if (owner != null) {
-            tag.putUUID(SinoDivination.MOD_ID + ".owner", owner);
+            tag.putUUID(SinoDivination.MODID + ".owner", owner);
         }
         if (!allowed.isEmpty()) {
             ListTag list = new ListTag();
             allowed.stream().map(NbtUtils::createUUID).forEach(list::add);
-            tag.put(SinoDivination.MOD_ID + ".allowed", list);
+            tag.put(SinoDivination.MODID + ".allowed", list);
         }
     }
 
     public void load(CompoundTag tag) {
-        if (tag.hasUUID(SinoDivination.MOD_ID + ".owner")) {
-            owner = tag.getUUID(SinoDivination.MOD_ID + ".owner");
+        if (tag.hasUUID(SinoDivination.MODID + ".owner")) {
+            owner = tag.getUUID(SinoDivination.MODID + ".owner");
         }
-        if (tag.contains(SinoDivination.MOD_ID + ".allowed", Tag.TAG_LIST)) {
+        if (tag.contains(SinoDivination.MODID + ".allowed", Tag.TAG_LIST)) {
             allowed.clear();
-            tag.getList(SinoDivination.MOD_ID + ".allowed", Tag.TAG_INT_ARRAY).stream()
+            tag.getList(SinoDivination.MODID + ".allowed", Tag.TAG_INT_ARRAY).stream()
                     .map(NbtUtils::loadUUID)
                     .forEach(allowed::add);
         }

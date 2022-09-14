@@ -50,14 +50,14 @@ public class SophoraEntity extends BlockEntity implements ISophoraEntity {
     @Override
     public void load(CompoundTag pTag) {
         super.load(pTag);
-        entity = pTag.hasUUID(SinoDivination.MOD_ID + ".record") ? pTag.getUUID(SinoDivination.MOD_ID + ".record") : null;
+        entity = pTag.hasUUID(SinoDivination.MODID + ".record") ? pTag.getUUID(SinoDivination.MODID + ".record") : null;
     }
 
     @Override
     protected void saveAdditional(CompoundTag pTag) {
         super.saveAdditional(pTag);
         if (entity != null) {
-            pTag.putUUID(SinoDivination.MOD_ID + ".record", entity);
+            pTag.putUUID(SinoDivination.MODID + ".record", entity);
         }
     }
 

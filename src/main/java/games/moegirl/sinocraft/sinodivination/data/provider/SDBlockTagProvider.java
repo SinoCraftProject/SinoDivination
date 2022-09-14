@@ -16,7 +16,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class SDBlockTagProvider extends BlockTagsProviderBase {
 
     public SDBlockTagProvider(GatherDataEvent event) {
-        super(event.getGenerator(), SinoDivination.MOD_ID, event.getExistingFileHelper());
+        super(event.getGenerator(), SinoDivination.MODID, event.getExistingFileHelper());
     }
 
     @Override

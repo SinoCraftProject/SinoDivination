@@ -26,14 +26,14 @@ public class SophoraDoorEntity extends SophoraEntity {
     protected void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);
         if (isAbove) {
-            tag.putBoolean(SinoDivination.MOD_ID + ".above", true);
+            tag.putBoolean(SinoDivination.MODID + ".above", true);
         }
     }
 
     @Override
     public void load(CompoundTag tag) {
         super.load(tag);
-        if (tag.getBoolean(SinoDivination.MOD_ID + ".above")) {
+        if (tag.getBoolean(SinoDivination.MODID + ".above")) {
             isAbove = true;
         }
     }

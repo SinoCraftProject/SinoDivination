@@ -21,7 +21,7 @@ import java.util.function.Consumer;
 
 public class SDWoodwork {
 
-    public static final WoodworkManager WOODWORK = new WoodworkManager(SinoDivination.MOD_ID,
+    public static final WoodworkManager WOODWORK = new WoodworkManager(SinoDivination.MODID,
             SDItems.REGISTRY, SDBlocks.REGISTRY,
             SDBlockEntities.REGISTRY, NetworkHolder.simple(SDNetworks.CHANNEL, SDNetworks.ID));
 

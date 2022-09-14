@@ -14,24 +14,20 @@ import games.moegirl.sinocraft.sinodivination.tree.SDWoodwork;
 import games.moegirl.sinocraft.sinodivination.world.SDPlacedFeatures;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Mod("sinodivination")
+@Mod(SinoDivination.MODID)
 public class SinoDivination {
-
-    public static final String MOD_ID = "sinodivination";
+    public static final String MODID = "sinodivination";
     public static final String NAME = "SinoDivination";
-    public static final String MOD_VERSION = "1.0.2";
-    public static final String MC_VERSION = "1.18.1";
-    public static final String VERSION = MC_VERSION + "-" + MOD_VERSION;
+    public static final String VERSION = "@version@";
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(NAME);
 
     public SinoDivination() {
-        Logger logger = LoggerFactory.getLogger(NAME);
-
-        logger.info("Loading SinoDivination. Ver: " + VERSION);
+        LOGGER.info("Loading SinoDivination. Ver: " + VERSION);
 
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
@@ -48,6 +44,6 @@ public class SinoDivination {
         SDScreens.register(bus);
         SDCommands.REGISTER.register();
 
-        logger.info("Reverence for heaven and earth, respect ghosts and gods.");
+        LOGGER.info("Reverence for heaven and earth, respect ghosts and gods.");
     }
 }

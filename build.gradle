@@ -11,14 +11,31 @@ apply plugin: 'architectury-plugin'   // Parchment mappings.
 apply plugin: 'maven-publish'
 apply plugin: 'dev.architectury.loom'
 
-version = '1.18.2-1.0.2'
 group = 'games.moegirl.sinocraft.sinodivination' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'sinodivination'
+
+version = '1.18.2-2.0.0'
+// qyl27: for developing and release.
+if (System.getenv("JITPACK") == "true") {
+    version += "-${System.getenv("GIT_BRANCH")}"
+    version += "-${System.getenv("GIT_COMMIT")}"
+}
+
+var release = false
+if (release || project.hasProperty("SINOSERIES_RELEASE")) {
+    version += '-release'
+} else {
+    version += '-dev'
+}
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
-println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
+println('Java: ' + System.getProperty('java.version') +
+        ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ')' +
+        ' Arch: ' + System.getProperty('os.arch'))
+
+println("Building SinoDivination. Ver: $version.")
 
 architectury {
     platformSetupLoomIde()
@@ -42,17 +59,7 @@ loom {
     }
 }
 
-sourceSets.main.resources { srcDir 'src/generated/resources' }
-
 repositories {
-    // Put repositories for dependencies here
-    // ForgeGradle automatically adds the Forge maven and Maven Central for you
-
-    // If you have mod jar dependencies in ./libs, you can declare them as a repository like so:
-    // flatDir {
-    //     dir 'libs'
-    // }
-
     maven {
         name = 'ParchmentMC'
         url = 'https://maven.parchmentmc.org'
@@ -92,12 +99,8 @@ dependencies {
         parchment("org.parchmentmc.data:parchment-1.18.2:2022.05.22@zip")
     }
 
-    // For more info...
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
-
-    modCompileOnly 'com.github.SinoCraftProject:SinoCore:main-SNAPSHOT:api'
-    modRuntimeOnly 'com.github.SinoCraftProject:SinoCore:main-SNAPSHOT'
+    modCompileOnly 'com.github.SinoCraftProject:SinoCore:dev-SNAPSHOT:api'
+    modRuntimeOnly 'com.github.SinoCraftProject:SinoCore:dev-SNAPSHOT'
     // qyl27: Remove JEI because it was inherited from SinoCore.
     modImplementation 'curse.maven:the-one-probe-245211:3671753'
     modRuntimeOnly 'curse.maven:scannable-266784:3738448'
@@ -120,8 +123,11 @@ jar {
     }
 }
 
-// Why????
-tasks['processResources'].configure {
+sourceSets.main.resources {
+    srcDir 'src/generated/resources'
+}
+
+processResources {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
@@ -137,3 +143,17 @@ publishing {
         }
     }
 }
+
+import org.apache.tools.ant.filters.ReplaceTokens
+
+task injectString(type: Copy) {
+    from ('src/main/java') {
+        include '**/*.java'
+        filter(ReplaceTokens, tokens: [version: project.version])
+    }
+    into "${buildDir}/generated/java"
+}
+
+// qyl27: It only works with main.
+compileJava.source = "${buildDir}/generated/java"
+compileJava.dependsOn injectString

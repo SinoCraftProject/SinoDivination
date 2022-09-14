@@ -24,6 +24,6 @@ public class RegisterEventHandler {
 
     @SubscribeEvent
     public static void onBlockRegister(RegistryEvent.Register<Block> event) {
-        P = Registry.register(Registry.PLACEMENT_MODIFIERS, new ResourceLocation(SinoDivination.MOD_ID, "sino_string"), () -> DebugPrintPlacement.CODEC);
+        P = Registry.register(Registry.PLACEMENT_MODIFIERS, new ResourceLocation(SinoDivination.MODID, "sino_string"), () -> DebugPrintPlacement.CODEC);
     }
 }

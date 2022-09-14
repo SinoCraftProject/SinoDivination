@@ -21,7 +21,7 @@ public class SDLanguageProviders extends LanguageProviderBase {
     private static final Logger LOGGER = LoggerFactory.getLogger(SDLanguageProviders.class);
 
     public SDLanguageProviders(DataGenerator generator) {
-        super(generator, SinoDivination.MOD_ID);
+        super(generator, SinoDivination.MODID);
     }
 
     @Override

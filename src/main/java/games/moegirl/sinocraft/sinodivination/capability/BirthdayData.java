@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 
 public class BirthdayData implements ICapabilitySerializable<CompoundTag> {
 
-    public static final ResourceLocation ID = new ResourceLocation(SinoDivination.MOD_ID, "birthday");
+    public static final ResourceLocation ID = new ResourceLocation(SinoDivination.MODID, "birthday");
 
     public static final Capability<BirthdayData> CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {
     });

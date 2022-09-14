@@ -18,7 +18,7 @@ import net.minecraft.world.phys.Vec3;
 
 public class TripodRenderer implements BlockEntityRenderer<TripodEntity> {
 
-    private static final TextureMap TEXTURE = TextureMap.of(new ResourceLocation(SinoDivination.MOD_ID, "textures/in_world.png"));
+    private static final TextureMap TEXTURE = TextureMap.of(new ResourceLocation(SinoDivination.MODID, "textures/in_world.png"));
     private static final TextureMapClient CLIENT = new TextureMapClient(TEXTURE);
 
     public final BlockEntityRendererProvider.Context context;
