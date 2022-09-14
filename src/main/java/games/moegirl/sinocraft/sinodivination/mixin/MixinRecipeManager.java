@@ -38,12 +38,12 @@ public abstract class MixinRecipeManager {
     @Inject(method = "apply(Ljava/util/Map;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V",
             at = @At("RETURN"))
     protected void injectApply(Map<ResourceLocation, JsonElement> object, ResourceManager resourceManager, ProfilerFiller profiler, CallbackInfo ci) {
-        sinodivination$replaceRecipes();
+        sinodivination$isReplaced = false;
     }
 
     @Inject(method = "replaceRecipes", at = @At("RETURN"))
     protected void injectReplaceRecipes(Iterable<Recipe<?>> recipes, CallbackInfo ci) {
-        sinodivination$replaceRecipes();
+        sinodivination$isReplaced = false;
     }
 
     @Inject(method = "getRecipeFor", at = @At("HEAD"))
