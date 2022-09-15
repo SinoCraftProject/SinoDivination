@@ -17,8 +17,7 @@ archivesBaseName = 'sinodivination'
 version = '1.18.2-2.0.0'
 // qyl27: for developing and release.
 if (System.getenv("JITPACK") == "true") {
-    version += "-${System.getenv("GIT_BRANCH")}"
-    version += "-${System.getenv("GIT_COMMIT")}"
+    version += "-${System.getenv("VERSION")}"
 }
 
 var release = false

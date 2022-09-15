@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = SinoDivination.MODID)
-public class DataGenRegister {
+public class DataGen {
     @SubscribeEvent
     public static void onGatherData(GatherDataEvent event) {
         if (event.includeClient()) {
