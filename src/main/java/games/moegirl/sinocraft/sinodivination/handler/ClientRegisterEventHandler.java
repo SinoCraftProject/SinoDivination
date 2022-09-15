@@ -7,6 +7,7 @@ import games.moegirl.sinocraft.sinodivination.block.base.WoodenChest;
 import games.moegirl.sinocraft.sinodivination.blockentity.AltarEntity;
 import games.moegirl.sinocraft.sinodivination.blockentity.SDBlockEntities;
 import games.moegirl.sinocraft.sinodivination.client.AltarRenderer;
+import games.moegirl.sinocraft.sinodivination.client.KettlePotRenderer;
 import games.moegirl.sinocraft.sinodivination.client.TripodRenderer;
 import games.moegirl.sinocraft.sinodivination.client.WoodenChestRenderer;
 import games.moegirl.sinocraft.sinodivination.tree.SDWoodwork;
@@ -36,6 +37,7 @@ public class ClientRegisterEventHandler {
         registerChestEntity(event, SDBlocks.SOPHORA_CHEST);
         event.registerBlockEntityRenderer(SDBlockEntities.TRIPOD.get(), TripodRenderer::new);
         event.registerBlockEntityRenderer(SDBlockEntities.ALTAR.get(), AltarRenderer::new);
+        event.registerBlockEntityRenderer(SDBlockEntities.KETTLE_POT.get(), KettlePotRenderer::new);
         for (Object o : SDWoodwork.CLIENT) {
             WoodworkClientRegister register = (WoodworkClientRegister) o;
             register.registerRenderer(event);
