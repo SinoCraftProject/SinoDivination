@@ -15,7 +15,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class SDItemModelProvider extends ItemModelProviderBase {
 
     public SDItemModelProvider(GatherDataEvent event) {
-        super(event.getGenerator(), SinoDivination.MOD_ID, event.getExistingFileHelper(), SDItems.REGISTRY);
+        super(event.getGenerator(), SinoDivination.MODID, event.getExistingFileHelper(), SDItems.REGISTRY);
     }
 
     @Override

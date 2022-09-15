@@ -45,14 +45,14 @@ public class SophoraChestEntity extends WoodenChestEntity implements ISophoraEnt
     @Override
     public void load(CompoundTag pTag) {
         super.load(pTag);
-        entity = pTag.contains(SinoDivination.MOD_ID + ".record", Tag.TAG_COMPOUND) ? new PlayerRecord(pTag.getCompound(SinoDivination.MOD_ID + ".record")) : null;
+        entity = pTag.contains(SinoDivination.MODID + ".record", Tag.TAG_COMPOUND) ? new PlayerRecord(pTag.getCompound(SinoDivination.MODID + ".record")) : null;
     }
 
     @Override
     protected void saveAdditional(CompoundTag pTag) {
         super.saveAdditional(pTag);
         if (entity != null) {
-            pTag.put(SinoDivination.MOD_ID + ".record", entity.write());
+            pTag.put(SinoDivination.MODID + ".record", entity.write());
         }
     }
 

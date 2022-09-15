@@ -202,13 +202,13 @@ public class SDRecipeProvider extends RecipeProvider {
 
     private ShapedRecipeBuilder shaped(ItemLike result, ItemLike unlockedBy) {
         return ShapedRecipeBuilder.shaped(result)
-                .group(SinoDivination.MOD_ID)
+                .group(SinoDivination.MODID)
                 .unlockedBy("has_block", has(unlockedBy));
     }
 
     private ShapelessRecipeBuilder shapeless(ItemLike result, int count, RegistryObject<? extends ItemLike> unlockedBy) {
         return ShapelessRecipeBuilder.shapeless(result, count)
-                .group(SinoDivination.MOD_ID)
+                .group(SinoDivination.MODID)
                 .unlockedBy("has_block", has(unlockedBy.get()));
     }
 
@@ -225,7 +225,7 @@ public class SDRecipeProvider extends RecipeProvider {
 
     private <T extends Item> void addStick(Woodwork tree, RegistryObject<T> stick, Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
         ShapedRecipeBuilder.shaped(stick.get())
-                .group(SinoDivination.MOD_ID)
+                .group(SinoDivination.MODID)
                 .pattern("X")
                 .pattern("Y")
                 .pattern("X")

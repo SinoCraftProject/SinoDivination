@@ -71,13 +71,13 @@ public class LifeSymbol extends Item {
 
     public static Optional<UUID> getRecordEntityId(ItemStack stack) {
         return OptionalTag.of(stack)
-                .getCompound(SinoDivination.MOD_ID + ".symbol")
+                .getCompound(SinoDivination.MODID + ".symbol")
                 .getUUID("entity");
     }
 
     public static Optional<? extends Component> getRecordEntityName(ItemStack stack) {
         return OptionalTag.of(stack)
-                .getCompound(SinoDivination.MOD_ID + ".symbol")
+                .getCompound(SinoDivination.MODID + ".symbol")
                 .getString("name")
                 .map(Component.Serializer::fromJson)
                 .or(() -> getRecordEntityId(stack)
@@ -87,12 +87,12 @@ public class LifeSymbol extends Item {
 
     public static Optional<LocalDateTime> getRecordEntityDate(ItemStack stack) {
         return OptionalTag.of(stack)
-                .getCompound(SinoDivination.MOD_ID + ".symbol")
+                .getCompound(SinoDivination.MODID + ".symbol")
                 .mapToObj(TagSerializers::readDate);
     }
 
     public static void setRecordEntity(ItemStack stack, UUID entity, @Nullable Component name, @Nullable LocalDateTime birthday) {
-        OptionalTag.ofOrCreate(stack).computeIfAbsent(SinoDivination.MOD_ID + ".symbol", Tag.TAG_COMPOUND, CompoundTag::new)
+        OptionalTag.ofOrCreate(stack).computeIfAbsent(SinoDivination.MODID + ".symbol", Tag.TAG_COMPOUND, CompoundTag::new)
                 .put("entity", entity)
                 .put("name", name, TagSerializers::componentSerializer)
                 .put(birthday, TagSerializers::writeDate);

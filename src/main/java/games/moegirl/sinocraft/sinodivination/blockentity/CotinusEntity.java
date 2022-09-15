@@ -52,14 +52,14 @@ public class CotinusEntity extends BlockEntity implements ICotinusEntity {
     @Override
     public void load(CompoundTag pTag) {
         super.load(pTag);
-        isOpen = pTag.getBoolean(SinoDivination.MOD_ID + ".doorOpen");
+        isOpen = pTag.getBoolean(SinoDivination.MODID + ".doorOpen");
         checker.load(pTag);
     }
 
     @Override
     protected void saveAdditional(CompoundTag pTag) {
         super.saveAdditional(pTag);
-        pTag.putBoolean(SinoDivination.MOD_ID + ".doorOpen", isOpen);
+        pTag.putBoolean(SinoDivination.MODID + ".doorOpen", isOpen);
         checker.save(pTag);
     }
 

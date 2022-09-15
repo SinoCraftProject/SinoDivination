@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 
 public class CarvingTableMenu extends AbstractContainerMenu {
 
-    public static final TextureMap TEXTURE = TextureMap.of(SinoDivination.MOD_ID, "gui", "carving_table");
+    public static final TextureMap TEXTURE = TextureMap.of(SinoDivination.MODID, "gui", "carving_table");
 
     public BlockPos pos = BlockPos.ZERO;
     @Nullable

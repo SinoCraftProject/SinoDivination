@@ -9,11 +9,11 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import static games.moegirl.sinocraft.sinodivination.SinoDivination.MOD_ID;
+import static games.moegirl.sinocraft.sinodivination.SinoDivination.MODID;
 
 public class SDRecipes {
 
-    public static final DeferredRegister<RecipeSerializer<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, MOD_ID);
+    public static final DeferredRegister<RecipeSerializer<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, MODID);
 
     public static RecipeHolder<Container, ChangeSoupRecipe, ChangeSoupRecipeSerializer> CHANGE_SOUP = RecipeHolder.register(REGISTRY, SDItems.CHANGE_SOUP, ChangeSoupRecipeSerializer.INSTANCE);
 

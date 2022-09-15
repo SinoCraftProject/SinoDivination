@@ -14,7 +14,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 
 public class SilkwormPlaqueMenu extends AbstractContainerMenu {
 
-    public static final TextureMap TEXTURE = TextureMap.of(SinoDivination.MOD_ID, "gui", "silkworm_plaque");
+    public static final TextureMap TEXTURE = TextureMap.of(SinoDivination.MODID, "gui", "silkworm_plaque");
 
     private final SilkwormPlaqueEntity entity;
 

@@ -22,7 +22,7 @@ public class SDNetworks {
     public static final Id ID = new Id();
 
     public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
-            new ResourceLocation(SinoDivination.MOD_ID, "network"), () -> "1", s -> true, s -> true);
+            new ResourceLocation(SinoDivination.MODID, "network"), () -> "1", s -> true, s -> true);
 
     public static void register() {
         try {

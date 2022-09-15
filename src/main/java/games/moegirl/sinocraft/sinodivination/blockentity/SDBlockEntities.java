@@ -21,7 +21,7 @@ import static games.moegirl.sinocraft.sinodivination.tree.SDWoodwork.SOPHORA;
 
 public class SDBlockEntities {
 
-    public static final DeferredRegister<BlockEntityType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, SinoDivination.MOD_ID);
+    public static final DeferredRegister<BlockEntityType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, SinoDivination.MODID);
 
     public static final RegistryObject<BlockEntityType<CotinusDoorEntity>> COTINUS_DOOR = simple(CotinusDoorEntity::new, COTINUS.door);
 

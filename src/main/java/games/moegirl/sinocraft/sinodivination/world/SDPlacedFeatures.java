@@ -40,7 +40,7 @@ import java.util.List;
 
 public class SDPlacedFeatures {
 
-    public static final PlacedFeatureRegister REGISTRY = new PlacedFeatureRegister(SinoDivination.MOD_ID);
+    public static final PlacedFeatureRegister REGISTRY = new PlacedFeatureRegister(SinoDivination.MODID);
 
     private static final PlacedFeatureRegister.Entry<OreConfiguration, OreFeatureBuilder> JADE =
             REGISTRY.registerOre(SDBlocks.ORE_JADE.getId().getPath(), builder -> builder

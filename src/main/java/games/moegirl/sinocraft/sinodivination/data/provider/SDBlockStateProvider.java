@@ -18,12 +18,12 @@ import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.registries.RegistryObject;
 
-import static games.moegirl.sinocraft.sinodivination.SinoDivination.MOD_ID;
+import static games.moegirl.sinocraft.sinodivination.SinoDivination.MODID;
 
 public class SDBlockStateProvider extends BlockStateProviderBase {
 
     public SDBlockStateProvider(GatherDataEvent event) {
-        super(event.getGenerator(), MOD_ID, event.getExistingFileHelper(), SDBlocks.REGISTRY);
+        super(event.getGenerator(), MODID, event.getExistingFileHelper(), SDBlocks.REGISTRY);
     }
 
     @Override
@@ -46,7 +46,7 @@ public class SDBlockStateProvider extends BlockStateProviderBase {
         crop(SDBlocks.SESAME);
 
         String ganoderma = SDBlocks.LUCID_GANODERMA.getId().getPath();
-        BlockModelBuilder ganodermaModel = models().crop(ganoderma, new ResourceLocation(MOD_ID, ModelProvider.BLOCK_FOLDER + "/" + ganoderma));
+        BlockModelBuilder ganodermaModel = models().crop(ganoderma, new ResourceLocation(MODID, ModelProvider.BLOCK_FOLDER + "/" + ganoderma));
         facing(ganodermaModel, LucidGanoderma.LOG_FACING);
 
         setAdding(false);

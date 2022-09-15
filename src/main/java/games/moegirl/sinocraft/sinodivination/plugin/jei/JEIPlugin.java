@@ -28,7 +28,7 @@ import java.util.List;
 @JeiPlugin
 public class JEIPlugin implements IModPlugin {
 
-    private static final ResourceLocation ID = new ResourceLocation(SinoDivination.MOD_ID, "jei");
+    private static final ResourceLocation ID = new ResourceLocation(SinoDivination.MODID, "jei");
 
     public static final RecipeType<ChangeSoupRecipe> CHANGE_SOUP = newRecipeType(SDRecipes.CHANGE_SOUP);
     public static final RecipeType<CarvingTableRecipe> CARVING_TABLE = newRecipeType(SDRecipes.CARVING_TABLE);

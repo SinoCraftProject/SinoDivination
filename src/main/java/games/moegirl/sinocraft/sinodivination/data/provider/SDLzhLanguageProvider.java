@@ -19,13 +19,13 @@ public class SDLzhLanguageProvider extends LanguageProvider {
     private final ExistingFileHelper helper;
 
     public SDLzhLanguageProvider(GatherDataEvent event) {
-        super(event.getGenerator(), SinoDivination.MOD_ID, "lzh");
+        super(event.getGenerator(), SinoDivination.MODID, "lzh");
         this.helper = event.getExistingFileHelper();
     }
 
     @Override
     protected void addTranslations() {
-        ResourceLocation location = new ResourceLocation(SinoDivination.MOD_ID, "lang_map/map.json");
+        ResourceLocation location = new ResourceLocation(SinoDivination.MODID, "lang_map/map.json");
         try(InputStream is = helper.getResource(location, PackType.CLIENT_RESOURCES).getInputStream()) {
             JsonObject obj = JsonParser.parseString(IOUtils.toString(is, StandardCharsets.UTF_8)).getAsJsonObject();
             for (String s : obj.keySet()) {

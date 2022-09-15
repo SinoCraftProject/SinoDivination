@@ -18,19 +18,19 @@ import java.util.function.Consumer;
 
 public class SDTrees {
 
-    public static final Tree COTINUS = Tree.builder(SinoDivination.MOD_ID, "cotinus")
+    public static final Tree COTINUS = Tree.builder(SinoDivination.MODID, "cotinus")
             .tab(DivinationTab.INSTANCE)
             .grower(() -> SDPlacedFeatures.COTINUS.get().buildConfigured())
             .build(SDBlocks.REGISTRY, SDItems.REGISTRY);
 
-    public static final Tree JUJUBE = Tree.builder(SinoDivination.MOD_ID, "jujube")
+    public static final Tree JUJUBE = Tree.builder(SinoDivination.MODID, "jujube")
             .tab(DivinationTab.INSTANCE)
             .blockStrengthModifier(new FloatModifier().calcAfter(i -> 2 * i))
             .grower(() -> SDPlacedFeatures.JUJUBE.get().buildConfigured())
             .customLeaves(JujubeLeaves::new)
             .build(SDBlocks.REGISTRY, SDItems.REGISTRY);
 
-    public static final Tree SOPHORA = Tree.builder(SinoDivination.MOD_ID, "sophora")
+    public static final Tree SOPHORA = Tree.builder(SinoDivination.MODID, "sophora")
             .tab(DivinationTab.INSTANCE)
             .grower(() -> SDPlacedFeatures.SOPHORA.get().buildConfigured())
             .build(SDBlocks.REGISTRY, SDItems.REGISTRY);

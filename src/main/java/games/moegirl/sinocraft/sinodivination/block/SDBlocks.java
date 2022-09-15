@@ -16,7 +16,7 @@ import java.util.function.Supplier;
 
 public class SDBlocks {
 
-    public static final DeferredRegister<Block> REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCKS, SinoDivination.MOD_ID);
+    public static final DeferredRegister<Block> REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCKS, SinoDivination.MODID);
 
     public static final RegistryObject<OreJade> ORE_JADE = simple(OreJade.class);
 
