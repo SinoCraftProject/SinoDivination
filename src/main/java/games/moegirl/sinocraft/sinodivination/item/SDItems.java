@@ -84,6 +84,8 @@ public class SDItems {
 
     public static final RegistryObject<BlockItem> KETTLE_POT = block(SDBlocks.KETTLE_POT);
 
+    public static final RegistryObject<BlockItem> SILKWORM_PLAQUE = block(SDBlocks.SILKWORM_PLAQUE);
+
     public static final RegistryObject<Item> SILKWORM_BABY = single("silkworm_baby", 10);
 
     public static final RegistryObject<Hook> HOOK = simple(Hook.class);

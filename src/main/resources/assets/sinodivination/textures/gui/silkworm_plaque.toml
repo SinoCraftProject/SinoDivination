@@ -15,28 +15,28 @@ position = [0, 181]
 [inventory]
 type = "slots"
 count = [3, 9]
-position = [30, 97]
+position = [31, 98]
 
 [selection]
 type = "slots"
 count = 9
-position = [30, 155]
+position = [31, 156]
 
 [in]
 type = "slots"
 count = 9
 offset = 4
-position = [6, 25]
+position = [7, 26]
 
 [out]
 type = "slots"
 count = 9
 offset = 4
-position = [6, 72]
+position = [7, 73]
 
 [feed]
 type = "slot"
-position = [201, 47]
+position = [202, 48]
 
 [progress0]
 type = "progress"

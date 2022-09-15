@@ -8,6 +8,7 @@ import games.moegirl.sinocraft.sinodivination.blockentity.SDBlockEntities;
 import games.moegirl.sinocraft.sinodivination.blockentity.SilkwormPlaqueEntity;
 import games.moegirl.sinocraft.sinodivination.item.SDItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -26,7 +27,7 @@ public class SilkwormPlaqueMenu extends AbstractContainerMenu {
         TEXTURE.placeSlots(inventory, "selection", 0, this::addSlot, SlotStrategy.noLimit());
         TEXTURE.placeSlots(entity.in().getInv(), "in", 0, this::addSlot, SlotStrategy.insertFilter(SDItems.SILKWORM_BABY));
         TEXTURE.placeSlots(entity.out().getInv(), "out", 0, this::addSlot, SlotStrategy.onlyTake());
-        TEXTURE.placeSlot(entity.feed().getInv(), "feed", 0, this::addSlot, SlotStrategy.onlyTake());
+        TEXTURE.placeSlot(entity.feed().getInv(), "feed", 0, this::addSlot, SlotStrategy.insertFilter(ItemTags.LEAVES));
     }
 
     public SilkwormPlaqueMenu(int pContainerId, Inventory inventory) {

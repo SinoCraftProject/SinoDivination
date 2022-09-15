@@ -3,7 +3,12 @@ package games.moegirl.sinocraft.sinodivination.plugin.jei;
 import games.moegirl.sinocraft.sinocore.api.crafting.RecipeHolder;
 import games.moegirl.sinocraft.sinodivination.SinoDivination;
 import games.moegirl.sinocraft.sinodivination.block.SDBlocks;
+import games.moegirl.sinocraft.sinodivination.client.screen.SilkwormPlaqueScreen;
 import games.moegirl.sinocraft.sinodivination.item.SDItems;
+import games.moegirl.sinocraft.sinodivination.plugin.jei.category.CarvingTableRecipeCategory;
+import games.moegirl.sinocraft.sinodivination.plugin.jei.category.ChangeSoupRecipeCategory;
+import games.moegirl.sinocraft.sinodivination.plugin.jei.category.KettlePotRecipeCategory;
+import games.moegirl.sinocraft.sinodivination.plugin.jei.guihandler.SilkwormPlaqueScreenHandler;
 import games.moegirl.sinocraft.sinodivination.recipe.CarvingTableRecipe;
 import games.moegirl.sinocraft.sinodivination.recipe.ChangeSoupRecipe;
 import games.moegirl.sinocraft.sinodivination.recipe.KettlePotRecipe;
@@ -11,10 +16,7 @@ import games.moegirl.sinocraft.sinodivination.recipe.SDRecipes;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.recipe.RecipeType;
-import mezz.jei.api.registration.IModIngredientRegistration;
-import mezz.jei.api.registration.IRecipeCatalystRegistration;
-import mezz.jei.api.registration.IRecipeCategoryRegistration;
-import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.api.registration.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
@@ -63,6 +65,11 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(SDItems.CHANGE_SOUP.get()), CHANGE_SOUP);
         registration.addRecipeCatalyst(new ItemStack(SDBlocks.CARVING_TABLE.get()), CARVING_TABLE);
         registration.addRecipeCatalyst(new ItemStack(SDBlocks.KETTLE_POT.get()), KETTLE_POT);
+    }
+
+    @Override
+    public void registerGuiHandlers(IGuiHandlerRegistration registration) {
+        registration.addGuiScreenHandler(SilkwormPlaqueScreen.class, SilkwormPlaqueScreenHandler.INSTANCE);
     }
 
     private static <C extends Container, T extends Recipe<C>> RecipeType<T> newRecipeType(RecipeHolder<?, T, ?> type) {

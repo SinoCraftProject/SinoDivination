@@ -1,5 +1,6 @@
-package games.moegirl.sinocraft.sinodivination.plugin.jei;
+package games.moegirl.sinocraft.sinodivination.plugin.jei.category;
 
+import games.moegirl.sinocraft.sinodivination.plugin.jei.JEIPlugin;
 import games.moegirl.sinocraft.sinodivination.recipe.ChangeSoupRecipe;
 import games.moegirl.sinocraft.sinodivination.recipe.SDRecipes;
 import games.moegirl.sinocraft.sinodivination.data.SDLangKeys;

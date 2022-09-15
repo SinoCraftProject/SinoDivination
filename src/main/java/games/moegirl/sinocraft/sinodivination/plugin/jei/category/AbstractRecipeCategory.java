@@ -1,4 +1,4 @@
-package games.moegirl.sinocraft.sinodivination.plugin.jei;
+package games.moegirl.sinocraft.sinodivination.plugin.jei.category;
 
 import games.moegirl.sinocraft.sinocore.api.crafting.RecipeHolder;
 import mezz.jei.api.constants.VanillaTypes;

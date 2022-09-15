@@ -32,7 +32,9 @@ public interface SlotChecker {
     }
 
     static SlotChecker of(TagKey<Item> tag) {
-        return (__, s) -> s.is(tag);
+        return (__, s) -> {
+            return s.is(tag);
+        };
     }
 
     static SlotChecker of(int slot, Supplier<? extends ItemLike> item) {

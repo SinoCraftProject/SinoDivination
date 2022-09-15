@@ -109,7 +109,7 @@ public class SilkwormPlaqueEntity extends BlockEntity implements MenuProvider, B
                 } else if (nutrition > 0) {
                     silkworm.progress++;
                     nutrition--;
-                    if (silkworm.progress == 100) {
+                    if (silkworm.progress == 10) {
                         silkworm.cached += out.insertItem2(i, new ItemStack(SDItems.SILK.get()), false).getCount();
                     }
                     silkworm.cooldown = 10;
@@ -159,7 +159,7 @@ public class SilkwormPlaqueEntity extends BlockEntity implements MenuProvider, B
         }
 
         public float progress() {
-            return cached == 0 ? ((float) progress / 100) : 1;
+            return cached == 0 ? ((float) progress / 10) : 1;
         }
 
         public boolean isBlocking() {
