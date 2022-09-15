@@ -3,7 +3,6 @@ package games.moegirl.sinocraft.sinodivination.block;
 import games.moegirl.sinocraft.sinocore.api.block.AbstractEntityBlock;
 import games.moegirl.sinocraft.sinodivination.blockentity.KettlePotEntity;
 import games.moegirl.sinocraft.sinodivination.blockentity.SDBlockEntities;
-import games.moegirl.sinocraft.sinodivination.data.SDTags;
 import games.moegirl.sinocraft.sinodivination.util.container.InputOnlyContainer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
@@ -22,8 +21,6 @@ import net.minecraftforge.fluids.FluidActionResult;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.ItemHandlerHelper;
-
-import java.util.Random;
 
 public class KettlePot extends AbstractEntityBlock<KettlePotEntity> {
 
@@ -61,7 +58,7 @@ public class KettlePot extends AbstractEntityBlock<KettlePotEntity> {
                     FluidActionResult r = FluidUtil.tryEmptyContainer(stack, tank, Integer.MAX_VALUE, pPlayer, true);
                     if (r.isSuccess()) {
                         stack.shrink(1);
-                        pPlayer.addItem(result.getResult());
+                        pPlayer.addItem(r.getResult());
                     } else {
                         entity.takeResult(pPlayer.getItemInHand(pHand))
                                 .ifPresent(ri -> ItemHandlerHelper.giveItemToPlayer(pPlayer, ri));
@@ -73,19 +70,6 @@ public class KettlePot extends AbstractEntityBlock<KettlePotEntity> {
             }
         });
         return InteractionResult.sidedSuccess(pLevel.isClientSide);
-    }
-
-    @Override
-    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, Random pRandom) {
-        SDBlockEntities.getKettlePot(pLevel, pPos)
-                .flatMap(KettlePotEntity::getRecipe)
-                .ifPresent(__ -> {
-                    if (pLevel.getBlockState(pPos.below()).is(SDTags.HEAT_SOURCE)) {
-                        // todo by lq2007: spawn burning particle
-                    } else {
-                        // todo by lq2007: spawn cooldown particle
-                    }
-                });
     }
 
     @Override
