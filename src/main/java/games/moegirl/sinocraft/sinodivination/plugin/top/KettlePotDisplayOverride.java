@@ -26,9 +26,9 @@ public enum KettlePotDisplayOverride implements IBlockDisplayOverride {
                     .item(pot.getInput().getStackInSlot(2))
                     .text("Fluid: " + pot.getTank().getFluid().getFluid().getRegistryName() + " " + pot.getTank().getFluid().getAmount())
                     .progress(pot.getProgress(), 101)
-                    .text("Status: " + pot.getProcessor().getStatus())
+                    .text("Status: " + pot.getStatus())
                     .text("Output: ")
-                    .item(pot.getProcessor().getResult())
+                    .item(pot.getResult())
                     .text("Recipe: " + pot.getRecipe().map(Recipe::getId).map(ResourceLocation::toString).orElse("null")));
         }
         return false;

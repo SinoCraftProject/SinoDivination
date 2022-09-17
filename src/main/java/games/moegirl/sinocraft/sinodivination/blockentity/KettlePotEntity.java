@@ -79,12 +79,16 @@ public class KettlePotEntity extends BlockEntity implements BlockEntityTicker<Ke
         return processor.getStatus() == RecipeProcessor.Status.READY;
     }
 
-    public void run() {
-        processor.run();
+    public RecipeProcessor.Status getStatus() {
+        return processor.getStatus();
     }
 
-    public KettlePotProcessor getProcessor() {
-        return processor;
+    public ItemStack getResult() {
+        return processor.getResult();
+    }
+
+    public void run() {
+        processor.run();
     }
 
     public Optional<ItemStack> takeResult(ItemStack container) {
