@@ -110,10 +110,7 @@ public class KettlePot extends AbstractEntityBlock<KettlePotEntity> {
                 case BLOCKING -> {
                     double dx = random.nextDouble() / 4 * (random.nextBoolean() ? 1 : -1);
                     double dz = random.nextDouble() / 4 * (random.nextBoolean() ? 1 : -1);
-                    level.addParticle(ParticleTypes.SMALL_FLAME, x + dx, y, z + dz, 0, 0.1, 0);
-                    dx = random.nextDouble() / 4 * (random.nextBoolean() ? 1 : -1);
-                    dz = random.nextDouble() / 4 * (random.nextBoolean() ? 1 : -1);
-                    level.addParticle(ParticleTypes.LARGE_SMOKE, x + dx, y, z + dz, 0, 0, 0);
+                    level.addParticle(ParticleTypes.FLAME, x + dx, y, z + dz, 0, 0.1, 0);
                 }
                 default -> {
                     double dx = random.nextDouble() / 4 * (random.nextBoolean() ? 1 : -1);

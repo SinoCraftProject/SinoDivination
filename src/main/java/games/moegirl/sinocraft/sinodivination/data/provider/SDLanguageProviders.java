@@ -88,6 +88,7 @@ public class SDLanguageProviders extends LanguageProviderBase {
         addItem(SDItems.COPPER_MASK, "铜面");
         addItem(SDItems.COPPER_LAMP, "铜镫");
         addItem(SDItems.COPPER_BEAST, "铜兽");
+        addItem(SDItems.STICK_RICE, "糯米饭");
         // suit
         SDTrees.COTINUS.register().addLanguagesEn(en);
         SDTrees.COTINUS.register().addLanguagesZh(zh, "无患");
