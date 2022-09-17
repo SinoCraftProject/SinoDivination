@@ -1,8 +1,9 @@
 package games.moegirl.sinocraft.sinodivination.blockentity;
 
+import games.moegirl.sinocraft.sinodivination.data.SDLangKeys;
 import games.moegirl.sinocraft.sinodivination.item.SDItems;
 import games.moegirl.sinocraft.sinodivination.menu.SilkwormPlaqueMenu;
-import games.moegirl.sinocraft.sinodivination.data.SDLangKeys;
+import games.moegirl.sinocraft.sinodivination.util.ChangableInt;
 import games.moegirl.sinocraft.sinodivination.util.NbtUtils;
 import games.moegirl.sinocraft.sinodivination.util.container.ComposeItemHandler;
 import games.moegirl.sinocraft.sinodivination.util.container.InputOnlyContainer;
@@ -35,17 +36,17 @@ import org.jetbrains.annotations.Nullable;
 
 public class SilkwormPlaqueEntity extends BlockEntity implements MenuProvider, BlockEntityTicker<SilkwormPlaqueEntity> {
 
-    public static final int SILKWORM_COUNT = 9;
+    public static final int SILKWORM_COUNT = 8;
 
     private final InputOnlyContainer in = new InputOnlyContainer(SILKWORM_COUNT)
-            .bindEntityChange(this)
+            .bindEntityChangeWithUpdate(this)
             .setChecker(SlotChecker.of(SDItems.SILKWORM_BABY));
-    private final OutputOnlyContainer out = new OutputOnlyContainer(SILKWORM_COUNT).bindEntityChange(this);
+    private final OutputOnlyContainer out = new OutputOnlyContainer(1).bindEntityChangeWithUpdate(this);
     private final InputOnlyContainer feed = new InputOnlyContainer(1)
-            .bindEntityChange(this)
+            .bindEntityChangeWithUpdate(this)
             .setChecker(SlotChecker.of(ItemTags.LEAVES));
     private final SilkwormHolder[] silkworms = new SilkwormHolder[SILKWORM_COUNT];
-    private float nutrition = 0;
+    private final ChangableInt nutrition = new ChangableInt(0);
 
     private final IItemHandler handler = new ComposeItemHandler().append(in).append(out).append(feed);
 
@@ -83,16 +84,24 @@ public class SilkwormPlaqueEntity extends BlockEntity implements MenuProvider, B
         return silkworms[index];
     }
 
+    public int nutrition() {
+        return nutrition.get();
+    }
+
     @Override
     public void tick(Level pLevel, BlockPos pPos, BlockState pState, SilkwormPlaqueEntity pBlockEntity) {
         if (!pLevel.isClientSide) {
-            if (nutrition <= 90) {
-                nutrition += feed.extractItem2(0, (int) ((100 - nutrition) / 10), false).getCount() * 10;
+            boolean sync = false;
+            if (nutrition.get() <= 90) {
+                int count = feed.extractItem2(0, ((100 - nutrition.get()) / 10), false).getCount();
+                nutrition.add(count * 10);
+                sync = nutrition.changed();
             }
             for (SilkwormHolder silkworm : silkworms) {
-                int i = silkworm.index;
-                if (silkworm.cached > 0) {
-                    silkworm.cached = out.insertItem2(i, new ItemStack(SDItems.SILK.get(), silkworm.cached), false).getCount();
+                silkworm.ready();
+                int c = silkworm.cached.get();
+                if (c > 0) {
+                    silkworm.cached.set(out.insertItem2(0, new ItemStack(SDItems.SILK.get(), c), false).getCount());
                 }
 
                 if (silkworm.cooldown > 0) {
@@ -104,19 +113,37 @@ public class SilkwormPlaqueEntity extends BlockEntity implements MenuProvider, B
                     continue;
                 }
 
-                if (in.getStackInSlot(i).isEmpty()) {
-                    silkworm.progress = 0;
-                } else if (nutrition > 0) {
-                    silkworm.progress++;
-                    nutrition--;
-                    if (silkworm.progress == 10) {
-                        silkworm.cached += out.insertItem2(i, new ItemStack(SDItems.SILK.get()), false).getCount();
+                int i = silkworm.index;
+                if (!in.getStackInSlot(i).is(SDItems.SILKWORM_BABY.get())) {
+                    silkworm.progress.set(0);
+                } else if (nutrition.get() > 0) {
+                    silkworm.progress.add(1);
+                    nutrition.reduce(1);
+                    if (silkworm.progress.get() == 10) {
+                        silkworm.cached.add(out.insertItem2(0, new ItemStack(SDItems.SILK.get()), false).getCount());
+                        silkworm.progress.set(0);
                     }
                     silkworm.cooldown = 10;
                 }
+                sync |= silkworm.needSync();
             }
             setChanged();
+            if (sync) {
+                System.out.println("Send to " + worldPosition);
+                pLevel.setBlockAndUpdate(worldPosition, getBlockState());
+            }
         }
+    }
+
+    @Override
+    public CompoundTag getUpdateTag() {
+        return saveWithoutMetadata();
+    }
+
+    @Override
+    public void handleUpdateTag(CompoundTag tag) {
+        super.handleUpdateTag(tag);
+        System.out.println("Receive at " + worldPosition + "(" + this + ")");
     }
 
     @Override
@@ -126,7 +153,7 @@ public class SilkwormPlaqueEntity extends BlockEntity implements MenuProvider, B
         out.load(pTag, "out");
         feed.load(pTag, "feed");
         NbtUtils.loadList(pTag, "silkworm", silkworms);
-        nutrition = pTag.getFloat("nutrition");
+        nutrition.set(pTag.getInt("nutrition"));
     }
 
     @Override
@@ -136,7 +163,7 @@ public class SilkwormPlaqueEntity extends BlockEntity implements MenuProvider, B
         out.save(pTag, "out");
         feed.save(pTag, "feed");
         NbtUtils.saveList(pTag, "silkworm", silkworms);
-        pTag.putFloat("nutrition", nutrition);
+        pTag.putInt("nutrition", nutrition.get());
     }
 
     @NotNull
@@ -150,37 +177,46 @@ public class SilkwormPlaqueEntity extends BlockEntity implements MenuProvider, B
 
     public static class SilkwormHolder implements INBTSerializable<CompoundTag> {
         final int index;
-        int progress = 0;
+        ChangableInt progress = new ChangableInt(0);
         int cooldown = 0;
-        int cached = 0;
+        ChangableInt cached = new ChangableInt(0);
 
         SilkwormHolder(int index) {
             this.index = index;
         }
 
         public float progress() {
-            return cached == 0 ? ((float) progress / 10) : 1;
+            return cached.get() == 0 ? ((float) progress.get() / 10) : 1;
         }
 
         public boolean isBlocking() {
-            return cached > 0;
+            return cached.get() > 0;
         }
 
         @Override
         public CompoundTag serializeNBT() {
             CompoundTag nbt = new CompoundTag();
             nbt.putByte("slot", (byte) index);
-            nbt.putByte("progress", (byte) progress);
+            nbt.putByte("progress", (byte) progress.get());
             nbt.putByte("cooldown", (byte) cooldown);
-            nbt.putInt("cached", cached);
+            nbt.putInt("cached", cached.get());
             return nbt;
         }
 
         @Override
         public void deserializeNBT(CompoundTag nbt) {
-            progress = nbt.getByte("progress");
+            progress.set(nbt.getByte("progress"));
             cooldown = nbt.getByte("cooldown");
-            cached = nbt.getInt("cached");
+            cached.set(nbt.getInt("cached"));
+        }
+
+        public void ready() {
+            progress.ready();
+            cached.ready();
+        }
+
+        public boolean needSync() {
+            return progress.changed() || cached.changed();
         }
     }
 }

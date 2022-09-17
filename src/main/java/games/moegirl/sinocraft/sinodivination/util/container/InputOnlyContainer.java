@@ -1,6 +1,5 @@
 package games.moegirl.sinocraft.sinodivination.util.container;
 
-import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;

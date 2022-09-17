@@ -130,7 +130,7 @@ public class LimitedContainer<T extends LimitedContainer<T>> extends InvWrapper 
         for (Tag tag : nbt) {
             CompoundTag t = (CompoundTag) tag;
             int slot = t.getByte("Slot");
-            setStackInSlot(slot, ItemStack.of(t));
+            setStackInSlot2(slot, ItemStack.of(t));
         }
     }
 

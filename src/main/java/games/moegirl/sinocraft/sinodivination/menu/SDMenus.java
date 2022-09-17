@@ -4,6 +4,7 @@ import games.moegirl.sinocraft.sinodivination.SinoDivination;
 import games.moegirl.sinocraft.sinodivination.util.StringUtils;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
+import net.minecraftforge.network.IContainerFactory;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -19,6 +20,10 @@ public class SDMenus {
     // =================================================================================================================
 
     public static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> simple(Class<T> aClass, MenuType.MenuSupplier<T> factory) {
+        return REGISTRY.register(StringUtils.to_snake_name(aClass.getSimpleName()), () -> new MenuType<>(factory));
+    }
+
+    public static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> simple(Class<T> aClass, IContainerFactory<T> factory) {
         return REGISTRY.register(StringUtils.to_snake_name(aClass.getSimpleName()), () -> new MenuType<>(factory));
     }
 }
