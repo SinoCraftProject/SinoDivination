@@ -40,7 +40,7 @@ public class SDBlocks {
 
     public static final RegistryObject<SimpleCropBlock<Item>> REHMANNIA = crop3(() -> SDItems.REHMANNIA, "rehmannia", 0, 1, 1, 1);
 
-    public static final RegistryObject<SimpleCropBlock<Item>> DRAGONLIVER_MELON = crop(() -> SDItems.DRAGONLIVER_MELON, "dragonliver_melon", 0, 1, 1, 1);
+    public static final RegistryObject<SimpleCropBlock<Item>> DRAGONLIVER_MELON = simple(DragonliverMelon.class);
 
     public static final RegistryObject<SimpleCropBlock<Item>> SESAME = crop3(() -> SDItems.SESAME, "sesame", 0, 1, 3, 3);
 

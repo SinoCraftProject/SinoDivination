@@ -3,10 +3,9 @@ package games.moegirl.sinocraft.sinodivination.data;
 import games.moegirl.sinocraft.sinodivination.SinoDivination;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
+import net.minecraft.tags.*;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 
 public class SDTags {
@@ -39,11 +38,21 @@ public class SDTags {
 
     // =================================================================================================================
 
+    // Biomes ==========================================================================================================
+
+    public static final TagKey<Biome> SNOWY_BIOME = biome("snowy");
+
+    // =================================================================================================================
+
     public static TagKey<Block> block(String name) {
         return TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(SinoDivination.MODID, name));
     }
 
     public static TagKey<Item> item(String name) {
         return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(SinoDivination.MODID, name));
+    }
+
+    public static TagKey<Biome> biome(String name) {
+        return TagKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(SinoDivination.MODID, name));
     }
 }

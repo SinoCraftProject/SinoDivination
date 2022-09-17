@@ -92,6 +92,27 @@ public class SDRecipeProvider extends RecipeProvider {
                 .define('Y', SDItems.JADE.get())
                 .define('Z', Blocks.STONECUTTER)
                 .save(consumer);
+        shaped(SDBlocks.SILKWORM_PLAQUE, SDItems.SILKWORM_BABY.get())
+                .pattern("A A")
+                .pattern("AYA")
+                .pattern("ZZZ")
+                .define('A', Items.STICK)
+                .define('Y', Items.STRING)
+                .define('Z', ItemTags.PLANKS)
+                .save(consumer);
+        shaped(SDBlocks.ALTAR, 2, Blocks.STONE)
+                .pattern("XXX")
+                .pattern("YYY")
+                .define('X', ItemTags.CARPETS)
+                .define('Y', Tags.Items.STONE)
+                .save(consumer);
+        shaped(SDBlocks.TRIPOD, Items.COPPER_INGOT)
+                .pattern("Y Y")
+                .pattern("YYY")
+                .pattern("Z Z")
+                .define('Y', Tags.Items.INGOTS_COPPER)
+                .define('Z', Tags.Items.STORAGE_BLOCKS_COPPER)
+                .save(consumer);
         ChangeSoupRecipe.builder(Blocks.BIRCH_SAPLING, SDTrees.COTINUS.sapling).save(consumer);
         ChangeSoupRecipe.builder(Blocks.OAK_SAPLING, SDTrees.JUJUBE.sapling).save(consumer);
         ChangeSoupRecipe.builder(Blocks.SPRUCE_SAPLING, SDTrees.SOPHORA.sapling).save(consumer);
@@ -202,6 +223,12 @@ public class SDRecipeProvider extends RecipeProvider {
 
     private ShapedRecipeBuilder shaped(ItemLike result, ItemLike unlockedBy) {
         return ShapedRecipeBuilder.shaped(result)
+                .group(SinoDivination.MODID)
+                .unlockedBy("has_block", has(unlockedBy));
+    }
+
+    private ShapedRecipeBuilder shaped(RegistryObject<? extends ItemLike> result, int count, ItemLike unlockedBy) {
+        return ShapedRecipeBuilder.shaped(result.get(), count)
                 .group(SinoDivination.MODID)
                 .unlockedBy("has_block", has(unlockedBy));
     }
